@@ -1,7 +1,7 @@
-# UI Design Library Project Overview
+# Better UI Design Library Project Overview
 
 ## **Premise of the Project**
-The UI design library will be a platform that provides pre-built, customizable, and responsive UI components for developers. It will streamline the development process by offering a library of modular components that can be easily integrated into various projects.
+The Better UI design library will be a platform that provides pre-built, customizable, and responsive UI components for developers. It will streamline the development process by offering a library of modular components that can be easily integrated into various projects.
 
 The goal is to empower developers by saving time, ensuring design consistency, and providing high-quality components optimized for modern frameworks like React, Next.js, and plain HTML/CSS.
 
