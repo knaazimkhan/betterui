@@ -9,7 +9,7 @@ Set up the foundational architecture and tools necessary to kickstart the develo
 
 ### **Tech Stack**
 - **Frontend**:
-  - Next.js (v15) for server-side rendering and static site generation.
+  - Next.js (v15) with the **App Router** for modern and scalable routing.
   - React for building reusable components.
   - Tailwind CSS for styling.
 
@@ -17,6 +17,9 @@ Set up the foundational architecture and tools necessary to kickstart the develo
   - Prettier for code formatting.
   - ESLint for linting JavaScript/TypeScript code.
   - Husky for Git hooks (e.g., pre-commit checks).
+
+- **Package Manager**:
+  - **pnpm** for faster and efficient dependency management.
 
 - **Version Control**:
   - Git and GitHub for version control and collaboration.
@@ -26,28 +29,22 @@ Set up the foundational architecture and tools necessary to kickstart the develo
   - Cypress or Playwright for end-to-end testing.
 
 ### **Environment Setup**
-1. Install Node.js (latest LTS version).
-2. Initialize a new Next.js project:
+1. Ensure Node.js 20 is installed.
+2. Use the `create-next-app` CLI to initialize the project with Tailwind CSS and ESLint:
    ```bash
-   npx create-next-app@latest better-ui --ts
+   pnpm create next-app ./ --typescript --tailwind --eslint --app --src-dir --turbopack
    ```
-3. Add Tailwind CSS:
+   This command sets up Next.js with the **App Router**, Tailwind CSS, and ESLint pre-configured.
+
+3. Verify the project setup:
    ```bash
-   npm install -D tailwindcss postcss autoprefixer
-   npx tailwindcss init
+   pnpm dev
    ```
-   - Configure `tailwind.config.js` to include the `src` directory.
-   - Add Tailwind’s directives to `globals.css`:
-     ```css
-     @tailwind base;
-     @tailwind components;
-     @tailwind utilities;
-     ```
-4. Set up ESLint and Prettier:
-   ```bash
-   npm install eslint prettier eslint-config-prettier eslint-plugin-react eslint-plugin-tailwindcss
-   ```
-   - Configure `.eslintrc.json` and `.prettierrc` files.
+   Open the app in your browser at `http://localhost:3000` to confirm it is working.
+
+4. Set up Prettier:
+   - Ensure compatibility with ESLint by installing `eslint-config-prettier`.
+   - Add a `.prettierrc` file with your desired formatting rules.
 
 5. Configure GitHub repository:
    - Create a new repository and push the initialized project.
@@ -59,8 +56,8 @@ Set up the foundational architecture and tools necessary to kickstart the develo
 
 ### **Folder Structure**
 - **`src/`**:
+  - `app/`: Routing and page structure using the App Router.
   - `components/`: Reusable components.
-  - `pages/`: Next.js page routing.
   - `styles/`: Global and utility styles.
   - `utils/`: Helper functions.
 
@@ -68,15 +65,15 @@ Set up the foundational architecture and tools necessary to kickstart the develo
   - Static assets like images and icons.
 
 ### **Essential Pages**
-1. **Landing Page** (`pages/index.tsx`):
+1. **Landing Page** (`src/app/page.tsx`):
    - Showcase the project purpose and key features.
    - Include a call-to-action (CTA) for users to explore components.
 
-2. **Documentation Home** (`pages/docs/index.tsx`):
+2. **Documentation Home** (`src/app/docs/page.tsx`):
    - Overview of the documentation structure.
    - Links to setup guides and component categories.
 
-3. **Component Showcase** (`pages/components/index.tsx`):
+3. **Component Showcase** (`src/app/components/page.tsx`):
    - List of available components with links to individual demos.
 
 ---
@@ -119,9 +116,9 @@ Set up the foundational architecture and tools necessary to kickstart the develo
          - uses: actions/checkout@v3
          - uses: actions/setup-node@v3
            with:
-             node-version: '16'
-         - run: npm install
-         - run: npm test
+             node-version: '20'
+         - run: pnpm install
+         - run: pnpm test
    ```
 2. Deploy to Vercel:
    - Connect the GitHub repository to Vercel.
