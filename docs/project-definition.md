@@ -38,7 +38,7 @@ The goal is to empower developers by saving time, ensuring design consistency, a
 ## **How It Will Work**
 
 1. **Frontend Framework**:
-   - Built using **Next.js** for fast rendering and excellent SEO capabilities.
+   - Built using **Next.js App Router** for fast rendering and excellent SEO capabilities.
    - Styled using **Tailwind CSS** for flexibility and rapid prototyping.
 
 2. **Component Development**:
@@ -62,6 +62,7 @@ The goal is to empower developers by saving time, ensuring design consistency, a
 
 7. **Version Control**:
    - Open-source on GitHub, allowing contributions and transparent development.
+   - Include contribution guidelines and issue templates to facilitate collaboration.
 
 ---
 
@@ -72,7 +73,8 @@ The goal is to empower developers by saving time, ensuring design consistency, a
    - Define the component design system (spacing, colors, typography, etc.).
 
 2. **Phase 2: Basic Website Setup**:
-   - Set up the Next.js project.
+   - Set up the Next.js project using the App Router.
+   - Utilize `create-next-app` CLI with options for ESLint and Tailwind CSS setup.
    - Build the landing page and a simple documentation template.
 
 3. **Phase 3: Component Development**:
