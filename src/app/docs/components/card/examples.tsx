@@ -56,7 +56,7 @@ const cardWithImageCode = `<Card>
   </CardBody>
 </Card>`;
 
-const examples = [
+export const CardExamples = [
   {
     title: 'Variants',
     description: 'Cards come in different visual styles.',
@@ -142,5 +142,3 @@ const examples = [
     code: cardWithImageCode,
   },
 ];
-
-export { examples as CardExamples }; 

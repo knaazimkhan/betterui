@@ -109,7 +109,6 @@ const CardImage = React.forwardRef<HTMLImageElement, CardImageProps>(
           ref={ref}
           alt={alt}
           className="object-cover"
-          fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           {...props}
         />

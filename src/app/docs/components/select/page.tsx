@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Select } from '@/components/ui/select';
 import ComponentDocs from '@/components/docs/component-docs';

@@ -72,7 +72,7 @@ const checkboxGroupCode = `<div className="space-y-4">
   />
 </div>`;
 
-const examples = [
+export const CheckboxExamples = [
   {
     title: 'Variants',
     description: 'Checkboxes come in different visual styles.',
@@ -175,5 +175,3 @@ const examples = [
     code: checkboxGroupCode,
   },
 ];
-
-export { examples as CheckboxExamples }; 

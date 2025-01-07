@@ -40,43 +40,37 @@ export const TabsExamples = [
         </TabsContent>
       </Tabs>
     ),
-    code: `import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-
-export default function MyComponent() {
-  return (
-    <Tabs defaultValue="account">
-      <TabsList>
-        <TabsTrigger value="account">Account</TabsTrigger>
-        <TabsTrigger value="password">Password</TabsTrigger>
-        <TabsTrigger value="settings">Settings</TabsTrigger>
-      </TabsList>
-      <TabsContent value="account">
-        <div className="p-4">
-          <h3 className="text-lg font-medium">Account Settings</h3>
-          <p className="text-sm text-secondary-500">
-            Manage your account settings and preferences.
-          </p>
-        </div>
-      </TabsContent>
-      <TabsContent value="password">
-        <div className="p-4">
-          <h3 className="text-lg font-medium">Password Settings</h3>
-          <p className="text-sm text-secondary-500">
-            Change your password and security preferences.
-          </p>
-        </div>
-      </TabsContent>
-      <TabsContent value="settings">
-        <div className="p-4">
-          <h3 className="text-lg font-medium">General Settings</h3>
-          <p className="text-sm text-secondary-500">
-            Configure your general application settings.
-          </p>
-        </div>
-      </TabsContent>
-    </Tabs>
-  );
-}`,
+    code: `<Tabs defaultValue="account">
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+    <TabsTrigger value="settings">Settings</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">
+    <div className="p-4">
+      <h3 className="text-lg font-medium">Account Settings</h3>
+      <p className="text-sm text-secondary-500">
+        Manage your account settings and preferences.
+      </p>
+    </div>
+  </TabsContent>
+  <TabsContent value="password">
+    <div className="p-4">
+      <h3 className="text-lg font-medium">Password Settings</h3>
+      <p className="text-sm text-secondary-500">
+        Change your password and security preferences.
+      </p>
+    </div>
+  </TabsContent>
+  <TabsContent value="settings">
+    <div className="p-4">
+      <h3 className="text-lg font-medium">General Settings</h3>
+      <p className="text-sm text-secondary-500">
+        Configure your general application settings.
+      </p>
+    </div>
+  </TabsContent>
+</Tabs>`
   },
   {
     title: 'With Icons',

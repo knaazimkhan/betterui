@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import ComponentDocs from '@/components/docs/component-docs';

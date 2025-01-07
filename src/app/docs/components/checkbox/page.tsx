@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Checkbox } from '@/components/ui/checkbox';
 import ComponentDocs from '@/components/docs/component-docs';

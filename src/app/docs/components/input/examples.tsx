@@ -94,7 +94,7 @@ const inputTypesCode = `<Input type="password" placeholder="Password input" />
 <Input type="email" placeholder="Email input" />
 <Input type="date" />`;
 
-const examples = [
+export const InputExamples = [
   {
     title: 'Variants',
     description: 'Input fields come in different visual styles.',
@@ -225,5 +225,3 @@ const examples = [
     code: inputTypesCode,
   },
 ];
-
-export { examples as InputExamples }; 

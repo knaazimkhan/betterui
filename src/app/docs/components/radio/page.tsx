@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { RadioGroup } from '@/components/ui/radio';
 import ComponentDocs from '@/components/docs/component-docs';

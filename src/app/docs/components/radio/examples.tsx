@@ -90,7 +90,7 @@ const radioWithDisabledCode = `<RadioGroup
   ]}
 />`;
 
-const examples = [
+export const RadioExamples = [
   {
     title: 'Variants',
     description: 'Radio groups come in different visual styles.',
@@ -153,5 +153,3 @@ const examples = [
     code: radioWithDisabledCode,
   },
 ];
-
-export { examples as RadioExamples }; 

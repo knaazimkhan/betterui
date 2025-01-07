@@ -82,7 +82,7 @@ const selectWithDisabledCode = `<Select
   placeholder="Select an option"
 />`;
 
-const examples = [
+export const SelectExamples = [
   {
     title: 'Variants',
     description: 'Select fields come in different visual styles.',
@@ -174,5 +174,3 @@ const examples = [
     code: selectWithDisabledCode,
   },
 ];
-
-export { examples as SelectExamples }; 

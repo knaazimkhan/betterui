@@ -3,79 +3,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 
-const buttonVariantsCode = `<Button variant="primary">Primary</Button>
-<Button variant="secondary">Secondary</Button>
-<Button variant="outline">Outline</Button>
-<Button variant="ghost">Ghost</Button>
-<Button variant="link">Link</Button>
-<Button variant="destructive">Destructive</Button>`;
-
-const buttonSizesCode = `<Button size="sm">Small</Button>
-<Button size="md">Medium</Button>
-<Button size="lg">Large</Button>
-<Button size="icon">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="16"
-    height="16"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M5 12h14" />
-    <path d="M12 5v14" />
-  </svg>
-</Button>`;
-
-const buttonIconsCode = `<Button
-  leftIcon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m12 19-7-7 7-7" />
-      <path d="M19 12H5" />
-    </svg>
-  }
->
-  Back
-</Button>
-<Button
-  rightIcon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M5 12h14" />
-      <path d="m12 5 7 7-7 7" />
-    </svg>
-  }
->
-  Next
-</Button>`;
-
-const buttonStatesCode = `<Button disabled>Disabled</Button>
-<Button loading>Loading</Button>
-<Button fullWidth>Full Width</Button>`;
-
-const examples = [
+export const ButtonExamples = [
   {
     title: 'Variants',
     description: 'Different visual styles for the button.',
@@ -89,7 +17,12 @@ const examples = [
         <Button variant="destructive">Destructive</Button>
       </div>
     ),
-    code: buttonVariantsCode,
+    code: `<Button variant="primary">Primary</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>
+<Button variant="destructive">Destructive</Button>`,
   },
   {
     title: 'Sizes',
@@ -117,7 +50,25 @@ const examples = [
         </Button>
       </div>
     ),
-    code: buttonSizesCode,
+    code: `<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+<Button size="icon">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M5 12h14" />
+    <path d="M12 5v14" />
+  </svg>
+</Button>`,
   },
   {
     title: 'With Icons',
@@ -166,7 +117,46 @@ const examples = [
         </Button>
       </div>
     ),
-    code: buttonIconsCode,
+    code: `<Button
+  leftIcon={
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="m12 19-7-7 7-7" />
+      <path d="M19 12H5" />
+    </svg>
+  }
+>
+  Back
+</Button>
+<Button
+  rightIcon={
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M5 12h14" />
+      <path d="m12 5 7 7-7 7" />
+    </svg>
+  }
+>
+  Next
+</Button>`,
   },
   {
     title: 'States',
@@ -178,8 +168,8 @@ const examples = [
         <Button fullWidth>Full Width</Button>
       </div>
     ),
-    code: buttonStatesCode,
+    code: `<Button disabled>Disabled</Button>
+<Button loading>Loading</Button>
+<Button fullWidth>Full Width</Button>`,
   },
 ];
-
-export { examples as ButtonExamples }; 

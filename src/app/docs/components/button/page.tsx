@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import ComponentDocs from '@/components/docs/component-docs';
