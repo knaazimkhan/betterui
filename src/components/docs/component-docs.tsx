@@ -34,7 +34,7 @@ export default function ComponentDocs({
   component,
   preview,
   code,
-  examples,
+  examples = [],
   props,
 }: ComponentDocsProps) {
   return (
@@ -104,33 +104,35 @@ export default function ComponentDocs({
         </Tabs>
       </div>
 
-      <div className="space-y-6">
-        <h2 className="text-2xl font-bold">Examples</h2>
-        <div className="space-y-8">
-          {examples.map((example, index) => (
-            <div key={index} className="space-y-4">
-              <h3 className="text-xl font-semibold">{example.title}</h3>
-              <p className="text-secondary-600 dark:text-secondary-400">{example.description}</p>
-              <Tabs defaultValue="preview" className="space-y-4">
-                <TabsList>
-                  <TabsTrigger value="preview">Preview</TabsTrigger>
-                  <TabsTrigger value="code">Code</TabsTrigger>
-                </TabsList>
+      {examples.length > 0 && (
+        <div className="space-y-6">
+          <h2 className="text-2xl font-bold">Examples</h2>
+          <div className="space-y-8">
+            {examples.map((example, index) => (
+              <div key={index} className="space-y-4">
+                <h3 className="text-xl font-semibold">{example.title}</h3>
+                <p className="text-secondary-600 dark:text-secondary-400">{example.description}</p>
+                <Tabs defaultValue="preview" className="space-y-4">
+                  <TabsList>
+                    <TabsTrigger value="preview">Preview</TabsTrigger>
+                    <TabsTrigger value="code">Code</TabsTrigger>
+                  </TabsList>
 
-                <TabsContent value="preview">
-                  <div className="flex items-center justify-center p-8 border rounded-lg bg-background">
-                    {example.preview}
-                  </div>
-                </TabsContent>
+                  <TabsContent value="preview">
+                    <div className="flex items-center justify-center p-8 border rounded-lg bg-background">
+                      {example.preview}
+                    </div>
+                  </TabsContent>
 
-                <TabsContent value="code">
-                  <CodeBlock code={example.code} language="tsx" />
-                </TabsContent>
-              </Tabs>
-            </div>
-          ))}
+                  <TabsContent value="code">
+                    <CodeBlock code={example.code} language="tsx" />
+                  </TabsContent>
+                </Tabs>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="space-y-6">
         <h2 className="text-2xl font-bold">Props</h2>

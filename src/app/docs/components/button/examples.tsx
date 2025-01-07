@@ -75,7 +75,7 @@ const buttonStatesCode = `<Button disabled>Disabled</Button>
 <Button loading>Loading</Button>
 <Button fullWidth>Full Width</Button>`;
 
-export const ButtonExamples = [
+const examples = [
   {
     title: 'Variants',
     description: 'Different visual styles for the button.',
@@ -180,4 +180,6 @@ export const ButtonExamples = [
     ),
     code: buttonStatesCode,
   },
-]; 
+];
+
+export { examples as ButtonExamples }; 
