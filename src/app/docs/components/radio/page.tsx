@@ -1,152 +1,89 @@
-import { Metadata } from 'next';
+import React from 'react';
 import { RadioGroup } from '@/components/ui/radio';
+import ComponentDocs from '@/components/docs/component-docs';
+import { RadioExamples } from './examples';
 
-export const metadata: Metadata = {
-  title: 'Radio Component',
-  description: 'A customizable radio group component with support for labels, descriptions, and validation states.',
-};
-
-const mockOptions = [
+const options = [
   { value: 'option1', label: 'Option 1' },
   { value: 'option2', label: 'Option 2' },
   { value: 'option3', label: 'Option 3' },
 ];
 
-const mockOptionsWithDescription = [
-  {
-    value: 'startup',
-    label: 'Startup',
-    description: 'Perfect for new businesses and small teams',
-  },
-  {
-    value: 'business',
-    label: 'Business',
-    description: 'For medium-sized businesses and growing teams',
-  },
-  {
-    value: 'enterprise',
-    label: 'Enterprise',
-    description: 'For large organizations with multiple teams',
-  },
-];
-
-const mockOptionsWithDisabled = [
-  { value: 'active', label: 'Active' },
-  { value: 'inactive', label: 'Inactive' },
-  { value: 'maintenance', label: 'Maintenance', disabled: true },
-];
-
-export default function RadioDocs() {
-  return (
-    <div className="max-w-3xl mx-auto py-12 px-4">
-      <h1 className="text-3xl font-bold mb-8">Radio Component</h1>
-      
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Basic Radio Group</h2>
-        <div className="grid gap-6">
-          <RadioGroup
-            name="basic"
-            options={mockOptions}
-          />
-        </div>
-      </section>
-
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">With Descriptions</h2>
-        <RadioGroup
-          name="plans"
-          options={mockOptionsWithDescription}
-        />
-      </section>
-
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Radio Variants</h2>
-        <div className="grid gap-8">
-          <RadioGroup
-            name="default-variant"
-            options={mockOptions}
-            variant="default"
-          />
-          <RadioGroup
-            name="solid-variant"
-            options={mockOptions}
-            variant="solid"
-          />
-        </div>
-      </section>
-
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Validation States</h2>
-        <div className="grid gap-8">
-          <RadioGroup
-            name="error-state"
-            options={mockOptions}
-            validation="error"
-            error="Please select an option"
-          />
-          <RadioGroup
-            name="success-state"
-            options={mockOptions}
-            validation="success"
-          />
-        </div>
-      </section>
-
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">With Disabled Options</h2>
-        <RadioGroup
-          name="status"
-          options={mockOptionsWithDisabled}
-        />
-      </section>
-
-      <section className="prose dark:prose-invert max-w-none">
-        <h2 className="text-2xl font-semibold mb-4">Usage</h2>
-        <pre className="bg-secondary-100 dark:bg-secondary-900 p-4 rounded-lg overflow-x-auto">
-          <code>{`import { RadioGroup } from '@/components/ui/radio';
+const radioCode = `import { RadioGroup } from '@/components/ui/radio';
 
 const options = [
   { value: 'option1', label: 'Option 1' },
-  {
-    value: 'option2',
-    label: 'Option 2',
-    description: 'With description'
-  },
-  { value: 'option3', label: 'Option 3', disabled: true },
+  { value: 'option2', label: 'Option 2' },
+  { value: 'option3', label: 'Option 3' },
 ];
 
-// Basic radio group
-<RadioGroup
-  name="basic"
-  options={options}
-/>
+export default function MyComponent() {
+  return (
+    <RadioGroup
+      name="my-radio-group"
+      options={options}
+    />
+  );
+}`;
 
-// With variants
-<RadioGroup
-  name="default"
-  options={options}
-  variant="default"
-/>
-<RadioGroup
-  name="solid"
-  options={options}
-  variant="solid"
-/>
-
-// Validation states
-<RadioGroup
-  name="error"
-  options={options}
-  validation="error"
-  error="Please select an option"
-/>
-<RadioGroup
-  name="success"
-  options={options}
-  validation="success"
-/>`}</code>
-        </pre>
-      </section>
-    </div>
+export default function RadioPage() {
+  return (
+    <ComponentDocs
+      title="Radio"
+      description="A versatile radio group component with support for different variants, validation states, descriptions, and disabled options."
+      component="Radio"
+      preview={
+        <RadioGroup
+          name="example-radio-group"
+          options={options}
+        />
+      }
+      code={radioCode}
+      examples={RadioExamples}
+      props={[
+        {
+          name: 'options',
+          type: 'RadioOption[]',
+          description: 'Array of options to display in the radio group. Each option should have value, label, and optional description and disabled properties.',
+        },
+        {
+          name: 'name',
+          type: 'string',
+          description: 'The name attribute for the radio group. Required for form submission.',
+        },
+        {
+          name: 'variant',
+          type: '"default" | "solid"',
+          defaultValue: '"default"',
+          description: 'The visual style variant of the radio buttons.',
+        },
+        {
+          name: 'validation',
+          type: '"default" | "error" | "success"',
+          defaultValue: '"default"',
+          description: 'The validation state of the radio group.',
+        },
+        {
+          name: 'error',
+          type: 'string',
+          description: 'Error message to display when validation fails.',
+        },
+        {
+          name: 'defaultValue',
+          type: 'string',
+          description: 'The default selected value in the radio group.',
+        },
+        {
+          name: 'value',
+          type: 'string',
+          description: 'The controlled value of the radio group.',
+        },
+        {
+          name: 'onChange',
+          type: '(event: React.ChangeEvent<HTMLInputElement>) => void',
+          description: 'Callback function called when the selected value changes.',
+        },
+      ]}
+    />
   );
 } 
