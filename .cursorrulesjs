@@ -1,0 +1,167 @@
+{
+  "project": {
+    "name": "Better UI Design Library",
+    "description": "A modern, customizable UI component library built with Next.js and Tailwind CSS",
+    "repository": "betterui"
+  },
+  "roles": {
+    "architect": {
+      "responsibilities": [
+        "System design decisions",
+        "Technical architecture planning",
+        "Performance optimization",
+        "Scalability considerations"
+      ],
+      "context_files": [
+        "docs/architecture.md",
+        "docs/project-definition.md"
+      ]
+    },
+    "component_developer": {
+      "responsibilities": [
+        "Building React components",
+        "Implementing responsive designs",
+        "Ensuring accessibility compliance",
+        "Writing component tests"
+      ],
+      "context_files": [
+        "docs/phase-2.md",
+        "docs/phase-3.md"
+      ],
+      "file_patterns": [
+        "components/**/*.tsx",
+        "components/**/*.test.tsx"
+      ]
+    },
+    "documentation_writer": {
+      "responsibilities": [
+        "Component API documentation",
+        "Usage examples",
+        "Integration guides",
+        "MDX documentation"
+      ],
+      "context_files": [
+        "docs/guide.md",
+        "docs/phase-4.md"
+      ],
+      "file_patterns": [
+        "docs/**/*.mdx",
+        "docs/**/*.md"
+      ]
+    },
+    "playground_developer": {
+      "responsibilities": [
+        "Interactive component previews",
+        "Code editor integration",
+        "Real-time customization features"
+      ],
+      "context_files": [
+        "docs/phase-4.md"
+      ],
+      "file_patterns": [
+        "playground/**/*.tsx",
+        "playground/**/*.ts"
+      ]
+    }
+  },
+  "workflows": {
+    "component_creation": {
+      "steps": [
+        {
+          "role": "architect",
+          "action": "Review component requirements and design system guidelines"
+        },
+        {
+          "role": "component_developer",
+          "action": "Create component with TypeScript types and Tailwind styles"
+        },
+        {
+          "role": "component_developer",
+          "action": "Implement tests and accessibility features"
+        },
+        {
+          "role": "documentation_writer",
+          "action": "Create component documentation and examples"
+        },
+        {
+          "role": "playground_developer",
+          "action": "Add component to interactive playground"
+        }
+      ]
+    },
+    "documentation_update": {
+      "steps": [
+        {
+          "role": "documentation_writer",
+          "action": "Update or create documentation files"
+        },
+        {
+          "role": "component_developer",
+          "action": "Review and verify technical accuracy"
+        },
+        {
+          "role": "playground_developer",
+          "action": "Update playground examples if needed"
+        }
+      ]
+    },
+    "bug_fix": {
+      "steps": [
+        {
+          "role": "component_developer",
+          "action": "Investigate and fix the issue"
+        },
+        {
+          "role": "component_developer",
+          "action": "Add or update tests"
+        },
+        {
+          "role": "documentation_writer",
+          "action": "Update documentation if behavior changes"
+        }
+      ]
+    }
+  },
+  "conventions": {
+    "component_structure": {
+      "directory": "components/[category]/[component-name]",
+      "files": [
+        "index.tsx",
+        "types.ts",
+        "[component-name].test.tsx",
+        "README.mdx"
+      ]
+    },
+    "documentation_structure": {
+      "sections": [
+        "Overview",
+        "Props",
+        "Examples",
+        "Accessibility",
+        "Customization"
+      ]
+    },
+    "naming_conventions": {
+      "components": "PascalCase",
+      "files": "kebab-case",
+      "functions": "camelCase",
+      "types": "PascalCase",
+      "css_classes": "lowercase-with-dashes"
+    }
+  },
+  "ai_preferences": {
+    "code_style": {
+      "typescript": true,
+      "tailwind": true,
+      "testing": "jest + react-testing-library"
+    },
+    "documentation_format": "MDX",
+    "commit_message_format": "type(scope): description",
+    "review_focus": [
+      "Type safety",
+      "Accessibility",
+      "Performance",
+      "Documentation completeness"
+    ]
+  }
+}
