@@ -108,8 +108,8 @@ export default function ComponentDocs({
         <div className="space-y-6">
           <h2 className="text-2xl font-bold">Examples</h2>
           <div className="space-y-8">
-            {examples.map((example, index) => (
-              <div key={index} className="space-y-4">
+            {examples.map((example) => (
+              <div key={example.title} className="space-y-4">
                 <h3 className="text-xl font-semibold">{example.title}</h3>
                 <p className="text-secondary-600 dark:text-secondary-400">{example.description}</p>
                 <Tabs defaultValue="preview" className="space-y-4">
