@@ -38,7 +38,7 @@ export default function ComponentDocs({
   props,
 }: ComponentDocsProps) {
   return (
-    <div className="space-y-8">
+    <div className="space-y-12">
       <div>
         <Breadcrumb
           items={[
@@ -50,58 +50,92 @@ export default function ComponentDocs({
         <p className="text-secondary-600 dark:text-secondary-400 mt-2">{description}</p>
       </div>
 
-      <Tabs defaultValue="preview" className="space-y-6">
-        <TabsList>
-          <TabsTrigger value="preview">Preview</TabsTrigger>
-          <TabsTrigger value="code">Code</TabsTrigger>
-          <TabsTrigger value="installation">Installation</TabsTrigger>
-          <TabsTrigger value="examples">Examples</TabsTrigger>
-          <TabsTrigger value="props">Props</TabsTrigger>
-        </TabsList>
+      <div className="space-y-6">
+        <h2 className="text-2xl font-bold">Preview</h2>
+        <Tabs defaultValue="preview" className="space-y-4">
+          <TabsList>
+            <TabsTrigger value="preview">Preview</TabsTrigger>
+            <TabsTrigger value="code">Code</TabsTrigger>
+          </TabsList>
 
-        <TabsContent value="preview" className="space-y-4">
-          <div className="flex items-center justify-center p-8 border rounded-lg bg-background">
-            {preview}
-          </div>
-        </TabsContent>
+          <TabsContent value="preview">
+            <div className="flex items-center justify-center p-8 border rounded-lg bg-background">
+              {preview}
+            </div>
+          </TabsContent>
 
-        <TabsContent value="code" className="space-y-4">
-          <CodeBlock code={code} language="tsx" />
-        </TabsContent>
+          <TabsContent value="code">
+            <CodeBlock code={code} language="tsx" />
+          </TabsContent>
+        </Tabs>
+      </div>
 
-        <TabsContent value="installation" className="space-y-4">
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold">Installation</h2>
-            <p className="text-secondary-600 dark:text-secondary-400">
-              Install the required dependencies for the {component} component:
-            </p>
-            <CodeBlock
-              code={`pnpm add @/components/ui/${component.toLowerCase()}`}
-              language="bash"
-            />
-          </div>
-        </TabsContent>
+      <div className="space-y-6">
+        <h2 className="text-2xl font-bold">Installation</h2>
+        <Tabs defaultValue="cli" className="space-y-4">
+          <TabsList>
+            <TabsTrigger value="cli">CLI</TabsTrigger>
+            <TabsTrigger value="manual">Manual</TabsTrigger>
+          </TabsList>
 
-        <TabsContent value="examples" className="space-y-8">
+          <TabsContent value="cli">
+            <div className="space-y-4">
+              <p className="text-secondary-600 dark:text-secondary-400">
+                Install the {component} component using the CLI:
+              </p>
+              <CodeBlock
+                code={`pnpm dlx @betterui/cli add ${component.toLowerCase()}`}
+                language="bash"
+              />
+            </div>
+          </TabsContent>
+
+          <TabsContent value="manual">
+            <div className="space-y-4">
+              <p className="text-secondary-600 dark:text-secondary-400">
+                Install the required dependencies and copy the component code:
+              </p>
+              <CodeBlock
+                code={`pnpm add @/components/ui/${component.toLowerCase()}`}
+                language="bash"
+              />
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+
+      <div className="space-y-6">
+        <h2 className="text-2xl font-bold">Examples</h2>
+        <div className="space-y-8">
           {examples.map((example, index) => (
             <div key={index} className="space-y-4">
-              <h2 className="text-2xl font-bold">{example.title}</h2>
+              <h3 className="text-xl font-semibold">{example.title}</h3>
               <p className="text-secondary-600 dark:text-secondary-400">{example.description}</p>
-              <div className="flex items-center justify-center p-8 border rounded-lg bg-background">
-                {example.preview}
-              </div>
-              <CodeBlock code={example.code} language="tsx" />
+              <Tabs defaultValue="preview" className="space-y-4">
+                <TabsList>
+                  <TabsTrigger value="preview">Preview</TabsTrigger>
+                  <TabsTrigger value="code">Code</TabsTrigger>
+                </TabsList>
+
+                <TabsContent value="preview">
+                  <div className="flex items-center justify-center p-8 border rounded-lg bg-background">
+                    {example.preview}
+                  </div>
+                </TabsContent>
+
+                <TabsContent value="code">
+                  <CodeBlock code={example.code} language="tsx" />
+                </TabsContent>
+              </Tabs>
             </div>
           ))}
-        </TabsContent>
+        </div>
+      </div>
 
-        <TabsContent value="props" className="space-y-4">
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold">Props</h2>
-            <PropsTable props={props} />
-          </div>
-        </TabsContent>
-      </Tabs>
+      <div className="space-y-6">
+        <h2 className="text-2xl font-bold">Props</h2>
+        <PropsTable props={props} />
+      </div>
 
       <div className="space-y-4">
         <h2 className="text-2xl font-bold">Accessibility</h2>
