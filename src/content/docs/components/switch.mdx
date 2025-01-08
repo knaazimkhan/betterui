@@ -1,0 +1,209 @@
+# Switch
+
+The Switch component is a toggleable input control that provides a visual alternative to a checkbox.
+
+## Import
+
+```tsx
+import { Switch } from 'betterui'
+```
+
+## Usage
+
+### Basic Switch
+
+```tsx
+<Switch />
+```
+
+### With Label
+
+```tsx
+<div className="flex items-center space-x-2">
+  <Switch id="airplane-mode" />
+  <Label htmlFor="airplane-mode">Airplane Mode</Label>
+</div>
+```
+
+### Controlled Switch
+
+```tsx
+function ControlledSwitch() {
+  const [checked, setChecked] = useState(false)
+
+  return (
+    <Switch
+      checked={checked}
+      onCheckedChange={setChecked}
+    />
+  )
+}
+```
+
+### Disabled State
+
+```tsx
+<Switch disabled />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `checked` | `boolean` | - | Whether the switch is checked |
+| `defaultChecked` | `boolean` | `false` | The default checked state |
+| `onCheckedChange` | `(checked: boolean) => void` | - | Callback when the checked state changes |
+| `disabled` | `boolean` | `false` | Whether the switch is disabled |
+| `required` | `boolean` | `false` | Whether the switch is required |
+| `name` | `string` | - | The name of the switch |
+| `value` | `string` | - | The value of the switch |
+| `id` | `string` | - | The ID of the switch |
+| `className` | `string` | `''` | Additional CSS classes |
+
+## Examples
+
+### Settings Toggle
+
+```tsx
+function SettingsToggle() {
+  const [notifications, setNotifications] = useState(true)
+
+  return (
+    <div className="flex items-center justify-between py-2">
+      <div className="space-y-0.5">
+        <Label htmlFor="notifications">Notifications</Label>
+        <p className="text-sm text-gray-500">
+          Receive notifications about updates
+        </p>
+      </div>
+      <Switch
+        id="notifications"
+        checked={notifications}
+        onCheckedChange={setNotifications}
+      />
+    </div>
+  )
+}
+```
+
+### Multiple Switches
+
+```tsx
+function NotificationPreferences() {
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <div>
+          <Label htmlFor="email">Email notifications</Label>
+          <p className="text-sm text-gray-500">Get updates via email</p>
+        </div>
+        <Switch id="email" defaultChecked />
+      </div>
+      <div className="flex items-center justify-between">
+        <div>
+          <Label htmlFor="push">Push notifications</Label>
+          <p className="text-sm text-gray-500">Get updates on your device</p>
+        </div>
+        <Switch id="push" />
+      </div>
+      <div className="flex items-center justify-between">
+        <div>
+          <Label htmlFor="marketing">Marketing emails</Label>
+          <p className="text-sm text-gray-500">Receive promotional emails</p>
+        </div>
+        <Switch id="marketing" />
+      </div>
+    </div>
+  )
+}
+```
+
+### Form Integration
+
+```tsx
+function PrivacyForm() {
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault()
+    // Handle form submission
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <Label htmlFor="privacy">Privacy Settings</Label>
+            <p className="text-sm text-gray-500">
+              Allow data collection for better experience
+            </p>
+          </div>
+          <Switch id="privacy" name="privacy" />
+        </div>
+        <div className="flex items-center justify-between">
+          <div>
+            <Label htmlFor="analytics">Analytics</Label>
+            <p className="text-sm text-gray-500">
+              Help us improve by sharing usage data
+            </p>
+          </div>
+          <Switch id="analytics" name="analytics" />
+        </div>
+      </div>
+      <Button type="submit">Save preferences</Button>
+    </form>
+  )
+}
+```
+
+## Accessibility
+
+The Switch component follows WAI-ARIA guidelines:
+
+- Uses `role="switch"` for proper semantics
+- Supports keyboard navigation (Space to toggle)
+- Includes proper ARIA attributes
+- Associates with labels using `htmlFor`
+
+## Customization
+
+### Custom Styles
+
+You can customize the switch's appearance using Tailwind classes:
+
+```tsx
+<Switch
+  className="data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-gray-200"
+/>
+```
+
+### Theme Customization
+
+To customize the default styles for all switches, modify your theme configuration:
+
+```typescript
+// tailwind.config.ts
+export default {
+  theme: {
+    extend: {
+      colors: {
+        switch: {
+          DEFAULT: 'hsl(var(--switch))',
+          foreground: 'hsl(var(--switch-foreground))',
+          thumb: 'hsl(var(--switch-thumb))',
+        },
+      },
+    },
+  },
+}
+```
+
+### Animation Customization
+
+The Switch component uses CSS transitions for smooth animations. You can customize these by modifying the transition properties:
+
+```tsx
+<Switch
+  className="transition-colors duration-200 ease-in-out"
+  thumbClassName="transition-transform duration-200 ease-in-out"
+/>
+``` 

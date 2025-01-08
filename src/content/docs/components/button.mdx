@@ -1,0 +1,149 @@
+# Button
+
+The Button component is a versatile and accessible clickable element that supports various styles, sizes, and states.
+
+## Import
+
+```tsx
+import { Button } from 'betterui'
+```
+
+## Usage
+
+### Basic Button
+
+```tsx
+<Button>Click me</Button>
+```
+
+### Button Variants
+
+```tsx
+<div className="flex gap-4">
+  <Button variant="primary">Primary</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="outline">Outline</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button variant="link">Link</Button>
+</div>
+```
+
+### Button Sizes
+
+```tsx
+<div className="flex items-center gap-4">
+  <Button size="sm">Small</Button>
+  <Button size="md">Medium</Button>
+  <Button size="lg">Large</Button>
+</div>
+```
+
+### With Icon
+
+```tsx
+<Button>
+  <IconPlus className="mr-2 h-4 w-4" />
+  Add Item
+</Button>
+```
+
+### Loading State
+
+```tsx
+<Button isLoading>
+  Processing...
+</Button>
+```
+
+### Disabled State
+
+```tsx
+<Button disabled>
+  Unavailable
+</Button>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'primary' \| 'secondary' \| 'outline' \| 'ghost' \| 'link'` | `'primary'` | The visual style of the button |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | The size of the button |
+| `isLoading` | `boolean` | `false` | Whether the button is in a loading state |
+| `disabled` | `boolean` | `false` | Whether the button is disabled |
+| `className` | `string` | `''` | Additional CSS classes |
+| `children` | `ReactNode` | - | The content of the button |
+
+## Accessibility
+
+The Button component follows WAI-ARIA guidelines:
+
+- Uses native `<button>` element
+- Supports keyboard navigation
+- Includes proper ARIA attributes
+- Maintains focus states
+
+## Examples
+
+### Form Submit Button
+
+```tsx
+<Button type="submit" isLoading={isSubmitting}>
+  {isSubmitting ? 'Saving...' : 'Save Changes'}
+</Button>
+```
+
+### Full Width Button
+
+```tsx
+<Button className="w-full">
+  Continue
+</Button>
+```
+
+### Icon Only Button
+
+```tsx
+<Button
+  variant="ghost"
+  size="sm"
+  aria-label="Close"
+>
+  <IconX className="h-4 w-4" />
+</Button>
+```
+
+## Customization
+
+### Custom Styles
+
+You can customize the button's appearance using Tailwind classes:
+
+```tsx
+<Button
+  variant="primary"
+  className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+>
+  Gradient Button
+</Button>
+```
+
+### Theme Customization
+
+To customize the default styles for all buttons, modify your theme configuration:
+
+```typescript
+// tailwind.config.ts
+export default {
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: '#3B82F6',
+          hover: '#2563EB',
+        },
+      },
+    },
+  },
+}
+``` 

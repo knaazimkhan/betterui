@@ -1,0 +1,246 @@
+# Card
+
+The Card component is a flexible container that groups related content and actions. It supports headers, footers, and various content layouts.
+
+## Import
+
+```tsx
+import { Card } from 'betterui'
+```
+
+## Usage
+
+### Basic Card
+
+```tsx
+<Card>
+  <Card.Header>
+    <Card.Title>Card Title</Card.Title>
+    <Card.Description>Optional card description</Card.Description>
+  </Card.Header>
+  <Card.Content>
+    Main content goes here
+  </Card.Content>
+  <Card.Footer>
+    Footer content
+  </Card.Footer>
+</Card>
+```
+
+### Simple Content Card
+
+```tsx
+<Card>
+  <Card.Content>
+    A simple card with only content
+  </Card.Content>
+</Card>
+```
+
+### With Image
+
+```tsx
+<Card>
+  <Card.Image
+    src="/placeholder.jpg"
+    alt="Card image"
+    width={400}
+    height={200}
+  />
+  <Card.Header>
+    <Card.Title>Featured Image</Card.Title>
+  </Card.Header>
+  <Card.Content>
+    Content below the image
+  </Card.Content>
+</Card>
+```
+
+### Interactive Card
+
+```tsx
+<Card className="hover:shadow-lg transition-shadow">
+  <Card.Header>
+    <Card.Title>Interactive Card</Card.Title>
+  </Card.Header>
+  <Card.Content>
+    This card has hover effects
+  </Card.Content>
+  <Card.Footer>
+    <Button variant="outline">Learn More</Button>
+  </Card.Footer>
+</Card>
+```
+
+## Props
+
+### Card
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `''` | Additional CSS classes |
+| `children` | `ReactNode` | - | Card content |
+
+### Card.Header
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `''` | Additional CSS classes |
+| `children` | `ReactNode` | - | Header content |
+
+### Card.Title
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `''` | Additional CSS classes |
+| `children` | `ReactNode` | - | Title content |
+| `as` | `'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'` | `'h3'` | HTML heading element to use |
+
+### Card.Description
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `''` | Additional CSS classes |
+| `children` | `ReactNode` | - | Description content |
+
+### Card.Content
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `''` | Additional CSS classes |
+| `children` | `ReactNode` | - | Main content |
+
+### Card.Footer
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `''` | Additional CSS classes |
+| `children` | `ReactNode` | - | Footer content |
+
+### Card.Image
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `src` | `string` | - | Image source URL |
+| `alt` | `string` | - | Image alt text |
+| `width` | `number` | - | Image width |
+| `height` | `number` | - | Image height |
+| `className` | `string` | `''` | Additional CSS classes |
+
+## Examples
+
+### Blog Post Card
+
+```tsx
+<Card>
+  <Card.Image
+    src="/blog-image.jpg"
+    alt="Blog post cover"
+    width={800}
+    height={400}
+  />
+  <Card.Header>
+    <Card.Title as="h2">Understanding React Hooks</Card.Title>
+    <Card.Description>Posted on January 1, 2024</Card.Description>
+  </Card.Header>
+  <Card.Content>
+    Learn how React Hooks can simplify your components and make code more reusable.
+  </Card.Content>
+  <Card.Footer className="flex justify-between items-center">
+    <Button variant="ghost">Read More</Button>
+    <div className="flex items-center gap-2">
+      <HeartIcon className="w-4 h-4" />
+      <span>42 likes</span>
+    </div>
+  </Card.Footer>
+</Card>
+```
+
+### Product Card
+
+```tsx
+<Card className="max-w-sm">
+  <Card.Image
+    src="/product.jpg"
+    alt="Product image"
+    width={300}
+    height={300}
+  />
+  <Card.Header>
+    <Card.Title>Wireless Headphones</Card.Title>
+    <Card.Description>$299.99</Card.Description>
+  </Card.Header>
+  <Card.Content>
+    High-quality wireless headphones with noise cancellation.
+  </Card.Content>
+  <Card.Footer>
+    <Button className="w-full">Add to Cart</Button>
+  </Card.Footer>
+</Card>
+```
+
+### Settings Card
+
+```tsx
+<Card>
+  <Card.Header>
+    <Card.Title>Notification Settings</Card.Title>
+    <Card.Description>Manage your notification preferences</Card.Description>
+  </Card.Header>
+  <Card.Content className="space-y-4">
+    <div className="flex items-center justify-between">
+      <div>
+        <h4 className="text-sm font-medium">Email Notifications</h4>
+        <p className="text-sm text-gray-500">Receive updates via email</p>
+      </div>
+      <Switch />
+    </div>
+    <div className="flex items-center justify-between">
+      <div>
+        <h4 className="text-sm font-medium">Push Notifications</h4>
+        <p className="text-sm text-gray-500">Get notified on your device</p>
+      </div>
+      <Switch />
+    </div>
+  </Card.Content>
+</Card>
+```
+
+## Customization
+
+### Custom Styles
+
+You can customize the card's appearance using Tailwind classes:
+
+```tsx
+<Card className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20">
+  <Card.Header>
+    <Card.Title className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
+      Gradient Card
+    </Card.Title>
+  </Card.Header>
+  <Card.Content>
+    A card with gradient background and title
+  </Card.Content>
+</Card>
+```
+
+### Theme Customization
+
+To customize the default styles for all cards, modify your theme configuration:
+
+```typescript
+// tailwind.config.ts
+export default {
+  theme: {
+    extend: {
+      borderRadius: {
+        card: '0.75rem',
+      },
+      spacing: {
+        'card-padding': '1.5rem',
+      },
+    },
+  },
+}
+``` 
