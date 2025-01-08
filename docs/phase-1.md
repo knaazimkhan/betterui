@@ -161,3 +161,6 @@ Set up the foundational architecture and tools necessary to kickstart the develo
 1. Finalize and test the basic components.
 2. Begin drafting detailed documentation for each component.
 3. Plan for Phase 2: Building the component showcase and playground.
+
+and follow the pattern of implementing, testing, documenting, and committing each component without asking for confirmation at each step.
+Ok, we want to start working on our new projects that is outlined in @outline.md . There is an overall guide for the project @guide.md, project definition is in @project-definition.md, architecture is in @architecture.md and each phase is outliend. @phase-1.md @phase-2.md @phase-3.md @phase-4.md @phase-5.md . I am only working on @phase-1.md right now and i want to go to slowly step by setp through the process, checkinh with me often brfore proceeding. Also the root of the project should be our current betterui.

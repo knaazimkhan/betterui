@@ -1,63 +1,129 @@
-import Link from "next/link";
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center w-full flex-1 px-4 sm:px-6 lg:px-8">
-      {/* Hero Section */}
-      <section className="py-20 text-center">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-balance mb-6">
-          Build Beautiful UIs{" "}
-          <span className="bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent">
-            Faster
-          </span>
-        </h1>
-        <p className="text-lg sm:text-xl text-secondary-600 dark:text-secondary-400 max-w-2xl mx-auto mb-8">
-          A modern, customizable UI component library built with Next.js and Tailwind CSS.
-          Designed for developers who want to create stunning interfaces quickly.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/docs"
-            className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg transition duration-150 ease-in-out"
-          >
-            Get Started
-          </Link>
-          <Link
-            href="/components"
-            className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/10 hover:bg-primary-100 dark:hover:bg-primary-900/20 rounded-lg transition duration-150 ease-in-out"
-          >
-            View Components
-          </Link>
-        </div>
-      </section>
+    <div className="relative min-h-screen">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/80 to-background" />
 
-      {/* Features Section */}
-      <section className="w-full py-20 border-t border-secondary-200 dark:border-secondary-800">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
-          {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="p-6 rounded-xl bg-white dark:bg-secondary-900/50 border border-secondary-200 dark:border-secondary-800"
-            >
-              <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary-500/10 text-primary-500 mb-4">
-                {feature.icon}
-              </div>
-              <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-              <p className="text-secondary-600 dark:text-secondary-400">
-                {feature.description}
-              </p>
+      {/* Hero Section */}
+      <div className="relative">
+        <div className="max-w-7xl mx-auto px-4 pt-32 pb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center"
+          >
+            <h1 className="text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-400">
+              Better UI
+            </h1>
+            <p className="mt-6 text-xl text-secondary-600 dark:text-secondary-400 max-w-2xl mx-auto">
+              A modern, customizable UI component library built with Next.js and Tailwind CSS.
+              Beautiful, accessible, and ready for production.
+            </p>
+            <div className="mt-10 flex items-center justify-center gap-4">
+              <Link href="/docs/components">
+                <Button size="lg">Get Started</Button>
+              </Link>
+              <Link href="https://github.com/yourusername/betterui" target="_blank">
+                <Button variant="outline" size="lg">
+                  View on GitHub
+                </Button>
+              </Link>
             </div>
-          ))}
+          </motion.div>
         </div>
-      </section>
+      </div>
+
+      {/* Features Grid */}
+      <div className="relative py-24 bg-secondary-50/50 dark:bg-secondary-900/50">
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
+                className="relative overflow-hidden rounded-2xl border border-secondary-200 dark:border-secondary-800 bg-white dark:bg-secondary-900 p-8"
+              >
+                <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02]" />
+                <div className="relative">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary-500/10 text-primary-500 mb-4">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-secondary-600 dark:text-secondary-400">
+                    {feature.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Components Preview */}
+      <div className="relative py-24">
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold tracking-tight">
+              Beautiful Components
+            </h2>
+            <p className="mt-4 text-lg text-secondary-600 dark:text-secondary-400">
+              A growing collection of beautifully designed components
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {components.map((component, index) => (
+              <motion.div
+                key={component.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
+                className="relative overflow-hidden rounded-xl border border-secondary-200 dark:border-secondary-800 bg-white dark:bg-secondary-900 p-6"
+              >
+                <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02]" />
+                <div className="relative">
+                  <h3 className="text-lg font-semibold mb-2">{component.name}</h3>
+                  <p className="text-sm text-secondary-600 dark:text-secondary-400 mb-4">
+                    {component.description}
+                  </p>
+                  <div className="flex items-center justify-center p-4 bg-secondary-50 dark:bg-secondary-800/50 rounded-lg">
+                    {component.preview}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
 const features = [
   {
-    title: "Modern Design System",
-    description: "Built with the latest design principles and customizable to match your brand.",
+    title: "Modern Design",
+    description: "Clean, minimal, and modern design system that's easy to customize.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -76,8 +142,8 @@ const features = [
     ),
   },
   {
-    title: "Type-Safe Components",
-    description: "Built with TypeScript for better development experience and fewer bugs.",
+    title: "Type Safe",
+    description: "Built with TypeScript for better developer experience and fewer bugs.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -96,8 +162,8 @@ const features = [
     ),
   },
   {
-    title: "Responsive & Accessible",
-    description: "Components are mobile-first and follow WCAG accessibility guidelines.",
+    title: "Accessible",
+    description: "ARIA attributes and keyboard navigation built-in for all components.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -110,9 +176,103 @@ const features = [
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
+          d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
         />
       </svg>
+    ),
+  },
+  {
+    title: "Dark Mode",
+    description: "Built-in dark mode support with seamless transitions.",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+        className="w-6 h-6"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "Customizable",
+    description: "Easy to customize with Tailwind CSS and CSS variables.",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+        className="w-6 h-6"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "Documentation",
+    description: "Comprehensive documentation with examples and API references.",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+        className="w-6 h-6"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
+        />
+      </svg>
+    ),
+  },
+];
+
+const components = [
+  {
+    name: "Button",
+    description: "Versatile button component with multiple variants and states.",
+    preview: (
+      <div className="flex gap-2">
+        <Button>Default</Button>
+        <Button variant="outline">Outline</Button>
+      </div>
+    ),
+  },
+  {
+    name: "Input",
+    description: "Text input with validation states and icon support.",
+    preview: (
+      <input
+        type="text"
+        className="w-full px-4 py-2 rounded-lg border border-secondary-200 dark:border-secondary-800 bg-white dark:bg-secondary-900"
+        placeholder="Enter text..."
+      />
+    ),
+  },
+  {
+    name: "Card",
+    description: "Flexible card component for displaying content.",
+    preview: (
+      <div className="w-full p-4 rounded-lg border border-secondary-200 dark:border-secondary-800 bg-white dark:bg-secondary-900">
+        <h4 className="font-medium">Card Title</h4>
+        <p className="text-sm text-secondary-600 dark:text-secondary-400">Card content goes here</p>
+      </div>
     ),
   },
 ];
