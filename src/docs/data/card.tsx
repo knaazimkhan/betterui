@@ -163,6 +163,7 @@ export const metadata = {
         "Supports images",
     ],
     source: 'https://github.com/yourusername/betterui/blob/main/src/components/ui/card/index.tsx',
+    code: cardCode,
     usage: {
         import: `import { Card, CardHeader, CardBody, CardFooter, CardImage } from '@/components/ui/card';`,
         code: `export default function MyComponent() {

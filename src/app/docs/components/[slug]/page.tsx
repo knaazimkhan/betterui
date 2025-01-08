@@ -22,7 +22,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
       description={component.metadata.description}
       component={component.name}
       preview={component.preview}
-      code={component.metadata.usage.code}
+      code={component.metadata.code}
       examples={component.examples}
       props={component.metadata.props}
     />

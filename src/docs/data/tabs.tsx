@@ -272,6 +272,25 @@ export default function MyComponent() {
   },
 ];
 
+export const tabsCode = `import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+
+export default function MyComponent() {
+  return (
+    <Tabs defaultValue="account">
+      <TabsList>
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="password">Password</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">
+        Account settings content
+      </TabsContent>
+      <TabsContent value="password">
+        Password settings content
+      </TabsContent>
+    </Tabs>
+  );
+}`;
+
 export const metadata = {
   description: "A set of layered sections of content that are displayed one at a time. Built on top of Radix UI Tabs primitive.",
   features: [
@@ -281,6 +300,7 @@ export const metadata = {
     "Supports different states",
   ],
   source: 'https://github.com/yourusername/betterui/blob/main/src/components/ui/tabs/index.tsx',
+  code: tabsCode,
   usage: {
     import: `import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs`,
     code: `
@@ -337,25 +357,6 @@ export const metadata = {
     },
   ],
 }
-
-export const tabsCode = `import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-
-export default function MyComponent() {
-  return (
-    <Tabs defaultValue="account">
-      <TabsList>
-        <TabsTrigger value="account">Account</TabsTrigger>
-        <TabsTrigger value="password">Password</TabsTrigger>
-      </TabsList>
-      <TabsContent value="account">
-        Account settings content
-      </TabsContent>
-      <TabsContent value="password">
-        Password settings content
-      </TabsContent>
-    </Tabs>
-  );
-}`;
 
 export const preview = (
   <Tabs defaultValue="account">

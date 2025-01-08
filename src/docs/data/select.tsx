@@ -202,6 +202,7 @@ export const metadata = {
         "Supports disabled options",
     ],
     source: 'https://github.com/yourusername/betterui/blob/main/src/components/ui/select/index.tsx',
+    code: selectCode,
     usage: {
         import: `import { Select } from '@/components/ui/select'`,
         code: `

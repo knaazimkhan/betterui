@@ -196,6 +196,7 @@ export const metadata = {
         "Supports different states",
     ],
     source: 'https://github.com/yourusername/betterui/blob/main/src/components/ui/checkbox/index.tsx',
+    code: checkboxCode,
     usage: {
         import: `import { Checkbox } from '@/components/ui/checkbox'`,
         code: `

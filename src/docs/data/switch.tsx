@@ -168,6 +168,7 @@ export const metadata = {
     "Supports different states",
   ],
   source: 'https://github.com/yourusername/betterui/blob/main/src/components/ui/switch/index.tsx',
+  code: switchCode,
   usage: {
     import: `import { Switch } from '@/components/ui/switch'`,
     code: `export default function MyComponent() {

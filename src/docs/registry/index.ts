@@ -33,6 +33,7 @@ export interface ComponentRegistry {
         description: string
         features: string[]
         source: string
+        code: string
         usage: {
             import: string
             code: string

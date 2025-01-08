@@ -190,6 +190,7 @@ export const metadata = {
         'Dark mode support',
     ],
     source: 'https://github.com/yourusername/betterui/blob/main/src/components/ui/button/index.tsx',
+    code: buttonCode,
     usage: {
         import: `import { Button } from '@/components/ui/button'`,
         code: `export default function MyComponent() {

@@ -180,6 +180,7 @@ export const metadata = {
     "Supports different states",
   ],
   source: 'https://github.com/yourusername/betterui/blob/main/src/components/ui/radio/index.tsx',
+  code: radioCode,
   usage: {
     import: `import { RadioGroup } from '@/components/ui/radio'`,
     code: `const options = [

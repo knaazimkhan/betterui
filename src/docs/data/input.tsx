@@ -242,6 +242,7 @@ export const metadata = {
         "Supports different states",
     ],
     source: 'https://github.com/yourusername/betterui/blob/main/src/components/ui/input/index.tsx',
+    code: inputCode,
     usage: {
         import: `import { Input } from '@/components/ui/input'`,
         code: `export default function MyComponent() {
