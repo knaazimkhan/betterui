@@ -236,7 +236,10 @@ export const InputExamples = [
 export const metadata = {
     description: "A versatile input component with support for different variants, sizes, validation states, and icons.",
     features: [
-
+        "Supports different variants",
+        "Supports different sizes",
+        "Supports different validation states",
+        "Supports different states",
     ],
     source: 'https://github.com/yourusername/betterui/blob/main/src/components/ui/input/index.tsx',
     usage: {

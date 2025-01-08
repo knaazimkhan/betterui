@@ -282,10 +282,25 @@ export const metadata = {
   ],
   source: 'https://github.com/yourusername/betterui/blob/main/src/components/ui/tabs/index.tsx',
   usage: {
-    import: `import { Tabs } from '@/components/ui/tabs'`,
-    code: `export default function MyComponent() {
-      return <Tabs />
-    }`,
+    import: `import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs`,
+    code: `
+    export default function MyComponent() {
+      return (
+        <Tabs defaultValue="account">
+          <TabsList>
+            <TabsTrigger value="account">Account</TabsTrigger>
+            <TabsTrigger value="password">Password</TabsTrigger>
+          </TabsList>
+          <TabsContent value="account">
+            Account settings content
+          </TabsContent>
+          <TabsContent value="password">
+            Password settings content
+          </TabsContent>
+        </Tabs>
+      );
+    }
+    `,
   },
   props: [
     {

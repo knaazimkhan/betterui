@@ -176,7 +176,7 @@ export const CheckboxExamples = [
     },
 ];
 
-const checkboxCode = `import { Checkbox } from '@/components/ui/checkbox';
+export const checkboxCode = `import { Checkbox } from '@/components/ui/checkbox';
 
 export default function MyComponent() {
   return (

@@ -1,17 +1,14 @@
-'use client';
-
 import { notFound } from 'next/navigation'
 import { registry } from '@/docs/registry'
 import ComponentDocs from '@/components/docs/component-docs'
 
 interface ComponentPageProps {
-  params: {
-    slug: string
-  }
+  params: Promise<{ slug: string }>
 }
 
-export default function ComponentPage({ params }: ComponentPageProps) {
-  const component = registry[params.slug]
+export default async function ComponentPage({ params }: ComponentPageProps) {
+  const { slug } = await params
+  const component = registry[slug]
 
   if (!component) {
     notFound()

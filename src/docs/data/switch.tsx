@@ -171,7 +171,12 @@ export const metadata = {
   usage: {
     import: `import { Switch } from '@/components/ui/switch'`,
     code: `export default function MyComponent() {
-      return <Switch label="Email notifications" description="Receive email notifications when someone mentions you." />
+      return (
+        <Switch
+          label="Email notifications"
+          description="Receive email notifications when someone mentions you."
+        />
+      );
     }`,
   },
   props: [
