@@ -7,11 +7,18 @@ const config: NextConfig = {
       {
         protocol: 'https',
         hostname: '**',
+        port: '',
+        pathname: '**',
       },
     ],
   },
   experimental: {
     mdxRs: true,
+    turbo: {
+      rules: {
+        '*.mdx': ['@mdx-js/loader']
+      }
+    }
   },
 }
 
