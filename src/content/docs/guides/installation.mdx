@@ -1,0 +1,88 @@
+# Installation Guide
+
+This guide will help you set up Better UI in your Next.js project.
+
+## Prerequisites
+
+Before installing Better UI, ensure you have:
+
+- Node.js 18.17 or later
+- Next.js 13.4 or later
+- Tailwind CSS
+
+## Quick Start
+
+```bash
+# Using pnpm (recommended)
+pnpm add betterui
+
+# Using npm
+npm install betterui
+
+# Using yarn
+yarn add betterui
+```
+
+## Setup with Next.js
+
+1. First, create a new Next.js project if you haven't already:
+
+```bash
+pnpm create next-app my-app --typescript --tailwind --eslint
+cd my-app
+```
+
+2. Install Better UI:
+
+```bash
+pnpm add betterui
+```
+
+3. Update your `tailwind.config.ts`:
+
+```typescript
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  content: [
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/betterui/**/*.{js,ts,jsx,tsx}'
+  ],
+  theme: {
+    extend: {
+      // Your theme extensions
+    },
+  },
+  plugins: [],
+}
+
+export default config
+```
+
+4. Import and use components:
+
+```typescript
+import { Button, Card } from 'betterui'
+
+export default function Home() {
+  return (
+    <div>
+      <Button variant="primary">Click me</Button>
+      <Card>
+        <Card.Header>My Card</Card.Header>
+        <Card.Body>Content goes here</Card.Body>
+      </Card>
+    </div>
+  )
+}
+```
+
+## TypeScript Support
+
+Better UI is built with TypeScript and includes type definitions. No additional setup is required for TypeScript users.
+
+## Next Steps
+
+- Check out our [Components](/docs/components) documentation
+- Learn about [Theming](/docs/customization/theming)
+- Read our [Best Practices](/docs/guides/best-practices) guide 
