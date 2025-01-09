@@ -1,79 +1,109 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { Select } from './index';
-
-const mockOptions = [
-  { value: 'option1', label: 'Option 1' },
-  { value: 'option2', label: 'Option 2' },
-  { value: 'option3', label: 'Option 3', disabled: true },
-];
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from './index'
 
 describe('Select', () => {
-  it('renders correctly with default props', () => {
-    render(<Select options={mockOptions} />);
-    expect(screen.getByRole('combobox')).toBeInTheDocument();
-    expect(screen.getAllByRole('option')).toHaveLength(3);
-  });
-
-  it('renders placeholder when provided', () => {
-    render(<Select options={mockOptions} placeholder="Select an option" />);
-    expect(screen.getByText('Select an option')).toBeInTheDocument();
-    expect(screen.getAllByRole('option')).toHaveLength(4); // Including placeholder
-  });
-
-  it('applies variant classes correctly', () => {
-    render(<Select options={mockOptions} variant="ghost" />);
-    const select = screen.getByRole('combobox');
-    expect(select).toHaveClass('bg-secondary-100');
-  });
-
-  it('applies size classes correctly', () => {
-    render(<Select options={mockOptions} size="lg" />);
-    const select = screen.getByRole('combobox');
-    expect(select).toHaveClass('h-12');
-  });
-
-  it('applies validation error styles', () => {
-    render(<Select options={mockOptions} validation="error" />);
-    const select = screen.getByRole('combobox');
-    expect(select).toHaveClass('border-error-500');
-  });
-
-  it('applies validation success styles', () => {
-    render(<Select options={mockOptions} validation="success" />);
-    const select = screen.getByRole('combobox');
-    expect(select).toHaveClass('border-success-500');
-  });
-
-  it('displays error message', () => {
+  it('renders select correctly', async () => {
+    const user = userEvent.setup()
     render(
-      <Select
-        id="test-select"
-        options={mockOptions}
-        error="Please select an option"
-      />
-    );
-    expect(screen.getByText('Please select an option')).toBeInTheDocument();
-    const select = screen.getByRole('combobox');
-    expect(select).toHaveAttribute('aria-invalid', 'true');
-    expect(select).toHaveAttribute('aria-errormessage', 'test-select-error');
-  });
+      <Select defaultValue="option1">
+        <SelectTrigger>
+          <SelectValue placeholder="Select an option" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="option1">Option 1</SelectItem>
+          <SelectItem value="option2">Option 2</SelectItem>
+          <SelectItem value="option3" disabled>Option 3</SelectItem>
+        </SelectContent>
+      </Select>
+    )
 
-  it('renders disabled options correctly', () => {
-    render(<Select options={mockOptions} />);
-    const disabledOption = screen.getByRole('option', { name: 'Option 3' });
-    expect(disabledOption).toBeDisabled();
-  });
+    const trigger = screen.getByRole('combobox')
+    expect(trigger).toBeInTheDocument()
+    expect(screen.getByText('Option 1')).toBeInTheDocument()
 
-  it('forwards ref correctly', () => {
-    const ref = React.createRef<HTMLSelectElement>();
-    render(<Select ref={ref} options={mockOptions} />);
-    expect(ref.current).toBeInstanceOf(HTMLSelectElement);
-  });
+    await user.click(trigger)
+    expect(screen.getByRole('listbox')).toBeInTheDocument()
+    expect(screen.getAllByRole('option')).toHaveLength(3)
+  })
 
-  it('applies custom className', () => {
-    render(<Select options={mockOptions} className="custom-class" />);
-    const select = screen.getByRole('combobox');
-    expect(select).toHaveClass('custom-class');
-  });
-}); 
+  it('handles value selection correctly', async () => {
+    const user = userEvent.setup()
+    const onValueChange = jest.fn()
+
+    render(
+      <Select onValueChange={onValueChange}>
+        <SelectTrigger>
+          <SelectValue placeholder="Select an option" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="option1">Option 1</SelectItem>
+          <SelectItem value="option2">Option 2</SelectItem>
+        </SelectContent>
+      </Select>
+    )
+
+    const trigger = screen.getByRole('combobox')
+    await user.click(trigger)
+    
+    const option2 = screen.getByRole('option', { name: 'Option 2' })
+    await user.click(option2)
+    
+    expect(onValueChange).toHaveBeenCalledWith('option2')
+  })
+
+  it('handles disabled state correctly', async () => {
+    const user = userEvent.setup()
+    render(
+      <Select disabled>
+        <SelectTrigger>
+          <SelectValue placeholder="Select an option" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="option1">Option 1</SelectItem>
+        </SelectContent>
+      </Select>
+    )
+
+    const trigger = screen.getByRole('combobox')
+    expect(trigger).toBeDisabled()
+    await user.click(trigger)
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
+  })
+
+  it('applies custom className to trigger', () => {
+    render(
+      <Select>
+        <SelectTrigger className="custom-class">
+          <SelectValue placeholder="Select an option" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="option1">Option 1</SelectItem>
+        </SelectContent>
+      </Select>
+    )
+
+    expect(screen.getByRole('combobox')).toHaveClass('custom-class')
+  })
+
+  it('maintains accessibility attributes', () => {
+    render(
+      <Select>
+        <SelectTrigger aria-label="Select option">
+          <SelectValue placeholder="Select an option" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="option1">Option 1</SelectItem>
+        </SelectContent>
+      </Select>
+    )
+
+    expect(screen.getByRole('combobox')).toHaveAttribute('aria-label', 'Select option')
+  })
+}) 
