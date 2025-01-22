@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardHeader, CardBody, CardFooter, CardImage } from '@/components/ui/card';
+import { Card, CardHeader, CardBody, CardFooter, CardImage } from '@/components/card';
 
 const cardVariantsCode = `<Card variant="default">
   <CardBody>Default Card</CardBody>

@@ -1,24 +1,15 @@
 import type { NextConfig } from 'next'
 
 const config: NextConfig = {
-  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
+        protocol: 'https' as const,
         hostname: '**',
         port: '',
         pathname: '**',
       },
     ],
-  },
-  experimental: {
-    mdxRs: true,
-    turbo: {
-      rules: {
-        '*.mdx': ['@mdx-js/loader']
-      }
-    }
   },
 }
 
