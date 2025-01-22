@@ -2,9 +2,9 @@ import { notFound } from 'next/navigation'
 import { MDXLayout } from '@/components/docs/mdx-layout'
 
 interface DocPageProps {
-  params: {
+  params: Promise<{
     slug: string[]
-  }
+  }>
 }
 
 async function getDocContent(slug: string[]) {
@@ -18,7 +18,8 @@ async function getDocContent(slug: string[]) {
 }
 
 export default async function DocPage({ params }: DocPageProps) {
-  const content = await getDocContent(params.slug)
+  const { slug } = await params
+  const content = await getDocContent(slug)
 
   if (!content) {
     notFound()
