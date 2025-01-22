@@ -4,6 +4,8 @@ import { ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 import { getMDXComponent } from 'mdx-bundler/client'
 import { ComponentPreview } from './component-preview'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 
 interface HeadingProps {
     children: ReactNode
@@ -31,6 +33,10 @@ interface PreProps {
 }
 
 export const components = {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
     ComponentPreview,
     h1: ({ children, className, ...props }: HeadingProps) => (
         <h1 className={cn('mt-2 scroll-m-20 text-4xl font-bold tracking-tight', className)} {...props}>
@@ -81,6 +87,44 @@ export const components = {
         <pre className={cn('mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900', className)} {...props}>
             {children}
         </pre>
+    ),
+    Tabs: ({ children, className, ...props }: React.ComponentProps<typeof Tabs>) => (
+        <Tabs className={cn("relative mt-6 w-full", className)} {...props}>
+            {children}
+        </Tabs>
+    ),
+    TabsList: ({ children, className, ...props }: React.ComponentProps<typeof TabsList>) => (
+        <TabsList
+            className={cn(
+                "w-full justify-start rounded-none border-b bg-transparent p-0",
+                className,
+            )}
+            {...props}
+        >
+            {children}
+        </TabsList>
+    ),
+    TabsTrigger: ({ children, className, ...props }: React.ComponentProps<typeof TabsTrigger>) => (
+        <TabsTrigger
+            className={cn(
+                "relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none",
+                className,
+            )}
+            {...props}
+        >
+            {children}
+        </TabsTrigger>
+    ),
+    TabsContent: ({ children, className, ...props }: React.ComponentProps<typeof TabsContent>) => (
+        <TabsContent
+            className={cn(
+                "relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold",
+                className,
+            )}
+            {...props}
+        >
+            {children}
+        </TabsContent>
     ),
 }
 
