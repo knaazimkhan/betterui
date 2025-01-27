@@ -1,0 +1,12 @@
+{
+    "root": true,
+    "pages": [
+        "index",
+        "---Components---",
+        "components/text",
+        "components/animation",
+        "---Templates---",
+        "templates/saas",
+        "templates/portfolio"
+    ]
+}
