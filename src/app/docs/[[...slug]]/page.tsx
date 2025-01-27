@@ -14,10 +14,10 @@ export default async function Page(props: {
 }) {
   const params = await props.params;
   const page = source.getPage(params.slug);
-  console.log(params);
+
   if (!page) notFound();
 
-  const MDX = page.data.body;
+  const MDXContent = page.data.body;
 
   return (
     <DocsPage
@@ -30,7 +30,7 @@ export default async function Page(props: {
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
       <DocsBody>
-        <MDX components={{ ...defaultMdxComponents }} />
+        <MDXContent components={{ ...defaultMdxComponents }} />
       </DocsBody>
     </DocsPage>
   );
