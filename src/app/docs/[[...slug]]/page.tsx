@@ -24,7 +24,7 @@ export default async function Page(props: {
       toc={page.data.toc}
       full={page.data.full}
       breadcrumb={{ full: true }}
-      tableOfContent={{ style: 'normal' }}
+      tableOfContent={{ style: 'clerk', single: false }}
     // tableOfContentPopover={{ enabled: true, component: <div>Table of Contents</div>, style: 'normal' }}
     >
       <DocsTitle>{page.data.title}</DocsTitle>
