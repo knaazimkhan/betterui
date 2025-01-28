@@ -1,7 +1,9 @@
 {
     "root": true,
     "pages": [
-        "index",
+        "---Guides---",
+        "guide",
+        "installation",
         "---Components---",
         "components/text",
         "components/animation",
