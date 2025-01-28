@@ -1,9 +1,9 @@
 import type { Config } from "tailwindcss";
 import { createPreset } from 'fumadocs-ui/tailwind-plugin';
 
-export default {
-	darkMode: ["class"],
-	preset: createPreset(),
+const config: Config = {
+	darkMode: ['class'],
+	presets: [createPreset({ preset: 'dusk' })],
 	content: [
 		'./node_modules/fumadocs-ui/dist/**/*.js',
 		'./src/components/**/*.{ts,tsx}',
@@ -63,4 +63,6 @@ export default {
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+};
+
+export default config;
