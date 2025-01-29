@@ -1,10 +1,8 @@
 {
-    "root": true,
     "pages": [
         "---Getting Started---",
         "introduction",
-        "guide",
-        "installation",
+        "installation/index",
         "---Components---",
         "components/text",
         "components/animation",
