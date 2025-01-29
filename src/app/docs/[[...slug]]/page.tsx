@@ -1,13 +1,14 @@
-import { source } from '@/lib/source';
+import { source } from "@/lib/source";
 import {
   DocsPage,
   DocsBody,
   DocsTitle,
   DocsDescription,
-} from 'fumadocs-ui/page';
-import { notFound } from 'next/navigation';
-import defaultMdxComponents from 'fumadocs-ui/mdx';
-import { metadataImage } from '@/lib/metadata';
+} from "fumadocs-ui/page";
+import { notFound } from "next/navigation";
+import defaultMdxComponents from "fumadocs-ui/mdx";
+import { metadataImage } from "@/lib/metadata";
+import NextLink from "next/link";
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -24,13 +25,12 @@ export default async function Page(props: {
       toc={page.data.toc}
       full={page.data.full}
       breadcrumb={{ full: true }}
-      tableOfContent={{ style: 'clerk', single: false }}
-    // tableOfContentPopover={{ enabled: true, component: <div>Table of Contents</div>, style: 'normal' }}
+      tableOfContent={{ style: "clerk", single: false }}
     >
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
       <DocsBody>
-        <MDXContent components={{ ...defaultMdxComponents }} />
+        <MDXContent components={{ ...defaultMdxComponents, NextLink }} />
       </DocsBody>
     </DocsPage>
   );
