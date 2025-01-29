@@ -8,7 +8,7 @@ const config: Config = {
 		'./node_modules/fumadocs-ui/dist/**/*.js',
 		'./src/components/**/*.{ts,tsx}',
 		'./src/app/**/*.{ts,tsx}',
-		'./src/content/**/*.mdx',
+		'./content/**/*.mdx',
 		'./src/mdx-components.tsx',
 	],
 	theme: {
