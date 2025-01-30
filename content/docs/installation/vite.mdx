@@ -1,0 +1,139 @@
+---
+title: "Vite"
+description: "Learn how to install and integrate Better UI Library in a Vite project."
+slug: "/docs/installation/vite"
+---
+
+# Install and configure Vite
+
+---
+
+### Create a new Vite Project
+
+```bash title="Terminal"
+pnpm create vite@latest my-vite-app -- --template react
+# Or
+npm create vite@latest my-vite-app
+# Or
+yarn create vite@latest my-vite-app
+# Or
+bun create-vite@latest my-vite-app
+```
+
+### Start the development server
+
+```bash title="Terminal"
+cd my-vite-app
+
+pnpm dev
+# Or
+npm run dev
+# Or
+bun dev
+# Or
+yarn dev
+```
+
+<Callout>
+  **If your project doesn’t have Tailwind CSS, install it, otherwise skip this step.**
+</Callout>
+
+## Install and Configure Tailwind CSS
+
+### Install Tailwind CSS
+
+```bash title="Terminal"
+pnpm install -D tailwindcss postcss autoprefixer
+# Or
+npm install -D tailwindcss postcss autoprefixer
+# Or
+bun add -D tailwindcss postcss autoprefixer
+# Or
+yarn add -D tailwindcss postcss autoprefixer
+```
+
+### Initialize Tailwind CSS
+
+```bash title="Terminal"
+pnpm dlx tailwindcss init --ts -p
+# Or
+npx tailwindcss init --ts -p
+# Or
+yarn tailwindcss init --ts -p
+# Or
+bunx --bun tailwindcss init --ts -p
+```
+
+### Configure Tailwind CSS
+
+```ts title="tailwind.config.ts"
+import type { Config } from "tailwindcss";
+
+export default {
+  content: ["./app/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+} satisfies Config;
+```
+
+### Add the Tailwind directives to your CSS `src/index.css`
+
+```css title="index.css"
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+### Start the development server
+
+```bash title="Terminal"
+pnpm dev
+# Or
+npm run dev
+# Or
+bun dev
+# Or
+yarn dev
+```
+
+### Start using Tailwind CSS
+
+```tsx title="_index.tsx"
+export default function App() {
+  return (
+    <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
+  )
+}
+```
+
+<Callout>
+  If your project doesn’t have Framer motion, install it, otherwise skip this
+  step.
+</Callout>
+
+## Install Framer motion
+
+```bash title="Terminal"
+pnpm add motion
+# Or
+npm install motion
+# Or
+bun add motion
+# Or
+yarn add motion
+```
+
+### Features can now be used in your project via the `motion/react`.
+
+```tsx title="page.tsx"
+import { motion } from "motion/react";
+
+export default function Home() {
+  return <motion.div>Hello world!</motion.div>;
+}
+```
+
