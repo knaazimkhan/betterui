@@ -1,5 +1,5 @@
 import { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
-import { AlbumIcon, HomeIcon, LayoutPanelTop } from 'lucide-react';
+import { HomeIcon, LayoutPanelTop } from 'lucide-react';
  
 export const baseOptions: BaseLayoutProps = {
   nav: {
