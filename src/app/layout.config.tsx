@@ -14,7 +14,7 @@ export const baseOptions: BaseLayoutProps = {
     },
     {
       text: "Docs",
-      url: "/docs/components/text/introduction",
+      url: "/docs/introduction",
       active: "nested-url",
       icon: <LayoutPanelTop />,
     },
