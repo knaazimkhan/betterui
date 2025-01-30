@@ -17,7 +17,7 @@ npx create-remix@latest my-remix-app
 # Or
 yarn create remix@latest my-remix-app
 # Or
-bunx --bun create-remix@latest my-remix-app
+bun create-remix@latest my-remix-app
 ```
 
 You'll be asked:
@@ -66,10 +66,10 @@ npx tailwindcss init --ts -p
 # Or
 yarn tailwindcss init --ts -p
 # Or
-bun --bun tailwindcss init --ts -p
+bunx --bun tailwindcss init --ts -p
 ```
 
-### Now, update tailwind.config.js:
+### Configure Tailwind CSS `tailwind.config.ts`
 
 ```ts title="tailwind.config.ts"
 import type { Config } from "tailwindcss";
@@ -91,9 +91,9 @@ export default {
 @tailwind utilities;
 ```
 
-### Then, add Tailwind to `app/root.jsx` or `app/root.tsx`
+### Add Tailwind to `app/root.tsx`
 
-```tsx
+```tsx title="root.tsx"
 import "./tailwind.css";
 
 export default function App({ children }) {
@@ -126,8 +126,7 @@ export default function Index() {
 ```
 
 <Callout>
-  If your project doesn’t have Framer motion, install it, otherwise skip this
-  step.
+  **If your project doesn’t have Framer motion, install it, otherwise skip this step.**
 </Callout>
 
 ## Install Framer motion

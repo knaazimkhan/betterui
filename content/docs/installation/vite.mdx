@@ -15,16 +15,28 @@ pnpm create vite@latest my-vite-app -- --template react
 # Or
 npm create vite@latest my-vite-app
 # Or
-yarn create vite@latest my-vite-app
-# Or
 bun create-vite@latest my-vite-app
+# Or
+yarn create vite@latest my-vite-app
+```
+
+### Install dependencies
+
+```bash title="Terminal"
+cd my-vite-app
+
+pnpm install
+# Or
+npm install
+# Or
+bun install
+# Or
+yarn install
 ```
 
 ### Start the development server
 
 ```bash title="Terminal"
-cd my-vite-app
-
 pnpm dev
 # Or
 npm run dev
@@ -111,8 +123,7 @@ export default function App() {
 ```
 
 <Callout>
-  If your project doesn’t have Framer motion, install it, otherwise skip this
-  step.
+  **If your project doesn’t have Framer motion, install it, otherwise skip this step.**
 </Callout>
 
 ## Install Framer motion
