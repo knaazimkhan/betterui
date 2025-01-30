@@ -4,21 +4,23 @@ description: "Learn how to install and integrate Better UI Library in a Next.js 
 slug: "/docs/installation/nextjs"
 ---
 
-# Installation instructions for Next.js
+# Install and configure Next.js
+
+---
 
 ### Create a new Next.js project
 
 ```bash title="Terminal"
-pnpm create next-app@latest
-# or
-npx create-next-app@latest
-# or
-bun create next-app@latest
-# or
-yarn create next-app@latest
+pnpm create next-app@latest my-next-app
+# Or
+npx create-next-app@latest my-next-app
+# Or
+bun create next-app@latest my-next-app
+# Or
+yarn create next-app@latest my-next-app
 ```
 
-### On installation, select the following options:
+On installation, select the following options:
 
 ```bash title="Terminal"
 ? What is your project named? … my-app
@@ -36,18 +38,19 @@ After the prompts, **create-next-app** will create a folder with your project na
 ### Start the development server
 
 ```bash title="Terminal"
+cd my-next-app
+
 pnpm dev
-# or
+# Or
 npm run dev
-# or
+# Or
 bun dev
-# or
+# Or
 yarn dev
 ```
 
 <Callout>
-  If your project doesn’t have Tailwind CSS, install it, otherwise skip this
-  step.
+  **If your project doesn’t have Tailwind CSS, install it, otherwise skip this step.**
 </Callout>
 
 ## Configure Tailwind CSS
@@ -56,31 +59,32 @@ yarn dev
 
 ```bash title="Terminal"
 pnpm install -D tailwindcss postcss autoprefixer
-# or
+# Or
 npm install -D tailwindcss postcss autoprefixer
-# or
+# Or
 bun add -D tailwindcss postcss autoprefixer
-# or
+# Or
 yarn add -D tailwindcss postcss autoprefixer
 ```
 
 ### Initialize Tailwind CSS
 
 ```bash title="Terminal"
-pnpm dlx tailwindcss init
+pnpm dlx tailwindcss init -p
 # Or
-npx tailwindcss init
+npx tailwindcss init -p
 # Or
-yarn tailwindcss init
+yarn tailwindcss init -p
 # Or
-bun --bun tailwindcss init
+bun --bun tailwindcss init -p
 ```
 
-### Configure your Tailwind CSS
+### Configure your Tailwind CSS `tailwind.config.ts`
 
-```js title="tailwind.config.js"
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+```ts title="tailwind.config.ts"
+import type { Config } from "tailwindcss";
+
+export default {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -93,10 +97,10 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-};
+} satisfies Config;
 ```
 
-### Add the Tailwind directives to your CSS
+### Add the Tailwind directives to your CSS `app/globals.css`
 
 ```css title="globals.css"
 @tailwind base;
@@ -108,15 +112,15 @@ module.exports = {
 
 ```bash title="Terminal"
 pnpm dev
-# or
+# Or
 npm run dev
-# or
+# Or
 bun dev
-# or
+# Or
 yarn dev
 ```
 
-### Start using Tailwind CSS
+### Start using Tailwind CSS `page.tsx`
 
 ```tsx title="page.tsx"
 export default function Home() {
@@ -133,11 +137,11 @@ export default function Home() {
 
 ```bash title="Terminal"
 pnpm add motion
-# or
+# Or
 npm install motion
-# or
+# Or
 bun add motion
-# or
+# Or
 yarn add motion
 ```
 
