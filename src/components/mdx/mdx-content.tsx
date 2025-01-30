@@ -123,7 +123,7 @@ export const components = {
             )}
             {...props}
         >
-            {children}
+          {children}
         </TabsContent>
     ),
 }

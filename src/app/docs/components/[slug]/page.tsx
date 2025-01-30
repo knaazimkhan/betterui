@@ -49,6 +49,7 @@ async function getComponentContent(slug: string) {
           ...(options.rehypePlugins ?? []),
           rehypeSlug,
           rehypeComponent,
+          // eslint-disable-next-line  @typescript-eslint/no-explicit-any
           () => (tree: any) => {
             visit(tree, (node) => {
               if (node?.type === "element" && node?.tagName === "pre") {
@@ -72,6 +73,7 @@ async function getComponentContent(slug: string) {
             })
           },
           [rehypePrettyCode, prettyCodeOptions],
+          // eslint-disable-next-line  @typescript-eslint/no-explicit-any
           () => (tree: any) => {
             visit(tree, (node) => {
               if (node?.type === "element" && node?.tagName === "figure") {

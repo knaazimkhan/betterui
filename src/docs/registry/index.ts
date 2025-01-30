@@ -20,6 +20,7 @@ import * as tabs from '@/docs/data/tabs'
 export interface ComponentRegistry {
     name: string
     type: 'atoms' | 'molecules' | 'organisms' | 'templates'
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     component: ComponentType<any>
     preview: React.ReactNode
     examples: {

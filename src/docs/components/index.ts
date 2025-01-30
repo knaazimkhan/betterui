@@ -2,11 +2,13 @@ import { lazy } from "react"
 
 interface Demo {
   name: string
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
   component: React.LazyExoticComponent<React.ComponentType<any>>
   file: string
   data: {
     name: string
     description: string
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     props: Record<string, any>
   }
 }

@@ -19,6 +19,7 @@ export default function ComponentsPage() {
     }
     acc[value.type].push({ key, ...value });
     return acc;
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
   }, {} as Record<string, any[]>);
 
   return (
