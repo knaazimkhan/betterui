@@ -2,5 +2,20 @@
   "name": "betterui",
   "compatibility_date": "2025-02-01",
   "compatibility_flags": ["nodejs_compat"],
-  "pages_build_output_dir": ".vercel/output/static"
+  "pages_build_output_dir": ".vercel/output/static",
+  "vars": {
+    "NODE_VERSION": "20"
+  },
+  "env": {
+    "production": {
+      "vars": {
+        "NODE_ENV": "production"
+      }
+    },
+    "staging": {
+      "vars": {
+        "NODE_ENV": "development"
+      }
+    }
+  }
 }
