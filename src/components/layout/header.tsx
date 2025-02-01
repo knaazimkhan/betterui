@@ -48,7 +48,7 @@ const Header = () => {
             Components
           </Link>
           <Link
-            href="/docs/getting-started"
+            href="/docs/guides/getting-started"
             className="text-sm font-medium text-secondary-600 transition-colors hover:text-secondary-900 dark:text-secondary-400 dark:hover:text-secondary-100"
           >
             Documentation

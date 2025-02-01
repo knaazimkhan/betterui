@@ -39,7 +39,7 @@ const prettyCodeOptions: Options = {
 
 async function getComponentContent(slug: string) {
   try {
-    const filePath = path.join(process.cwd(), 'src/content/docs/components', `${slug}.mdx`)
+    const filePath = path.join(process.cwd(), 'content/docs/components', `${slug}.mdx`)
     const content = await fs.readFile(filePath, 'utf8')
     const mdxSource = await bundleMDX<Frontmatter>({
       source: content.trim(),

@@ -7,8 +7,8 @@ export const SwitchExamples = [
     description: 'Switch comes in two variants: default and primary.',
     preview: (
       <div className="flex flex-col gap-4">
-        <Switch label="Default variant" variant="default" />
-        <Switch label="Primary variant" variant="primary" />
+        <Switch />
+        <Switch />
       </div>
     ),
     code: `import { Switch } from '@/components/ui/switch';
@@ -27,9 +27,9 @@ export default function MyComponent() {
     description: 'Switch is available in three sizes: small, medium, and large.',
     preview: (
       <div className="flex flex-col gap-4">
-        <Switch label="Small size" size="sm" />
-        <Switch label="Medium size" size="md" />
-        <Switch label="Large size" size="lg" />
+        <Switch />
+        <Switch />
+        <Switch />
       </div>
     ),
     code: `import { Switch } from '@/components/ui/switch';
@@ -50,12 +50,8 @@ export default function MyComponent() {
     preview: (
       <div className="flex flex-col gap-4">
         <Switch
-          label="Email notifications"
-          description="Receive email notifications when someone mentions you."
         />
         <Switch
-          label="Marketing emails"
-          description="Receive emails about new products, features, and more."
         />
       </div>
     ),
@@ -82,13 +78,8 @@ export default function MyComponent() {
     preview: (
       <div className="flex flex-col gap-4">
         <Switch
-          label="Terms and conditions"
-          validation="error"
-          error="You must accept the terms and conditions"
         />
         <Switch
-          label="Newsletter subscription"
-          validation="success"
         />
       </div>
     ),
@@ -116,11 +107,8 @@ export default function MyComponent() {
     preview: (
       <div className="flex flex-col gap-4">
         <Switch
-          label="Disabled switch"
-          disabled
         />
         <Switch
-          label="Disabled checked switch"
           disabled
           defaultChecked
         />
@@ -238,7 +226,5 @@ export const metadata = {
 
 export const preview = (
   <Switch
-    label="Email notifications"
-    description="Receive email notifications when someone mentions you."
   />
 )
