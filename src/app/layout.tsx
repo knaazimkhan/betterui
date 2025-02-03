@@ -1,11 +1,10 @@
 import { Geist, Geist_Mono } from 'next/font/google'
 
-import { RootProvider } from 'fumadocs-ui/provider'
-
 import type { Metadata } from 'next'
 
 import '@/styles/globals.css'
 
+import { Provider } from './provider'
 import { siteConfig } from './site.config'
 
 const geistSans = Geist({
@@ -37,7 +36,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <main className="flex flex-1 flex-col min-h-screen">
-          <RootProvider>{children}</RootProvider>
+          <Provider>{children}</Provider>
         </main>
       </body>
     </html>
