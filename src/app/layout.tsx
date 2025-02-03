@@ -1,18 +1,22 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "@/styles/globals.css";
-import { RootProvider } from "fumadocs-ui/provider";
-import { siteConfig } from "./site.config";
+import { Geist, Geist_Mono } from 'next/font/google'
+
+import { RootProvider } from 'fumadocs-ui/provider'
+
+import type { Metadata } from 'next'
+
+import '@/styles/globals.css'
+
+import { siteConfig } from './site.config'
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
+})
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -21,12 +25,12 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -38,5 +42,5 @@ export default function RootLayout({
         </main>
       </body>
     </html>
-  );
+  )
 }
