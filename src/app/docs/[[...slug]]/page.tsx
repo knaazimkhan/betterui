@@ -11,10 +11,11 @@ import {
 
 import { metadataImage } from '@/lib/metadata'
 import { source } from '@/lib/source'
-
-export default async function Page(props: {
+interface PageProps {
   params: Promise<{ slug?: string[] }>
-}) {
+}
+
+export default async function Page(props: PageProps) {
   const params = await props.params
   const page = source.getPage(params.slug)
 
@@ -38,10 +39,6 @@ export default async function Page(props: {
   )
 }
 
-export async function generateStaticParams() {
-  return source.generateParams()
-}
-
 export async function generateMetadata(props: {
   params: Promise<{ slug?: string[] }>
 }) {
@@ -52,5 +49,12 @@ export async function generateMetadata(props: {
   return metadataImage.withImage(page.slugs, {
     title: page.data.title,
     description: page.data.description,
+    openGraph: {
+      url: `/docs/${page.slugs.join('/')}`,
+    },
   })
+}
+
+export async function generateStaticParams() {
+  return source.generateParams()
 }
