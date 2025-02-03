@@ -9,7 +9,7 @@ import {
   DocsDescription,
 } from 'fumadocs-ui/page'
 
-import { metadataImage } from '@/lib/metadata'
+import { metadataImage } from '@/lib/metadata-image'
 import { source } from '@/lib/source'
 interface PageProps {
   params: Promise<{ slug?: string[] }>
