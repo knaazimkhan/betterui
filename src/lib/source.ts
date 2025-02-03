@@ -1,9 +1,11 @@
-import { docs, meta } from '@/source';
-import { createMDXSource } from 'fumadocs-mdx';
-import { loader } from 'fumadocs-core/source';
-import { createElement } from 'react';
-import { icons } from 'lucide-react';
-import { defineConfig } from 'fumadocs-mdx/config';
+import { createElement } from 'react'
+
+import { loader } from 'fumadocs-core/source'
+import { createMDXSource } from 'fumadocs-mdx'
+import { defineConfig } from 'fumadocs-mdx/config'
+import { icons } from 'lucide-react'
+
+import { docs, meta } from '@/source'
 
 export const source = loader({
   baseUrl: '/docs',
@@ -11,11 +13,11 @@ export const source = loader({
   icon(icon) {
     if (!icon) {
       // You may set a default icon
-      return;
+      return
     }
 
-    if (icon in icons) return createElement(icons[icon as keyof typeof icons]);
+    if (icon in icons) return createElement(icons[icon as keyof typeof icons])
   },
-});
+})
 
-export default defineConfig();
+export default defineConfig()
