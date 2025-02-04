@@ -18,8 +18,6 @@ interface PageProps {
 export const dynamicParams = false // it disable rendering for unspecified paths
 export const revalidate = false // it should be cached forever
 
-export const runtime = 'edge'
-
 export default async function Page(props: PageProps) {
   const params = await props.params
   const page = source.getPage(params.slug)
