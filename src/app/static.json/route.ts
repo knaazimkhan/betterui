@@ -4,7 +4,7 @@ import { type OramaDocument } from 'fumadocs-core/search/orama-cloud'
 
 import { source } from '@/lib/source'
 
-export const revalidate = false
+export const revalidate = false // it should be cached forever
 
 export function GET() {
   const results: OramaDocument[] = []
