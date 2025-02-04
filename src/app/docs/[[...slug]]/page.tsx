@@ -15,6 +15,9 @@ interface PageProps {
   params: Promise<{ slug?: string[] }>
 }
 
+export const dynamicParams = false // it disable rendering for unspecified paths
+export const revalidate = false // it should be cached forever
+
 export default async function Page(props: PageProps) {
   const params = await props.params
   const page = source.getPage(params.slug)
@@ -39,11 +42,10 @@ export default async function Page(props: PageProps) {
   )
 }
 
-export async function generateMetadata(props: {
-  params: Promise<{ slug?: string[] }>
-}) {
+export async function generateMetadata(props: PageProps) {
   const params = await props.params
   const page = source.getPage(params.slug)
+
   if (!page) notFound()
 
   return metadataImage.withImage(page.slugs, {
