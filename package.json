@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build && pnpm build:post",
     "build:post": "tsx ./src/scripts/post-build.mts",
-    "clean": "rimraf .next .open-next .source .wrangler ",
+    "clean": "rimraf .next .open-next .source",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write ./src",
