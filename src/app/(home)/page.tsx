@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function HomePage() {
   return (
-    <main className="flex flex-1 flex-col justify-center text-center">
+    <div className="flex flex-1 flex-col min-h-screen justify-center text-center">
       <h1 className="mb-4 text-2xl font-bold">Better UI</h1>
       <p className="text-fd-muted-foreground">
         You can open{' '}
@@ -14,6 +14,6 @@ export default function HomePage() {
         </Link>{' '}
         and see the documentation.
       </p>
-    </main>
+    </div>
   )
 }
