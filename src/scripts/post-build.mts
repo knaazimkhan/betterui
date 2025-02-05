@@ -8,6 +8,4 @@ async function main() {
   await Promise.all([updateSearchIndexes()])
 }
 
-await main().catch((e) => {
-  console.error('Failed to run post build script', e)
-})
+await main().catch((e) => console.error('Failed to run post build script', e))

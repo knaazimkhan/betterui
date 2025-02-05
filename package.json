@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build && pnpm build:post",
+    "build:post": "tsx ./src/scripts/post-build.mts",
+    "clean": "rimraf .next .open-next .source .wrangler ",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write ./src",
@@ -30,6 +32,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",
+    "rimraf": "^6.0.1",
     "shiki": "^2.1.0",
     "tailwind-merge": "^2.6.0"
   },
