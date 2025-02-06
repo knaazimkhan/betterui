@@ -1,0 +1,113 @@
+---
+title: MorphingText
+---
+
+---
+
+import { MorphingText } from '@/components/text/morphing-text'
+
+## Preview
+
+<PreviewComponent>
+  <MorphingText text="Morphing" />
+</PreviewComponent>
+
+## Usage
+
+```tsx
+'use client'
+
+import { MorphingText } from '@/components/text/morphing-text'
+
+<MorphingText text="Morphing" />
+```
+
+## Code
+
+```tsx
+'use client'
+
+import { useState, useEffect, useCallback } from 'react'
+
+import { motion } from 'framer-motion'
+
+interface MorphingTextProps {
+  text: string
+  speed?: number // Duration of each letter change in milliseconds
+}
+
+export function MorphingText({ text, speed = 30 }: MorphingTextProps) {
+  const [currentText, setCurrentText] = useState(text)
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+  const morphText = useCallback(() => {
+    let iteration = 0
+    const interval = setInterval(() => {
+      setCurrentText((prev) =>
+        prev
+          .split('')
+          .map((letter, index) => {
+            if (index < iteration) {
+              return text[index]
+            }
+            return letters[Math.floor(Math.random() * 26)]
+          })
+          .join('')
+      )
+
+      if (iteration >= text.length) {
+        clearInterval(interval)
+      }
+      iteration += 1 / 3
+    }, speed)
+
+    return () => clearInterval(interval)
+  }, [text, speed])
+
+  useEffect(() => {
+    const cleanup = morphText()
+    return cleanup
+  }, [morphText])
+
+  return (
+    <motion.div
+      className="text-4xl font-bold text-black dark:text-white"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      {currentText}
+    </motion.div>
+  )
+}
+```
+
+## Example
+
+### Speed
+
+Use the `speed` props that allows control the duration of each letter change.
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab value="Preview">
+    <PreviewComponent>
+      <MorphingText text="Slow Morph" speed={100} />
+    </PreviewComponent>
+  </Tab>
+  <Tab value="Code">
+  ```tsx
+    'use client'
+
+    import { MorphingText } from '@/components/text/morphing-text'
+
+    <MorphingText text="Slow Morph" speed={100} />
+  ```
+  </Tab>
+</Tabs>
+
+## Props
+
+<AutoTypeTable
+  path="./src/components/text/morphing-text.tsx"
+  name="MorphingTextProps"
+/>
