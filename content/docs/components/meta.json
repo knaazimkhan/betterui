@@ -1,0 +1,6 @@
+{
+  "title": "Components",
+  "description": "The docs components",
+  "root": true,
+  "pages": ["(text)"]
+}

@@ -1,15 +1,11 @@
 {
     "pages": [
-        "---Getting Started---",
-        "introduction",
-        "installation/index",
-        "---Installation---",
-        "...installation",
-        "---Components---",
-        "components/text",
-        "components/animation",
-        "---Templates---",
-        "templates/saas",
-        "templates/portfolio"
+      "---Getting Started---",
+      "introduction",
+      "installation/index",
+      "---Installation---",
+      "...installation",
+      "---Components---",
+      "...components"
     ]
 }
