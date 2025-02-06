@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build && pnpm build:post",
+    "build": "next build",
     "build:post": "tsx ./src/scripts/post-build.mts",
     "clean": "rimraf .next .open-next .source",
     "start": "next start",
