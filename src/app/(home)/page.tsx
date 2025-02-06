@@ -2,13 +2,13 @@ import Link from 'next/link'
 
 export default function HomePage() {
   return (
-    <div className="flex flex-1 flex-col min-h-screen justify-center text-center">
+    <div className="flex min-h-screen flex-1 flex-col justify-center text-center">
       <h1 className="mb-4 text-2xl font-bold">Better UI</h1>
       <p className="text-fd-muted-foreground">
         You can open{' '}
         <Link
           href="/docs/introduction"
-          className="text-fd-foreground font-semibold underline"
+          className="font-semibold text-fd-foreground underline"
         >
           /docs
         </Link>{' '}
