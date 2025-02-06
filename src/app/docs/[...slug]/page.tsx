@@ -1,14 +1,8 @@
-import NextLink from 'next/link'
 import { notFound } from 'next/navigation'
 
-import defaultMdxComponents from 'fumadocs-ui/mdx'
-import {
-  DocsPage,
-  DocsBody,
-  DocsTitle,
-  DocsDescription,
-} from 'fumadocs-ui/page'
+import { DocsPage } from 'fumadocs-ui/page'
 
+import { DocsWrapper } from '@/components/docs-wrapper'
 import { metadataImage } from '@/lib/metadata-image'
 import { source } from '@/lib/source'
 
@@ -25,8 +19,6 @@ export default async function Page(props: PageProps) {
 
   if (!page) notFound()
 
-  const MDXContent = page.data.body
-
   return (
     <DocsPage
       toc={page.data.toc}
@@ -34,11 +26,7 @@ export default async function Page(props: PageProps) {
       breadcrumb={{ full: true }}
       tableOfContent={{ style: 'clerk', single: false }}
     >
-      <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsDescription>{page.data.description}</DocsDescription>
-      <DocsBody>
-        <MDXContent components={{ ...defaultMdxComponents, NextLink }} />
-      </DocsBody>
+      <DocsWrapper {...page.data} />
     </DocsPage>
   )
 }
