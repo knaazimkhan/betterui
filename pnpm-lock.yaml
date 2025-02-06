@@ -59,6 +59,9 @@ importers:
       tailwind-merge:
         specifier: ^3.0.1
         version: 3.0.1
+      ts-morph:
+        specifier: ^25.0.1
+        version: 25.0.1
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3.2.0
