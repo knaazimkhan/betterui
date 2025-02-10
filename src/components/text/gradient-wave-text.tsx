@@ -4,18 +4,33 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
-interface GradientWaveTextProps {
+export interface GradientWaveTextProps {
+  /**
+   * The text to be displayed with the gradient wave effect.
+  */
   text: string
   fromColor?: string
   viaColor?: string
   toColor?: string
+  /**
+   * The gradient can be horizontal, vertical, or diagonal.
+   * @defaultValue "to-r"
+  */
   direction?: 'to-r' | 'to-b' | 'to-br'
+  /**
+   * The animation takes 5 seconds to complete one cycle.
+   * @defaultValue 5
+   */
   duration?: number
+  /**
+   * An optional hover effect speeds up the animation when the user hovers over the text.
+   * @defaultValue false
+   */
   hoverEffect?: boolean
   className?: string
 }
 
-export default function GradientWaveText({
+export function GradientWaveText({
   text,
   direction = 'to-r',
   fromColor = 'from-purple-500',

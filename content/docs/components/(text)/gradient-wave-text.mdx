@@ -1,0 +1,227 @@
+---
+title: 'GradientWaveText'
+description: 'Applies a moving gradient background to the text, creating a wave-like effect.'
+slug: 'components/gradient-wave-text'
+---
+
+---
+
+import { GradientWaveText } from '@/components/text/gradient-wave-text'
+
+## Preview
+
+<PreviewComponent>
+  <GradientWaveText text="Default Gradient Wave" />
+</PreviewComponent>
+
+## Usage
+
+```tsx
+'use client'
+
+import { GradientWaveText } from '@/components/text/gradient-wave-text'
+
+<GradientWaveText text="Default Gradient Wave" />
+```
+
+## Code
+
+```tsx
+'use client'
+
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { cn } from '@/lib/utils'
+
+interface GradientWaveTextProps {
+  text: string
+  fromColor?: string
+  viaColor?: string
+  toColor?: string
+  direction?: 'to-r' | 'to-b' | 'to-br'
+  duration?: number
+  hoverEffect?: boolean
+  className?: string
+}
+
+export function GradientWaveText({
+  text,
+  direction = 'to-r',
+  fromColor = 'from-purple-500',
+  viaColor = 'via-pink-500',
+  toColor = 'to-red-500',
+  duration = 5,
+  hoverEffect = false,
+  className = 'bg-gradient-to-r from-purple-500 via-pink-500 to-red-500',
+}: GradientWaveTextProps) {
+  const [isHovered, setIsHovered] = useState(false)
+
+  const animationProps =
+    direction === 'to-b'
+      ? { backgroundPosition: ['50% 0%', '50% 100%', '50% 0%'] }
+      : { backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }
+
+  const bgGradient = {
+    'to-r': 'bg-gradient-to-r',
+    'to-b': 'bg-gradient-to-b',
+    'to-br': 'bg-gradient-to-br',
+  }
+
+  return (
+    <motion.div
+      className={cn(
+        'cursor-pointer rounded bg-clip-text p-4 text-4xl font-bold text-transparent',
+        className,
+        bgGradient[direction],
+        fromColor,
+        viaColor,
+        toColor
+      )}
+      style={{ backgroundSize: '200% 200%' }}
+      animate={animationProps}
+      transition={{
+        duration: isHovered && hoverEffect ? duration / 2 : duration,
+        repeat: Number.POSITIVE_INFINITY,
+        ease: 'linear',
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {text}
+    </motion.div>
+  )
+}
+```
+
+## Example
+
+### Custom Colors Gradient
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab value="Preview">
+    <PreviewComponent>
+      <GradientWaveText
+        text="Custom Colors"
+        fromColor="from-blue-500"
+        viaColor="via-green-500"
+        toColor="to-yellow-500"
+      />
+    </PreviewComponent>
+  </Tab>
+  <Tab value="Code">
+  ```tsx
+    'use client'
+
+    import { GradientWaveText } from '@/components/text/gradient-wave-text'
+
+    <GradientWaveText
+      text="Custom Colors"
+      fromColor="from-blue-500"
+      viaColor="via-green-500"
+      toColor="to-yellow-500"
+    />
+  ```
+  </Tab>
+</Tabs>
+
+### Vertical Gradient
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab value="Preview">
+    <PreviewComponent>
+      <GradientWaveText
+        text="Vertical Wave"
+        direction="to-b"
+        fromColor="from-teal-400"
+        viaColor="via-cyan-400"
+        toColor="to-sky-400"
+      />
+    </PreviewComponent>
+  </Tab>
+  <Tab value="Code">
+  ```tsx
+    'use client'
+
+    import { GradientWaveText } from '@/components/text/gradient-wave-text'
+
+    <GradientWaveText
+      text="Vertical Wave"
+      direction="to-b"
+      fromColor="from-teal-400"
+      viaColor="via-cyan-400"
+      toColor="to-sky-400"
+    />
+  ```
+  </Tab>
+</Tabs>
+
+### Hover Effect Gradient
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab value="Preview">
+    <PreviewComponent>
+      <GradientWaveText
+        text="Hover Me"
+        hoverEffect={true}
+        fromColor="from-emerald-400"
+        viaColor="via-lime-400"
+        toColor="to-yellow-400"
+      />
+    </PreviewComponent>
+  </Tab>
+  <Tab value="Code">
+  ```tsx
+    'use client'
+
+    import { GradientWaveText } from '@/components/text/gradient-wave-text'
+
+    <GradientWaveText
+      text="Hover Me"
+      hoverEffect={true}
+      fromColor="from-emerald-400"
+      viaColor="via-lime-400"
+      toColor="to-yellow-400"
+    />
+  ```
+  </Tab>
+</Tabs>
+
+### Animation speed
+
+<Tabs items={["Preview", "Code"]}>
+  <Tab value="Preview">
+    <PreviewComponent>
+      <GradientWaveText
+        text="Animation speed"
+        hoverEffect={true}
+        fromColor="from-green-500"
+        viaColor="via-orange-500"
+        toColor="to-blue-500"
+        duration={3}
+      />
+    </PreviewComponent>
+  </Tab>
+  <Tab value="Code">
+  ```tsx
+    'use client'
+
+    import { GradientWaveText } from '@/components/text/gradient-wave-text'
+
+    <GradientWaveText
+      text="Animation speed"
+      hoverEffect={true}
+      fromColor="from-green-500"
+      viaColor="via-orange-500"
+      toColor="to-blue-500"
+      duration={3}
+    />
+  ```
+  </Tab>
+</Tabs>
+
+## Props
+
+<AutoTypeTable
+  path="./src/components/text/gradient-wave-text.tsx"
+  name="GradientWaveTextProps"
+/>
