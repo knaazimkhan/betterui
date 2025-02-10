@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { cn } from '@/lib/utils'
 
 interface GradientWaveTextProps {
   text: string
@@ -11,39 +12,43 @@ interface GradientWaveTextProps {
   direction?: 'to-r' | 'to-b' | 'to-br'
   duration?: number
   hoverEffect?: boolean
+  className?: string
 }
 
 export default function GradientWaveText({
   text,
-  fromColor = 'purple-500',
-  viaColor = 'pink-500',
-  toColor = 'red-500',
   direction = 'to-r',
+  fromColor = 'from-purple-500',
+  viaColor = 'via-pink-500',
+  toColor = 'to-red-500',
   duration = 5,
   hoverEffect = false,
+  className = 'bg-gradient-to-r from-purple-500 via-pink-500 to-red-500',
 }: GradientWaveTextProps) {
   const [isHovered, setIsHovered] = useState(false)
-
-  const gradientClass = `bg-gradient-${direction} from-${fromColor} via-${viaColor} to-${toColor} bg-clip-text text-transparent`
-
-  const gradientStyle = {
-    backgroundImage: `linear-gradient(${direction === 'to-r' ? 'to right' : direction === 'to-b' ? 'to bottom' : 'to bottom right'}, var(--tw-color-${fromColor}), var(--tw-color-${viaColor}), var(--tw-color-${toColor}))`,
-    backgroundSize: '200% 200%',
-    color: 'transparent',
-    WebkitBackgroundClip: 'text',
-    backgroundClip: 'text',
-  }
 
   const animationProps =
     direction === 'to-b'
       ? { backgroundPosition: ['50% 0%', '50% 100%', '50% 0%'] }
       : { backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }
 
+  const bgGradient = {
+    'to-r': 'bg-gradient-to-r',
+    'to-b': 'bg-gradient-to-b',
+    'to-br': 'bg-gradient-to-br',
+  }
+
   return (
     <motion.div
-      // className={`p-4 text-4xl font-bold ${gradientClass} cursor-pointer rounded bg-clip-text text-transparent`}
-      className="cursor-pointer rounded p-4 text-4xl font-bold"
-      style={gradientStyle}
+      className={cn(
+        'cursor-pointer rounded bg-clip-text p-4 text-4xl font-bold text-transparent',
+        className,
+        bgGradient[direction],
+        fromColor,
+        viaColor,
+        toColor,
+      )}
+      style={{ backgroundSize: '200% 200%' }}
       animate={animationProps}
       transition={{
         duration: isHovered && hoverEffect ? duration / 2 : duration,
