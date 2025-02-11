@@ -14,8 +14,8 @@ const prettierConfig = {
   tailwindFunctions: functions,
   customFunctions: functions,
   plugins: [
-    'prettier-plugin-classnames',
     'prettier-plugin-tailwindcss',
+    'prettier-plugin-classnames',
     'prettier-plugin-merge',
   ],
 }
