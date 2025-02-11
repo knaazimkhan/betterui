@@ -32,7 +32,11 @@ import { GlitchEffectText } from '@/components/text/glitch-effect-text'
 
 import { motion } from 'framer-motion'
 
-export function GlitchEffectText({ text }: { text: string }) {
+interface GlitchEffectTextProps {
+  text: string
+}
+
+export function GlitchEffectText({ text }: GlitchEffectTextProps) {
   return (
     <div className="relative overflow-hidden rounded bg-gray-800 p-4 text-4xl font-bold text-white">
       <motion.div
