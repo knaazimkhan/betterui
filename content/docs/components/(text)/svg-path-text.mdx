@@ -1,8 +1,37 @@
+---
+title: 'SVGPathText'
+description: 'Animates text along an SVG path, creating a curved text effect.'
+slug: 'components/svg-path-text'
+---
+
+---
+
+import { SVGPathText } from '@/components/text/svg-path-text'
+
+## Preview
+
+<PreviewComponent>
+  <SVGPathText text="SVG Path" />
+</PreviewComponent>
+
+## Usage
+
+```tsx
+'use client'
+
+import { SVGPathText } from '@/components/text/svg-path-text'
+
+<SVGPathText text="SVG Path" />
+```
+
+## Code
+
+```tsx
 'use client'
 
 import { motion } from 'framer-motion'
 
-export interface SVGPathTextProps {
+interface SVGPathTextProps {
   text: string
 }
 
@@ -41,3 +70,11 @@ export function SVGPathText({ text }: SVGPathTextProps) {
     </div>
   )
 }
+```
+
+## Props
+
+<AutoTypeTable
+  path="./src/components/text/svg-path-text.tsx"
+  name="SVGPathTextProps"
+/>
