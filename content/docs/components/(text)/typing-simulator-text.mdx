@@ -1,9 +1,38 @@
+---
+title: 'TypingSimulatorText'
+description: 'Mimics the effect of text being typed out in real-time.'
+slug: 'components/typing-simulator-text'
+---
+
+---
+
+import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+
+## Preview
+
+<PreviewComponent>
+  <TypingSimulatorText text="Typing Simulator" />
+</PreviewComponent>
+
+## Usage
+
+```tsx
+'use client'
+
+import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+
+<TypingSimulatorText text="Typing Simulator" />
+```
+
+## Code
+
+```tsx
 'use client'
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
-export interface TypingSimulatorTextProps {
+interface TypingSimulatorTextProps {
   text: string
 }
 
@@ -36,3 +65,11 @@ export function TypingSimulatorText({ text }: TypingSimulatorTextProps) {
     </div>
   )
 }
+```
+
+## Props
+
+<AutoTypeTable
+  path="./src/components/text/typing-simulator-text.tsx"
+  name="TypingSimulatorTextProps"
+/>
