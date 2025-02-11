@@ -70,7 +70,7 @@
     .text-stroke {
       -webkit-text-stroke: 1px white;
     }
-  
+
     .bg-radial {
       background-image: radial-gradient(circle, var(--tw-gradient-stops));
     }
