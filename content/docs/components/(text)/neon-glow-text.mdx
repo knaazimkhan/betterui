@@ -1,8 +1,37 @@
+---
+title: 'NeonGlowText'
+description: 'Applies a moving gradient background to the text, creating a wave-like effect.'
+slug: 'components/neon-glow-text'
+---
+
+---
+
+import { NeonGlowText } from '@/components/text/neon-glow-text'
+
+## Preview
+
+<PreviewComponent>
+  <NeonGlowText text="Neon Glow" />
+</PreviewComponent>
+
+## Usage
+
+```tsx
+'use client'
+
+import { NeonGlowText } from '@/components/text/neon-glow-text'
+
+<NeonGlowText text="Neon Glow" />
+```
+
+## Code
+
+```tsx
 'use client'
 
 import { motion } from 'framer-motion'
 
-export interface NeonGlowTextProps {
+interface NeonGlowTextProps {
   text: string
 }
 
@@ -26,3 +55,11 @@ export function NeonGlowText({ text }: NeonGlowTextProps) {
     </motion.div>
   )
 }
+```
+
+## Props
+
+<AutoTypeTable
+  path="./src/components/text/neon-glow-text.tsx"
+  name="NeonGlowTextProps"
+/>
