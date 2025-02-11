@@ -1,3 +1,32 @@
+---
+title: 'ParticleExplosionText'
+description: 'When clicked, the text explodes into particles and then reforms.'
+slug: 'components/particle-explosion-text'
+---
+
+---
+
+import { ParticleExplosionText } from '@/components/text/particle-explosion-text'
+
+## Preview
+
+<PreviewComponent>
+  <ParticleExplosionText text="Particle" />
+</PreviewComponent>
+
+## Usage
+
+```tsx
+'use client'
+
+import { ParticleExplosionText } from '@/components/text/particle-explosion-text'
+
+<ParticleExplosionText text="Particle" />
+```
+
+## Code
+
+```tsx
 'use client'
 
 import { useState } from 'react'
@@ -43,3 +72,11 @@ export function ParticleExplosionText({ text }: ParticleExplosionTextProps) {
     </div>
   )
 }
+```
+
+## Props
+
+<AutoTypeTable
+  path="./src/components/text/particle-explosion-text.tsx"
+  name="ParticleExplosionTextProps"
+/>
