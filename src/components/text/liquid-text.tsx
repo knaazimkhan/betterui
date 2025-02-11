@@ -2,7 +2,11 @@
 
 import { motion } from 'framer-motion'
 
-export function LiquidText({ text }: { text: string }) {
+export interface LiquidTextProps {
+  text: string
+}
+
+export function LiquidText({ text }: LiquidTextProps) {
   return (
     <motion.div
       className="overflow-hidden rounded bg-blue-500 p-4 text-4xl font-bold text-white"

@@ -1,0 +1,62 @@
+---
+title: 'LiquidText'
+description: 'Creates a liquid-like effect by animating the border radius of the text container.'
+slug: 'components/liquid-text'
+---
+
+---
+
+import { LiquidText } from '@/components/text/liquid-text'
+
+## Preview
+
+<PreviewComponent>
+  <LiquidText text="Liquid" />
+</PreviewComponent>
+
+## Usage
+
+```tsx
+'use client'
+
+import { LiquidText } from '@/components/text/liquid-text'
+
+<LiquidText text="Liquid" />
+```
+
+## Code
+
+```tsx
+'use client'
+
+import { motion } from 'framer-motion'
+
+interface LiquidTextProps {
+  text: string
+}
+
+export function LiquidText({ text }: LiquidTextProps) {
+  return (
+    <motion.div
+      className="overflow-hidden rounded bg-blue-500 p-4 text-4xl font-bold text-white"
+      animate={{
+        borderRadius: ['20% 80% 20% 80%', '80% 20% 80% 20%', '20% 80% 20% 80%'],
+      }}
+      transition={{
+        duration: 3,
+        repeat: Number.POSITIVE_INFINITY,
+        ease: 'easeInOut',
+      }}
+    >
+      {text}
+    </motion.div>
+  )
+}
+```
+
+## Props
+
+<AutoTypeTable
+  path="./src/components/text/liquid-text.tsx"
+  name="LiquidTextProps"
+/>
