@@ -1,11 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+
 import { motion, type Transition } from 'framer-motion'
 // import { useTheme } from 'next-themes'
 
 import { cn } from '@/lib/utils'
-
 export interface GradientWaveTextProps {
   /**
    * The text to be displayed with the gradient wave effect.
@@ -112,7 +112,8 @@ export function GradientWaveText({
   return (
     <motion.div
       className={cn(
-        `cursor-pointer rounded bg-[length:200%_200%] bg-clip-text p-4 text-4xl font-bold text-transparent`,
+        `cursor-pointer rounded bg-[length:200%_200%] bg-clip-text p-4 text-4xl font-bold
+        text-transparent`,
         gradientClass,
         gradientColors,
         textStrokeClass,
