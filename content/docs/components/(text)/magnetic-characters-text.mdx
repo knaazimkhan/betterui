@@ -1,9 +1,38 @@
+---
+title: 'MagneticCharactersText'
+description: 'Individual characters react to hover, creating a magnetic-like interaction.'
+slug: 'components/magnetic-characters-text'
+---
+
+---
+
+import { MagneticCharactersText } from '@/components/text/magnetic-characters-text'
+
+## Preview
+
+<PreviewComponent>
+  <MagneticCharactersText text="Magnetic" />
+</PreviewComponent>
+
+## Usage
+
+```tsx
+'use client'
+
+import { MagneticCharactersText } from '@/components/text/magnetic-characters-text'
+
+<MagneticCharactersText text="Magnetic" />
+```
+
+## Code
+
+```tsx
 'use client'
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 
-export interface MagneticCharactersTextProps {
+interface MagneticCharactersTextProps {
   text: string
 }
 
@@ -34,3 +63,11 @@ export function MagneticCharactersText({ text }: MagneticCharactersTextProps) {
     </div>
   )
 }
+```
+
+## Props
+
+<AutoTypeTable
+  path="./src/components/text/magnetic-characters-text.tsx"
+  name="MagneticCharactersTextProps"
+/>
