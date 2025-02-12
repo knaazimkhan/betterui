@@ -1,28 +1,32 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import { motion } from 'framer-motion'
-
 export interface TypingSimulatorTextProps {
   text: string
 }
 
 export function TypingSimulatorText({ text }: TypingSimulatorTextProps) {
   const [displayText, setDisplayText] = useState('')
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
-    let i = 0
-    const interval = setInterval(() => {
-      if (i < text.length) {
-        setDisplayText((prev) => prev + text[i])
-        i++
-      } else {
-        clearInterval(interval)
-      }
-    }, 100)
+    let currentIndex = 0
 
-    return () => clearInterval(interval)
+    const typeNextChar = () => {
+      if (currentIndex < text.length) {
+        setDisplayText(text.slice(0, currentIndex + 1))
+        currentIndex++
+        intervalRef.current = setTimeout(typeNextChar, 100)
+      }
+    }
+
+    void typeNextChar()
+
+    return () => {
+      if (intervalRef.current) clearTimeout(intervalRef.current)
+    }
   }, [text])
 
   return (
