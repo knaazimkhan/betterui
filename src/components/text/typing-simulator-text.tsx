@@ -1,20 +1,30 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 
 import { motion } from 'framer-motion'
 
 import { cn } from '@/lib/utils'
 export interface TypingSimulatorTextProps {
   /**
-   * Text to be animate
+   * Text to be animate.
    */
-  text: string
+  text: string | string[]
   /**
-   * Allows users to adjust how fast the text appears.
+   * Allows to adjust how fast the text is type.
    * @defaultValue 100
    */
   typingSpeed?: number
+  /**
+   * Allows to adjust how fast the text is delete.
+   * @defaultValue 50
+   */
+  deletingSpeed?: number
+  /**
+   * Pause before start deleting.
+   * @defaultValue 1500
+   */
+  pauseTime?: number
   /**
    * The cursor character or style.
    */
@@ -32,37 +42,75 @@ export interface TypingSimulatorTextProps {
 export function TypingSimulatorText({
   text,
   typingSpeed = 100,
+  deletingSpeed = 50,
+  pauseTime = 1500,
   cursorStyle = '|',
   loop = false,
   className,
 }: TypingSimulatorTextProps) {
   const [displayText, setDisplayText] = useState('')
-  const intervalRef = useRef<NodeJS.Timeout | null>(null)
-  const currentIndexRef = useRef(0)
+  const [isBlinking, setIsBlinking] = useState(true)
+  const [textIndex, setTextIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
 
-  const typeNextChar = useCallback(() => {
-    if (currentIndexRef.current < text.length) {
-      setDisplayText(text.slice(0, currentIndexRef.current + 1))
-      currentIndexRef.current++
-      intervalRef.current = setTimeout(typeNextChar, 100)
-    } else if (loop) {
-      currentIndexRef.current = 0
-      setDisplayText('')
-      intervalRef.current = setTimeout(typeNextChar, typingSpeed * 5) // Longer pause before looping
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  const texts = useMemo(
+    () => (Array.isArray(text) ? text : [text]), // Normalize input
+    [text]
+  )
+
+  const updateText = useCallback(() => {
+    if (!loop && textIndex >= texts.length) return // Stop when done (if loop is false)
+
+    const currentText = texts[textIndex]
+
+    if (!isDeleting && displayText === currentText) {
+      // Pause before deleting
+      setIsBlinking(true)
+      if (loop || textIndex < texts.length - 1) {
+        setTimeout(() => setIsDeleting(true), pauseTime)
+      }
+      return
     }
-  }, [text, loop, typingSpeed])
+
+    if (isDeleting && displayText === '') {
+      // Move to next word or stop if loop is false
+      if (!loop && textIndex === texts.length - 1) return
+      setIsDeleting(false)
+      setTextIndex((prev) => (prev + 1) % texts.length)
+      return
+    }
+
+    setIsBlinking(false)
+    const delta = isDeleting ? -1 : 1
+    timeoutRef.current = setTimeout(
+      () => {
+        setDisplayText(currentText.substring(0, displayText.length + delta))
+      },
+      isDeleting ? deletingSpeed : typingSpeed
+    )
+  }, [
+    deletingSpeed,
+    displayText,
+    isDeleting,
+    loop,
+    pauseTime,
+    textIndex,
+    texts,
+    typingSpeed,
+  ])
 
   useEffect(() => {
-    currentIndexRef.current = 0
+    // Clear previous timeout
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
 
-    if (intervalRef.current) clearTimeout(intervalRef.current)
-
-    void typeNextChar()
+    void updateText()
 
     return () => {
-      if (intervalRef.current) clearTimeout(intervalRef.current)
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
-  }, [typeNextChar])
+  }, [updateText])
 
   return (
     <div
@@ -72,8 +120,9 @@ export function TypingSimulatorText({
     >
       <span aria-live="polite">{displayText}</span>
       <motion.span
-        animate={{ opacity: [0, 1, 0] }}
+        animate={isBlinking ? { opacity: [0, 1, 0] } : {}}
         transition={{ duration: 0.8, repeat: Number.POSITIVE_INFINITY }}
+        className="ml-0.5 text-white"
         aria-hidden="true"
       >
         {cursorStyle}
