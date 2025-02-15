@@ -49,9 +49,9 @@ export function TypingSimulatorText({
   className,
 }: TypingSimulatorTextProps) {
   const [displayText, setDisplayText] = useState('')
-  const [isBlinking, setIsBlinking] = useState(true)
   const [textIndex, setTextIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
+  const [isBlinking, setIsBlinking] = useState(true) // Track cursor state
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
@@ -65,28 +65,35 @@ export function TypingSimulatorText({
 
     const currentText = texts[textIndex]
 
+    // Typing completed -> Pause before deleting
     if (!isDeleting && displayText === currentText) {
       // Pause before deleting
-      setIsBlinking(true)
       if (loop || textIndex < texts.length - 1) {
-        setTimeout(() => setIsDeleting(true), pauseTime)
+        timeoutRef.current = setTimeout(() => {
+          setIsDeleting(true)
+          setIsBlinking(false) // Keep cursor steady while deleting
+        }, pauseTime)
       }
+      setIsBlinking(true) // Start blinking when idle
       return
     }
 
+    // Deletion completed -> Move to next text
     if (isDeleting && displayText === '') {
       // Move to next word or stop if loop is false
       if (!loop && textIndex === texts.length - 1) return
       setIsDeleting(false)
       setTextIndex((prev) => (prev + 1) % texts.length)
+      setIsBlinking(false) // Keep cursor steady while typing
       return
     }
 
-    setIsBlinking(false)
+    // Typing or deleting character-by-character
     const delta = isDeleting ? -1 : 1
     timeoutRef.current = setTimeout(
       () => {
         setDisplayText(currentText.substring(0, displayText.length + delta))
+        setIsBlinking(false) // Cursor steady while typing/deleting
       },
       isDeleting ? deletingSpeed : typingSpeed
     )
@@ -105,12 +112,15 @@ export function TypingSimulatorText({
     // Clear previous timeout
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
 
-    void updateText()
+    timeoutRef.current = setTimeout(
+      updateText,
+      isDeleting ? deletingSpeed : typingSpeed
+    )
 
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
-  }, [updateText])
+  }, [updateText, isDeleting, deletingSpeed, typingSpeed])
 
   return (
     <div
@@ -120,8 +130,8 @@ export function TypingSimulatorText({
     >
       <span aria-live="polite">{displayText}</span>
       <motion.span
-        animate={isBlinking ? { opacity: [0, 1, 0] } : {}}
-        transition={{ duration: 0.8, repeat: Number.POSITIVE_INFINITY }}
+        animate={{ opacity: isBlinking ? [1, 0, 1] : 1 }} // Blinks only if when idle
+        transition={{ duration: 0.8, repeat: isBlinking ? Infinity : 0 }} // No blinking when typing
         className="ml-0.5 text-white"
         aria-hidden="true"
       >
