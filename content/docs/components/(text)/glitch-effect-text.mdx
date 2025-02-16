@@ -1,8 +1,18 @@
 ---
-title: 'GlitchEffectText'
-description: 'Simulates a glitch effect by overlaying slightly offset red and blue versions of the text.'
+title: 'Glitch Effect Text'
+description: 'Simulate a glitch effect on text with customizable speed, direction, colors, and shadow using framer-motion for dynamic animations.'
 slug: 'components/glitch-effect-text'
+category: 'UI Effects'
+tags: ['animation', 'text effects', 'UI', 'glitch', 'motion', 'framer-motion']
+# author: 'naazim Khan'  # (Optional: if you'd like to include author info)
+# date: '2025-02-16'   # (Optional: add the date of creation or last update)
 ---
+
+## Overview
+
+The `GlitchEffectText` component creates a **glitchy, distorted text effect** using `framer-motion` for animation. By applying multiple layers of text with slight offset and color differences, it simulates a glitch effect.
+
+This component allows customization of the glitch speed, direction (horizontal or vertical), text colors, and shadow for a fully customizable and dynamic visual effect.
 
 ---
 
@@ -27,51 +37,7 @@ import { GlitchEffectText } from '@/components/text/glitch-effect-text'
 
 ## Code
 
-```tsx
-'use client'
-
-import { motion } from 'framer-motion'
-
-interface GlitchEffectTextProps {
-  text: string
-}
-
-export function GlitchEffectText({ text }: GlitchEffectTextProps) {
-  return (
-    <div className="relative overflow-hidden rounded bg-gray-800 p-4 text-4xl font-bold text-white">
-      <motion.div
-        className="absolute inset-0 text-red-500"
-        animate={{
-          x: [-2, 2, -2],
-          y: [2, -2, 2],
-        }}
-        transition={{
-          repeat: Number.POSITIVE_INFINITY,
-          duration: 0.3,
-          ease: 'linear',
-        }}
-      >
-        {text}
-      </motion.div>
-      <motion.div
-        className="absolute inset-0 text-blue-500"
-        animate={{
-          x: [2, -2, 2],
-          y: [-2, 2, -2],
-        }}
-        transition={{
-          repeat: Number.POSITIVE_INFINITY,
-          duration: 0.3,
-          ease: 'linear',
-        }}
-      >
-        {text}
-      </motion.div>
-      <div className="relative">{text}</div>
-    </div>
-  )
-}
-```
+<CodeSnippet componentPath="./src/components/text/glitch-effect-text.tsx" />
 
 ## Props
 
