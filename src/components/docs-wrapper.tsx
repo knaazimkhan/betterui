@@ -9,6 +9,7 @@ import { TypeTable } from 'fumadocs-ui/components/type-table'
 import defaultMdxComponents from 'fumadocs-ui/mdx'
 import { DocsBody, DocsDescription, DocsTitle } from 'fumadocs-ui/page'
 
+import { CodeExample } from './code-example'
 import { CodeSnippet } from './code-snippet'
 import { PreviewComponent } from './preview-component'
 
@@ -33,8 +34,9 @@ export function DocsWrapper(props: DocsWrapperProps) {
             Tab,
             TypeTable,
             NextLink,
-            PreviewComponent,
+            CodeExample,
             CodeSnippet,
+            PreviewComponent,
           }}
         />
       </DocsBody>

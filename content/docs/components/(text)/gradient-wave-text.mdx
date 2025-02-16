@@ -40,21 +40,18 @@ import { GradientWaveText } from '@/components/text/gradient-wave-text'
 
 ### Custom Colors Gradient
 
-<Tabs items={["Preview", "Code"]}>
-  <Tab value="Preview">
-    <PreviewComponent>
-      <GradientWaveText
-        text="Custom Colors"
-        fromColor="from-blue-500"
-        viaColor="via-green-500"
-        toColor="to-yellow-500"
-      />
-    </PreviewComponent>
-  </Tab>
-  <Tab value="Code">
-  ```tsx
+<CodeExample
+  preview={
+    <GradientWaveText
+      text="Custom Colors"
+      fromColor="from-blue-500"
+      viaColor="via-green-500"
+      toColor="to-yellow-500"
+    />
+  }
+  code={`
     'use client'
-
+    
     import { GradientWaveText } from '@/components/text/gradient-wave-text'
 
     <GradientWaveText
@@ -63,30 +60,13 @@ import { GradientWaveText } from '@/components/text/gradient-wave-text'
       viaColor="via-green-500"
       toColor="to-yellow-500"
     />
-  ```
-  </Tab>
-</Tabs>
+  `}
+/>
 
 ### Vertical Gradient
 
-<Tabs items={["Preview", "Code"]}>
-  <Tab value="Preview">
-    <PreviewComponent>
-      <GradientWaveText
-        text="Vertical Wave"
-        direction="to-b"
-        fromColor="from-teal-400"
-        viaColor="via-cyan-400"
-        toColor="to-sky-400"
-      />
-    </PreviewComponent>
-  </Tab>
-  <Tab value="Code">
-  ```tsx
-    'use client'
-
-    import { GradientWaveText } from '@/components/text/gradient-wave-text'
-
+<CodeExample
+  preview={
     <GradientWaveText
       text="Vertical Wave"
       direction="to-b"
@@ -94,26 +74,34 @@ import { GradientWaveText } from '@/components/text/gradient-wave-text'
       viaColor="via-cyan-400"
       toColor="to-sky-400"
     />
-  ```
-  </Tab>
-</Tabs>
+  }
+  code={`
+    'use client'
+
+    import { GradientWaveText } from '@/components/text/gradient-wave-text'
+    
+    <GradientWaveText
+      text="Vertical Wave"
+      direction="to-b"
+      fromColor="from-teal-400"
+      viaColor="via-cyan-400"
+      toColor="to-sky-400"
+    />
+  `}
+/>
 
 ### Hover Effect Gradient
-
-<Tabs items={["Preview", "Code"]}>
-  <Tab value="Preview">
-    <PreviewComponent>
-      <GradientWaveText
-        text="Hover Me"
-        hoverEffect={true}
-        fromColor="from-emerald-400"
-        viaColor="via-lime-400"
-        toColor="to-yellow-400"
-      />
-    </PreviewComponent>
-  </Tab>
-  <Tab value="Code">
-  ```tsx
+<CodeExample
+  preview={
+    <GradientWaveText
+      text="Hover Me"
+      hoverEffect={true}
+      fromColor="from-emerald-400"
+      viaColor="via-lime-400"
+      toColor="to-yellow-400"
+    />
+  }
+  code={`
     'use client'
 
     import { GradientWaveText } from '@/components/text/gradient-wave-text'
@@ -125,27 +113,23 @@ import { GradientWaveText } from '@/components/text/gradient-wave-text'
       viaColor="via-lime-400"
       toColor="to-yellow-400"
     />
-  ```
-  </Tab>
-</Tabs>
+  `}
+/>
 
 ### Animation speed
 
-<Tabs items={["Preview", "Code"]}>
-  <Tab value="Preview">
-    <PreviewComponent>
-      <GradientWaveText
-        text="Animation speed"
-        hoverEffect={true}
-        fromColor="from-green-500"
-        viaColor="via-orange-500"
-        toColor="to-blue-500"
-        duration={3}
-      />
-    </PreviewComponent>
-  </Tab>
-  <Tab value="Code">
-  ```tsx
+<CodeExample
+  preview={
+    <GradientWaveText
+      text="Animation speed"
+      hoverEffect={true}
+      fromColor="from-green-500"
+      viaColor="via-orange-500"
+      toColor="to-blue-500"
+      duration={3}
+    />
+  }
+  code={`
     'use client'
 
     import { GradientWaveText } from '@/components/text/gradient-wave-text'
@@ -158,9 +142,8 @@ import { GradientWaveText } from '@/components/text/gradient-wave-text'
       toColor="to-blue-500"
       duration={3}
     />
-  ```
-  </Tab>
-</Tabs>
+  `}
+/>
 
 ## Props
 
