@@ -7,34 +7,47 @@ import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 export interface TypingSimulatorTextProps {
   /**
-   * Text to be animate.
+   * The text or list of texts to be animated.
+   * If an array is provided, it will cycle through each text sequentially.
    */
   text: string | string[]
+
   /**
-   * Allows to adjust how fast the text is type.
-   * @defaultValue 100
+   * Speed (in milliseconds) at which characters are typed.
+   * Lower values result in faster typing.
+   * @default 100
    */
   typingSpeed?: number
+
   /**
-   * Allows to adjust how fast the text is delete.
-   * @defaultValue 50
+   * Speed (in milliseconds) at which characters are deleted.
+   * Lower values result in faster deletion.
+   * @default 50
    */
   deletingSpeed?: number
+
   /**
-   * Pause before start deleting.
-   * @defaultValue 1500
+   * Delay (in milliseconds) before starting to delete the text after typing completes.
+   * @default 1500
    */
   pauseTime?: number
+
   /**
-   * The cursor character or style.
+   * The cursor symbol displayed at the end of the text.
+   * Can be customized to any character or string.
+   * @default "|"
    */
   cursorStyle?: string
+
   /**
-   * Allows the animation to restart after completion.
+   * Determines whether the animation restarts after completing all text variations.
+   * If `false`, the animation stops after typing and deleting the last text.
+   * @default false
    */
   loop?: boolean
+
   /**
-   * Easier styling customization.
+   * Additional CSS classes for customizing the component's appearance.
    */
   className?: string
 }
