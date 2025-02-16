@@ -6,7 +6,7 @@ import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock'
 interface CodeSnippetProps {
   componentPath: string
 }
-export default function CodeSnippet({ componentPath }: CodeSnippetProps) {
+export function CodeSnippet({ componentPath }: CodeSnippetProps) {
   const filePath = path.resolve(process.cwd(), componentPath)
   let code = fs.readFileSync(filePath, 'utf-8')
 
