@@ -18,16 +18,17 @@ export default function CodeSnippet({ componentPath }: CodeSnippetProps) {
   interfaces.forEach((interfaceCode) => {
     const cleanInterface = interfaceCode
       .replace(/^\s*\/\/.*$/gm, '') // Remove single-line comments inside interfaces
+      .replace(/\/\*[\s\S]*?\*\//g, '') // Remove block comments inside interfaces
       .replace(/^export\s+/g, '') // Remove the 'export' keyword from interfaces
     code = code.replace(interfaceCode, cleanInterface) // Replace the original interface code with cleaned one
   })
 
   // Remove comments outside the interface section
-  code = code.replace(/^\s*\/\/.*$/gm, '') // Remove single-line comments
-  code = code.replace(/\/\*[\s\S]*?\*\//g, '') // Remove block comments
+  // code = code.replace(/^\s*\/\/.*$/gm, '') // Remove single-line comments
+  // code = code.replace(/\/\*[\s\S]*?\*\//g, '') // Remove block comments
 
   // Remove excessive blank lines (reduce 3+ newlines to just 2)
-  code = code.replace(/\n{3,}/g, '\n\n')
+  // code = code.replace(/\n{3,}/g, '\n\n')
 
   code = code.replace(
     /(interface TypingSimulatorTextProps\s*\{[\s\S]*?\})/g,
