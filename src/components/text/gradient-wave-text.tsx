@@ -8,43 +8,90 @@ import { motion, type Transition } from 'framer-motion'
 import { cn } from '@/lib/utils'
 export interface GradientWaveTextProps {
   /**
-   * The text to be displayed with the gradient wave effect.
+   * The text content to display with the gradient wave effect.
+   * This text will be animated according to the specified props.
    */
   text: string
-  fromColor?: string
-  viaColor?: string
-  toColor?: string
+
   /**
-   * The gradient can be horizontal, vertical, or diagonal.
-   * @defaultValue "to-r"
+   * The direction of the gradient animation.
+   * Controls the movement of the gradient across the text.
+   * Options include horizontal (to-r), vertical (to-b), diagonal (to-br), or a circular gradient (circle).
+   * @default "to-r"
    */
   direction?: 'to-r' | 'to-b' | 'to-br' | 'circle'
+
   /**
-   * The animation takes 5 seconds to complete one cycle.
-   * @defaultValue 5
+   * The starting color of the gradient.
+   * This color defines the beginning of the gradient animation.
+   */
+  fromColor?: string
+
+  /**
+   * The intermediate color in the gradient, used to create smooth transitions.
+   * This color appears between the start and end colors during the animation.
+   */
+  viaColor?: string
+
+  /**
+   * The ending color of the gradient.
+   * This color marks the endpoint of the gradient animation.
+   */
+  toColor?: string
+
+  /**
+   * The duration (in seconds) of one full cycle of the gradient animation.
+   * A higher value will result in a slower animation cycle.
+   * @default 5
    */
   duration?: number
+
   /**
-   * An optional hover effect speeds up the animation when the user hovers over the text.
-   * @defaultValue false
+   * An optional hover effect that increases the animation speed when the user hovers over the text.
+   * This creates an interactive experience where the animation accelerates on hover.
+   * @default false
    */
   hoverEffect?: boolean
-  className?: string
+
   /**
-   * @defaultValue "linear"
+   * Additional CSS class names to apply to the text element.
+   * This allows customization of the component’s styling beyond the built-in props.
+   */
+  className?: string
+
+  /**
+   * The type of gradient to use: 'linear' for a linear gradient or 'radial' for a circular gradient.
+   * Affects the shape and direction of the gradient applied to the text.
+   * @default "linear"
    */
   gradientType?: 'linear' | 'radial'
-  textStroke?: boolean
+
   /**
-   * @defaultValue "linear"
+   * Enables or disables text stroke (outline) around the text.
+   * This can make the text more visible, especially with lighter or more complex backgrounds.
+   * @default false
+   */
+  textStroke?: boolean
+
+  /**
+   * The easing function that controls the timing of the animation.
+   * Easing defines how the animation speeds up or slows down during its course.
+   * Options include 'linear', 'easeIn', 'easeOut', and 'easeInOut'.
+   * @default "linear"
    */
   easing?: 'linear' | 'easeIn' | 'easeOut' | 'easeInOut'
+
   /**
-   * @defaultValue "default"
+   * The theme style of the gradient animation, which determines preset color schemes for the effect.
+   * Choose from 'default', 'ocean', 'sunset', or 'forest' to apply different aesthetic styles.
+   * @default "default"
    */
   theme?: 'default' | 'ocean' | 'sunset' | 'forest'
+
   /**
-   * @defaultValue "wave"
+   * The type of animation applied to the text.
+   * Choose from 'wave', 'pulse', or 'shimmer' to define the visual effect.
+   * @default "wave"
    */
   animationType?: 'wave' | 'pulse' | 'shimmer'
 }
