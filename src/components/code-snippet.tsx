@@ -10,28 +10,27 @@ export default function CodeSnippet({ componentPath }: CodeSnippetProps) {
   const filePath = path.resolve(process.cwd(), componentPath)
   let code = fs.readFileSync(filePath, 'utf-8')
 
-  // Remove TypeScript comments (`//` and `/** */`)
-  code = code.replace(/\/\/.*|\/\*[\s\S]*?\*\//g, '')
+  // Remove comments inside the interface section
+  const interfacePattern = /(export interface [\w\d]+\s*\{[\s\S]*?\})/g
+  const interfaces = code.match(interfacePattern) || []
 
-  // Remove blank lines that existed *only* due to comment removal
-  code = code
-    .split('\n') // Convert to array of lines
-    .filter((line, index, arr) => {
-      const trimmed = line.trim()
+  // Remove comments inside interfaces
+  interfaces.forEach((interfaceCode) => {
+    const cleanInterface = interfaceCode
+      .replace(/^\s*\/\/.*$/gm, '') // Remove single-line comments inside interfaces
+      .replace(/^export\s+/g, '') // Remove the 'export' keyword from interfaces
+    code = code.replace(interfaceCode, cleanInterface) // Replace the original interface code with cleaned one
+  })
 
-      // Remove empty lines *unless* the previous and next lines have content
-      if (trimmed === '') {
-        const prev = arr[index - 1]?.trim() || ''
-        const next = arr[index + 1]?.trim() || ''
-        return prev !== '' && next !== ''
-      }
-      return true
-    })
-    .join('\n') // Convert back to string
+  // Remove comments outside the interface section
+  code = code.replace(/^\s*\/\/.*$/gm, '') // Remove single-line comments
+  code = code.replace(/\/\*[\s\S]*?\*\//g, '') // Remove block comments
 
-  // Keep the `interface` section compact without extra blank lines
+  // Remove excessive blank lines (reduce 3+ newlines to just 2)
+  code = code.replace(/\n{3,}/g, '\n\n')
+
   code = code.replace(
-    /(export interface TypingSimulatorTextProps\s*\{[\s\S]*?\})/g,
+    /(interface TypingSimulatorTextProps\s*\{[\s\S]*?\})/g,
     (match) => match.replace(/\n\s*\n/g, '\n') // Remove extra blank lines inside the interface
   )
 
