@@ -6,6 +6,7 @@ import { motion, type Transition } from 'framer-motion'
 // import { useTheme } from 'next-themes'
 
 import { cn } from '@/lib/utils'
+
 export interface GradientWaveTextProps {
   /**
    * The text content to display with the gradient wave effect.
