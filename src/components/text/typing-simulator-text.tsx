@@ -112,10 +112,7 @@ export function TypingSimulatorText({
     // Clear previous timeout
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
 
-    timeoutRef.current = setTimeout(
-      updateText,
-      isDeleting ? deletingSpeed : typingSpeed
-    )
+    updateText()
 
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
