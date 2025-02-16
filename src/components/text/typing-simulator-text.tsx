@@ -5,6 +5,7 @@ import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { motion } from 'framer-motion'
 
 import { cn } from '@/lib/utils'
+
 export interface TypingSimulatorTextProps {
   /**
    * The text or list of texts to be animated.
