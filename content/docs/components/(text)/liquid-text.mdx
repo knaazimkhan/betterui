@@ -1,8 +1,17 @@
 ---
-title: 'LiquidText'
-description: 'Creates a liquid-like effect by animating the border radius of the text container.'
+title: 'Liquid Text'
+description: 'Create a dynamic liquid-like text effect with smooth animations of border radius and scale. Perfect for adding eye-catching text animations to your UI.'
 slug: 'components/liquid-text'
+category: 'Text'
+tags: ['animation', 'text effect', 'UI', 'motion']
+component: 'LiquidText'
 ---
+
+## Overview
+
+The `LiquidText` component creates a visually engaging liquid-like animation by dynamically adjusting the border radius and scale of the text container. This effect adds fluidity and energy to the text.
+
+The component takes additional classes to customize the component's styling.
 
 ---
 
@@ -26,33 +35,30 @@ import { LiquidText } from '@/components/text/liquid-text'
 
 ## Code
 
-```tsx
-'use client'
+<CodeSnippet componentPath="./src/components/text/liquid-text.tsx" />
 
-import { motion } from 'framer-motion'
+## Example
 
-interface LiquidTextProps {
-  text: string
-}
+### Custom Colors Gradient
 
-export function LiquidText({ text }: LiquidTextProps) {
-  return (
-    <motion.div
-      className="overflow-hidden rounded bg-blue-500 p-4 text-4xl font-bold text-white"
-      animate={{
-        borderRadius: ['20% 80% 20% 80%', '80% 20% 80% 20%', '20% 80% 20% 80%'],
-      }}
-      transition={{
-        duration: 3,
-        repeat: Number.POSITIVE_INFINITY,
-        ease: 'easeInOut',
-      }}
-    >
-      {text}
-    </motion.div>
-  )
-}
-```
+<CodeExample
+  preview={
+    <LiquidText
+      text="Liquid"
+      className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+    />
+  }
+  code={`
+  'use client'
+
+  import { LiquidText } from '@/components/text/liquid-text'
+    
+  <LiquidText
+    text="Liquid"
+    className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+  />
+  `}
+/>
 
 ## Props
 
