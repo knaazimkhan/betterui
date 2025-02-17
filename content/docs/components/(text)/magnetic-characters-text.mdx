@@ -1,8 +1,17 @@
 ---
-title: 'MagneticCharactersText'
-description: 'Individual characters react to hover, creating a magnetic-like interaction.'
+title: 'Magnetic Characters Text'
+description: 'A text component where individual characters dynamically respond to hover, creating an engaging magnetic-like effect.'
 slug: 'components/magnetic-characters-text'
+category: 'Text'
+tags: ['interactive', 'hover effect', 'animation', 'framer-motion']
+component: 'MagneticCharactersText'
 ---
+
+## Overview
+
+`MagneticCharactersText` is an interactive text component where each character reacts individually to hover, simulating a magnetic pull effect. This creates a dynamic and engaging user experience, making text elements feel more alive. The component is built using `framer-motion` for smooth animations.
+
+You can easily customize its appearance using the `className` prop, allowing you to adjust font size, colors, spacing, and other styles to match your design needs.
 
 ---
 
@@ -11,7 +20,7 @@ import { MagneticCharactersText } from '@/components/text/magnetic-characters-te
 ## Preview
 
 <PreviewComponent>
-  <MagneticCharactersText text="Magnetic" />
+  <MagneticCharactersText text="Magnetic Characters" />
 </PreviewComponent>
 
 ## Usage
@@ -21,49 +30,12 @@ import { MagneticCharactersText } from '@/components/text/magnetic-characters-te
 
 import { MagneticCharactersText } from '@/components/text/magnetic-characters-text'
 
-<MagneticCharactersText text="Magnetic" />
+<MagneticCharactersText text="Magnetic Characters" />
 ```
 
 ## Code
 
-```tsx
-'use client'
-
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-
-interface MagneticCharactersTextProps {
-  text: string
-}
-
-export function MagneticCharactersText({ text }: MagneticCharactersTextProps) {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-
-  return (
-    <div className="rounded bg-gray-800 p-4 text-4xl font-bold text-white">
-      {text.split('').map((char, index) => (
-        <motion.span
-          key={index}
-          onHoverStart={() => setHoveredIndex(index)}
-          onHoverEnd={() => setHoveredIndex(null)}
-          animate={
-            hoveredIndex !== null
-              ? {
-                  x: hoveredIndex === index ? 10 : -5,
-                  y: hoveredIndex === index ? -10 : 5,
-                  scale: hoveredIndex === index ? 1.5 : 1,
-                }
-              : {}
-          }
-          transition={{ type: 'spring', stiffness: 300 }}
-        >
-          {char}
-        </motion.span>
-      ))}
-    </div>
-  )
-}
-```
+<CodeSnippet componentPath="./src/components/text/magnetic-characters-text.tsx" />
 
 ## Props
 
