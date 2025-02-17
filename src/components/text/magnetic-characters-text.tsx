@@ -23,6 +23,7 @@ export function MagneticCharactersText({ text }: MagneticCharactersTextProps) {
             x: hoveredIndex === index ? 10 : 0,
             y: hoveredIndex === index ? -10 : 0,
             scale: hoveredIndex === index ? 1.5 : 1,
+            letterSpacing: hoveredIndex === index ? '0.4em' : '0em',
           }}
           transition={{
             type: 'spring',
