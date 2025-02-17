@@ -13,8 +13,8 @@ export interface MorphingTextProps {
 
   /**
    * Duration in milliseconds for each letter change during the animation.
-   * @default 30
    * A smaller number results in faster changes, while a larger number makes the animation slower.
+   * @default 30
    */
   speed?: number
 
