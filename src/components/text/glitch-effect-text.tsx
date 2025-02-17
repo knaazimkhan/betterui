@@ -23,7 +23,7 @@ export interface GlitchEffectTextProps {
   /**
    * Determines whether the glitch effect moves side-to-side (horizontal)
    * or up-and-down (vertical).
-   * @default 'horizontal'
+   * @default "horizontal"
    */
   glitchDirection?: 'horizontal' | 'vertical'
 
@@ -31,7 +31,7 @@ export interface GlitchEffectTextProps {
    * Defines the two colors used for the glitch layers.
    * The first color shifts in one direction, and the second color shifts in the opposite direction.
    * Accepts Tailwind color classes or standard CSS color values.
-   * @default ['text-red-500', 'text-blue-500']
+   * @default ["text-red-500", "text-blue-500"]
    */
   glitchColors?: [string, string]
 
@@ -44,7 +44,7 @@ export interface GlitchEffectTextProps {
   /**
    * Defines a custom text shadow using CSS syntax.
    * Helps in adding glow, blur, or depth effects to the main text.
-   * @default '2px 2px 4px rgba(0,0,0,0.5)'
+   * @default "2px 2px 4px rgba(0,0,0,0.5)"
    */
   textShadow?: string
 }
