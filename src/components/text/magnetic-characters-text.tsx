@@ -12,12 +12,13 @@ export function MagneticCharactersText({ text }: MagneticCharactersTextProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <div className="rounded bg-gray-800 p-4 text-4xl font-bold text-white">
+    <div className="text-4xl font-bold text-white">
       {text.split('').map((char, index) => (
         <motion.span
+          className="relative inline-block origin-center"
           key={index}
-          onHoverStart={() => setHoveredIndex(index)}
-          onHoverEnd={() => setHoveredIndex(null)}
+          onMouseEnter={() => setHoveredIndex(index)}
+          onMouseLeave={() => setHoveredIndex(null)}
           animate={
             hoveredIndex !== null
               ? {
