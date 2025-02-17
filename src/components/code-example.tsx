@@ -15,7 +15,7 @@ export const CodeExample: React.FC<CodeExampleProps> = ({ preview, code }) => {
         <PreviewComponent>{preview}</PreviewComponent>
       </Tab>
       <Tab value="Code">
-        <DynamicCodeBlock lang="tsx" code={code} />
+        <DynamicCodeBlock lang="tsx" code={code.trim()} />
       </Tab>
     </Tabs>
   )
