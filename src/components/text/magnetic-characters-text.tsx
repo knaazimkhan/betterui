@@ -4,15 +4,29 @@ import { useState } from 'react'
 
 import { motion } from 'framer-motion'
 
+import { cn } from '@/lib/utils'
+
 export interface MagneticCharactersTextProps {
+  /**
+   * The text content to be displayed with the magnetic effect.
+   */
   text: string
+
+  /**
+   * Optional additional CSS classes to customize the styling.
+   * This will be merged with the default styles.
+   */
+  className?: string
 }
 
-export function MagneticCharactersText({ text }: MagneticCharactersTextProps) {
+export function MagneticCharactersText({
+  text,
+  className,
+}: MagneticCharactersTextProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <div className="text-4xl font-bold text-white">
+    <div className={cn('text-4xl font-bold text-white', className)}>
       {text.split('').map((char, index) => (
         <motion.span
           className="relative inline-block origin-center"
