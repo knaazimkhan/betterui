@@ -19,16 +19,16 @@ export function MagneticCharactersText({ text }: MagneticCharactersTextProps) {
           key={index}
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
-          animate={
-            hoveredIndex !== null
-              ? {
-                  x: hoveredIndex === index ? 10 : -5,
-                  y: hoveredIndex === index ? -10 : 5,
-                  scale: hoveredIndex === index ? 1.5 : 1,
-                }
-              : {}
-          }
-          transition={{ type: 'spring', stiffness: 300 }}
+          animate={{
+            x: hoveredIndex === index ? 10 : 0,
+            y: hoveredIndex === index ? -10 : 0,
+            scale: hoveredIndex === index ? 1.5 : 1,
+          }}
+          transition={{
+            type: 'spring',
+            stiffness: 300,
+            damping: 30, // Smoothness of transition
+          }}
         >
           {char}
         </motion.span>
