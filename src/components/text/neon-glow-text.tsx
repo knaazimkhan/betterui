@@ -29,6 +29,10 @@ export function NeonGlowText({
           `0 0 2px #fff, 0 0 5px #fff, 0 0 7px #fff, 0 0 10px ${glowColor}, 0 0 17px ${glowColor}, 0 0 20px ${glowColor}, 0 0 25px ${glowColor}, 0 0 37px ${glowColor}`,
         ],
       }}
+      whileHover={{
+        scale: 1.1,
+        textShadow: `0 0 10px #fff, 0 0 15px #fff, 0 0 20px ${glowColor}, 0 0 50px ${glowColor}`,
+      }}
       transition={{
         duration,
         repeat: Number.POSITIVE_INFINITY,
