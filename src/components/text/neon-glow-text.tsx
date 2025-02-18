@@ -9,29 +9,33 @@ export interface NeonGlowTextProps {
   glowColor?: string
   textColor?: string
   duration?: number
+  blurRadius?: number
+  spreadRadius?: number
 }
 
 export function NeonGlowText({
   text,
   glowColor = '#ff00de',
-  textColor = 'white',
+  textColor,
   duration = 1,
+  blurRadius = 5,
+  spreadRadius = 2,
 }: NeonGlowTextProps) {
+  const textShadow = [
+    `0 0 ${blurRadius}px #fff, 0 0 ${blurRadius * 2}px #fff, 0 0 ${blurRadius * 3}px #fff, 0 0 ${blurRadius * 4}px ${glowColor}, 0 0 ${blurRadius * 7}px ${glowColor}, 0 0 ${blurRadius * 8}px ${glowColor}, 0 0 ${blurRadius * 10}px ${glowColor}, 0 0 ${blurRadius * 15}px ${glowColor}`,
+    `0 0 ${spreadRadius}px #fff, 0 0 ${spreadRadius + 3}px #fff, 0 0 ${spreadRadius + 5}px #fff, 0 0 ${spreadRadius + 8}px ${glowColor}, 0 0 ${spreadRadius + 12}px ${glowColor}, 0 0 ${spreadRadius + 18}px ${glowColor}, 0 0 ${spreadRadius + 23}px ${glowColor}, 0 0 ${spreadRadius + 35}px ${glowColor}`,
+  ]
+
   return (
     <motion.div
       className={cn(
-        'text-4xl font-bold text-white will-change-[text-shadow]',
+        'text-4xl font-bold text-gray-500 will-change-[text-shadow]',
         textColor
       )}
-      animate={{
-        textShadow: [
-          `0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px ${glowColor}, 0 0 35px ${glowColor}, 0 0 40px ${glowColor}, 0 0 50px ${glowColor}, 0 0 75px ${glowColor}`,
-          `0 0 2px #fff, 0 0 5px #fff, 0 0 7px #fff, 0 0 10px ${glowColor}, 0 0 17px ${glowColor}, 0 0 20px ${glowColor}, 0 0 25px ${glowColor}, 0 0 37px ${glowColor}`,
-        ],
-      }}
+      animate={{ textShadow }}
       whileHover={{
         scale: 1.1,
-        textShadow: `0 0 10px #fff, 0 0 15px #fff, 0 0 20px ${glowColor}, 0 0 50px ${glowColor}`,
+        textShadow: `0 0 ${blurRadius * 1.5}px #fff, 0 0 ${blurRadius * 2}px #fff, 0 0 ${blurRadius * 3}px #fff, 0 0 ${blurRadius * 5}px ${glowColor}, 0 0 ${blurRadius * 7}px ${glowColor}`,
       }}
       transition={{
         duration,
