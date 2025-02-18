@@ -19,7 +19,10 @@ export function NeonGlowText({
 }: NeonGlowTextProps) {
   return (
     <motion.div
-      className={cn('text-4xl font-bold text-white', textColor)}
+      className={cn(
+        'text-4xl font-bold text-white will-change-auto',
+        textColor
+      )}
       animate={{
         textShadow: [
           `0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px ${glowColor}, 0 0 35px ${glowColor}, 0 0 40px ${glowColor}, 0 0 50px ${glowColor}, 0 0 75px ${glowColor}`,
