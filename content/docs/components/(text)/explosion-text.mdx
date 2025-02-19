@@ -1,17 +1,17 @@
 ---
-title: 'ParticleExplosionText'
+title: 'ExplosionText'
 description: 'When clicked, the text explodes into particles and then reforms.'
 slug: 'components/particle-explosion-text'
 ---
 
 ---
 
-import { ParticleExplosionText } from '@/components/text/particle-explosion-text'
+import { ExplosionText } from '@/components/text/particle-explosion-text'
 
 ## Preview
 
 <PreviewComponent>
-  <ParticleExplosionText text="Particle" />
+  <ExplosionText text="Particle" />
 </PreviewComponent>
 
 ## Usage
@@ -19,9 +19,9 @@ import { ParticleExplosionText } from '@/components/text/particle-explosion-text
 ```tsx
 'use client'
 
-import { ParticleExplosionText } from '@/components/text/particle-explosion-text'
+import { ExplosionText } from '@/components/text/particle-explosion-text'
 
-<ParticleExplosionText text="Particle" />
+<ExplosionText text="Particle" />
 ```
 
 ## Code
@@ -36,7 +36,7 @@ interface ParticleExplosionTextProps {
   text: string
 }
 
-export function ParticleExplosionText({ text }: ParticleExplosionTextProps) {
+export function ExplosionText({ text }: ParticleExplosionTextProps) {
   const [exploded, setExploded] = useState(false)
 
   const handleClick = () => {
@@ -78,5 +78,5 @@ export function ParticleExplosionText({ text }: ParticleExplosionTextProps) {
 
 <AutoTypeTable
   path="./src/components/text/particle-explosion-text.tsx"
-  name="ParticleExplosionTextProps"
+  name="ExplosionTextProps"
 />
