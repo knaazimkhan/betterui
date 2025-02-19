@@ -1,8 +1,17 @@
 ---
-title: 'PerspectiveText'
-description: 'Rotates the text in 3D space, giving it a dynamic perspective effect.'
+title: 'Perspective Text'
+description: 'A 3D rotating text component with interactive perspective effects, customizable rotation speed, and smooth hover transitions.'
 slug: 'components/perspective-text'
+category: 'Text'
+tags: ['3D Text', 'Interactive UI', 'Framer Motion', 'Hover Effects']
+component: 'PerspectiveText'
 ---
+
+## Overview
+
+The `PerspectiveText` component creates an interactive 3D text effect using **Framer Motion**. It continuously rotates along the Y-axis and dynamically responds to mouse movements, providing a depth illusion.
+
+The rotation speed and behavior can be customized for a more engaging user experience.
 
 ---
 
@@ -26,35 +35,70 @@ import { PerspectiveText } from '@/components/text/perspective-text'
 
 ## Code
 
-```tsx
-'use client'
+<CodeSnippet componentPath="./src/components/text/perspective-text.tsx" />
 
-import { motion } from 'framer-motion'
+## Examples
 
-interface PerspectiveTextProps {
-  text: string
-}
+### rotationSpeed
 
-export function PerspectiveText({ text }: PerspectiveTextProps) {
-  return (
-    <div className="perspective-[1000px] rounded bg-gray-800 p-4 text-4xl font-bold text-white">
-      <motion.div
-        animate={{
-          rotateX: [0, 360],
-          rotateY: [0, 360],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: 'linear',
-        }}
-      >
-        {text}
-      </motion.div>
-    </div>
-  )
-}
-```
+The `rotationSpeed` is used to change the Y-axis rotation speed.
+
+Fast Rotation
+
+<CodeExample
+  preview={ <PerspectiveText text="Fast Rotation" rotationSpeed={2} /> }
+  code={`
+  'use client'
+
+  import { PerspectiveText } from '@/components/text/perspective-text'
+
+  <PerspectiveText text="Fast Rotation" rotationSpeed={2} />
+  `}
+/>
+
+Slow Rotation
+
+<CodeExample
+  preview={ <PerspectiveText text="Slow Rotation" rotationSpeed={6} /> }
+  code={`
+  'use client'
+
+  import { PerspectiveText } from '@/components/text/perspective-text'
+
+  <PerspectiveText text="Slow Rotation" rotationSpeed={6} />
+  `}
+/>
+
+### reverseRotation
+
+The `reverseRotation` is used to text rotate counterclockwise instead of clockwise.
+
+<CodeExample
+  preview={ <PerspectiveText text="Reverse Rotation" reverseRotation /> }
+  code={`
+  'use client'
+
+  import { PerspectiveText } from '@/components/text/perspective-text'
+
+  <PerspectiveText text="Reverse Rotation" reverseRotation />
+  `}
+/>
+
+### className
+
+The `className` is used to custom styles using classes.
+
+<CodeExample
+  preview={ <PerspectiveText text="Stylized Text" className="text-yellow-500" /> }
+  code={`
+  'use client'
+
+  import { PerspectiveText } from '@/components/text/perspective-text'
+
+  <PerspectiveText text="Stylized Text" className="text-yellow-500" />
+
+  `}
+/>
 
 ## Props
 

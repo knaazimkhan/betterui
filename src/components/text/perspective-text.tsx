@@ -5,6 +5,7 @@ import { useCallback, useEffect } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 
 import { cn } from '@/lib/utils'
+
 export interface PerspectiveTextProps {
   /**
    * The text content to be displayed with the perspective effect.
