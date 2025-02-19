@@ -9,19 +9,19 @@ import { cn } from '@/lib/utils'
 export interface NeonGlowTextProps {
   text: string
   glowColor?: string
-  textColor?: string
   duration?: number
   blurRadius?: number
   spreadRadius?: number
+  className?: string
 }
 
 export function NeonGlowText({
   text,
   glowColor = '#ff00de',
-  textColor,
   duration = 1,
   blurRadius = 5,
   spreadRadius = 2,
+  className,
 }: NeonGlowTextProps) {
   const [isHovered, setIsHovered] = useState<boolean>(false)
 
@@ -36,7 +36,7 @@ export function NeonGlowText({
     <motion.div
       className={cn(
         'text-4xl font-bold text-gray-500 will-change-[text-shadow]',
-        textColor
+        className
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
