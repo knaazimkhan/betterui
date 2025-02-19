@@ -7,11 +7,42 @@ import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 export interface NeonGlowTextProps {
+  /**
+   * The main text to display inside the component.
+   */
   text: string
+
+  /**
+   * The color of the glowing effect.
+   * It can be any valid CSS color value (hex, RGB, or named color).
+   * @default "#ff00de"
+   */
   glowColor?: string
+
+  /**
+   * The duration of the animation (in seconds).
+   * It controls how long the animation lasts for each cycle.
+   * @default 1
+   */
   duration?: number
+
+  /**
+   * The blur radius for the glow effect.
+   * A larger value makes the glow more diffuse.
+   * @default 5
+   */
   blurRadius?: number
+
+  /**
+   * The spread radius for the glow effect.
+   * A larger value causes the glow to spread further from the text.
+   * @default 2
+   */
   spreadRadius?: number
+
+  /**
+   * Additional Tailwind CSS or custom class names for styling the component.
+   */
   className?: string
 }
 
