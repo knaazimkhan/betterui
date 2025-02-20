@@ -1,8 +1,17 @@
 ---
-title: 'SVGPathText'
-description: 'Animates text along an SVG path, creating a curved text effect.'
+title: 'SVG Path Text'
+description: 'Create animated text that follows a customizable SVG path. Perfect for creating dynamic and engaging text animations with ease.'
 slug: 'components/svg-path-text'
+category: 'Text'
+tags: ['animation', 'SVG', 'text', 'motion']
+component: 'SVGPathText'
 ---
+
+## Overview
+
+The `SVGPathText` component allows you to animate text along a customizable SVG path. It creates a smooth, dynamic animation where the text follows a curved path, making it ideal for adding interactive or eye-catching typography to your web projects.
+
+You can adjust the path, duration, and text styling to suit your needs.
 
 ---
 
@@ -26,51 +35,7 @@ import { SVGPathText } from '@/components/text/svg-path-text'
 
 ## Code
 
-```tsx
-'use client'
-
-import { motion } from 'framer-motion'
-
-interface SVGPathTextProps {
-  text: string
-}
-
-export function SVGPathText({ text }: SVGPathTextProps) {
-  return (
-    <div className="rounded bg-gray-800 p-4 text-4xl font-bold text-white">
-      <svg width="300" height="100">
-        <motion.path
-          d={`M10 80 Q150 20 290 80`}
-          fill="transparent"
-          stroke="white"
-          strokeWidth="2"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{
-            duration: 2,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: 'reverse',
-          }}
-        />
-        <motion.text
-          x="150"
-          y="85"
-          textAnchor="middle"
-          fill="white"
-          fontSize="24"
-        >
-          <textPath href="#textPath" startOffset="50%">
-            {text}
-          </textPath>
-        </motion.text>
-        <defs>
-          <path id="textPath" d={`M10 80 Q150 20 290 80`} />
-        </defs>
-      </svg>
-    </div>
-  )
-}
-```
+<CodeSnippet componentPath="./src/components/text/svg-path-text.tsx" />
 
 ## Props
 
