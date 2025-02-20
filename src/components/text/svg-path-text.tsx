@@ -7,9 +7,17 @@ export interface SVGPathTextProps {
 }
 
 export function SVGPathText({ text }: SVGPathTextProps) {
+  // Dynamically calculate the font size and SVG width based on the length of the text
+  const baseFontSize = 24
+  const scaledFontSize = Math.max(
+    baseFontSize,
+    Math.min(baseFontSize * (text.length / 6), baseFontSize * 2)
+  ) // Scale font size based on text length
+  const svgWidth = Math.max(300, text.length * 10) // Adjust SVG width based on text length
+
   return (
     <div className="text-4xl font-bold text-white">
-      <svg width="300" height="100">
+      <svg width={svgWidth} height="100">
         <motion.path
           d={`M10 80 Q150 20 290 80`}
           fill="transparent"
@@ -28,7 +36,7 @@ export function SVGPathText({ text }: SVGPathTextProps) {
           y="85"
           textAnchor="middle"
           fill="white"
-          fontSize="24"
+          fontSize={scaledFontSize}
         >
           <textPath href="#textPath" startOffset="50%">
             {text}
