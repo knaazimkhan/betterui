@@ -8,7 +8,7 @@ export interface SVGPathTextProps {
 
 export function SVGPathText({ text }: SVGPathTextProps) {
   return (
-    <div className="rounded bg-gray-800 p-4 text-4xl font-bold text-white">
+    <div className="text-4xl font-bold text-white">
       <svg width="300" height="100">
         <motion.path
           d={`M10 80 Q150 20 290 80`}
