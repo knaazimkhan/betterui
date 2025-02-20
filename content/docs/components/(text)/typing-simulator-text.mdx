@@ -41,160 +41,112 @@ import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
 
 ### text
 
-This prop defines the text that will be typed. It can either be a string or an array of strings.
+This `text` props defines the text that will be typed. It can either be a string or an array of strings.
 
-<Tabs items={["Preview", "Code"]}>
-  <Tab value="Preview">
-    <PreviewComponent>
-      <TypingSimulatorText text={["Hello", "World!"]} />
-    </PreviewComponent>
-  </Tab>
-  <Tab value="Code">
-  ```tsx
-    'use client'
+<CodeExample
+  preview={ <TypingSimulatorText text={["Hello", "World!"]} /> }
+  code={`
+  'use client'
 
-    import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+  import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
 
-    <TypingSimulatorText text="Hello World!" />
-    
-    Or use an array of strings to type multiple messages:
+  <TypingSimulatorText text="Hello World!" />
+  
+  Or use an array of strings to type multiple messages:
 
-    <TypingSimulatorText text={["Hello", "World!"]} />
-  ```
-  </Tab>
-</Tabs>
+  <TypingSimulatorText text={["Hello", "World!"]} />
+  `}
+/>
 
 ### typingSpeed
 
-The typingSpeed prop controls how fast the text is typed out. The default value is 100.
+The `typingSpeed` prop controls how fast the text is typed out.
 
-<Tabs items={["Preview", "Code"]}>
-  <Tab value="Preview">
-    <PreviewComponent>
-      <TypingSimulatorText text="Fast typing speed" typingSpeed={50} />
-    </PreviewComponent>
-  </Tab>
-  <Tab value="Code">
-  ```tsx
-    'use client'
+<CodeExample
+  preview={ <TypingSimulatorText text="Fast typing speed" typingSpeed={50} /> }
+  code={`
+  'use client'
 
-    import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+  import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
 
-    <TypingSimulatorText text="Fast typing speed" typingSpeed={50} />
-  ```
-  </Tab>
-</Tabs>
-This example will type the text faster.
+  <TypingSimulatorText text="Fast typing speed" typingSpeed={50} />
+  `}
+/>
 
 ### deletingSpeed
 
-The deletingSpeed prop controls how fast the text is deleted. The default value is 50.
+The `deletingSpeed` prop controls how fast the text is deleted.
 
-<Tabs items={["Preview", "Code"]}>
-  <Tab value="Preview">
-    <PreviewComponent>
-      <TypingSimulatorText text="Slow deleting speed" deletingSpeed={200} loop={true} />
-    </PreviewComponent>
-  </Tab>
-  <Tab value="Code">
-  ```tsx
-    'use client'
+<CodeExample
+  preview={ <TypingSimulatorText text="Slow deleting speed" deletingSpeed={200} loop={true} /> }
+  code={`
+  'use client'
 
-    import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+  import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
 
-    <TypingSimulatorText text="Slow deleting speed" deletingSpeed={200} loop={true} />
-  ```
-  </Tab>
-</Tabs>
-This example will delete the text slowly.
+  <TypingSimulatorText text="Slow deleting speed" deletingSpeed={200} loop={true} />
+  `}
+/>
 
 ### pauseTime
 
-The pauseTime prop controls how long the text will pause before deleting. The default value is 1500.
+The `pauseTime` prop controls how long the text will pause before deleting.
 
-<Tabs items={["Preview", "Code"]}>
-  <Tab value="Preview">
-    <PreviewComponent>
-      <TypingSimulatorText text="Pause before deleting" pauseTime={3000} loop={true} />
-    </PreviewComponent>
-  </Tab>
-  <Tab value="Code">
-  ```tsx
-    'use client'
+<CodeExample
+  preview={ <TypingSimulatorText text="Pause before deleting" pauseTime={3000} loop={true} /> }
+  code={`
+  'use client'
 
-    import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+  import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
 
-    <TypingSimulatorText text="Pause before deleting" pauseTime={3000} loop={true} />
-  ```
-  </Tab>
-</Tabs>
-This example will wait for 3 seconds before starting to delete the text.
+  <TypingSimulatorText text="Pause before deleting" pauseTime={3000} loop={true} />
+  `}
+/>
 
 ### cursorStyle
 
-The cursorStyle prop defines the character or style of the cursor. By default, it is a pipe (|).
+The `cursorStyle` prop defines the character or style of the cursor.
 
-<Tabs items={["Preview", "Code"]}>
-  <Tab value="Preview">
-    <PreviewComponent>
-      <TypingSimulatorText text="Different cursor" cursorStyle="_" />
-    </PreviewComponent>
-  </Tab>
-  <Tab value="Code">
-  ```tsx
-    'use client'
+<CodeExample
+  preview={ <TypingSimulatorText text="Different cursor" cursorStyle="_" /> }
+  code={`
+  'use client'
 
-    import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+  import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
 
-    <TypingSimulatorText text="Different cursor" cursorStyle="_" />
-  ```
-  </Tab>
-</Tabs>
-This example will change the cursor style to any custom character.
+  <TypingSimulatorText text="Different cursor" cursorStyle="_" />
+  `}
+/>
 
 ### loop
 
-The loop prop, when set to true, will restart the typing animation after it completes.
+The `loop` prop, when set to true, will restart the typing animation after it completes.
 
-<Tabs items={["Preview", "Code"]}>
-  <Tab value="Preview">
-    <PreviewComponent>
-      <TypingSimulatorText text="Looping text" loop={true} />
-    </PreviewComponent>
-  </Tab>
-  <Tab value="Code">
-  ```tsx
-    'use client'
+<CodeExample
+  preview={ <TypingSimulatorText text="Looping text" loop={true} /> }
+  code={`
+  'use client'
 
-    import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+  import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
 
-    <TypingSimulatorText text="Looping text" loop={true} />
-  ```
-  </Tab>
-</Tabs>
-This will make the typing effect restart after completion.
+  <TypingSimulatorText text="Looping text" loop={true} />
+  `}
+/>
 
 ### className
 
-The className prop allows you to add custom styling to the component.
+The `className` prop allows you to add custom styling to the component.
 
-<Tabs items={["Preview", "Code"]}>
-  <Tab value="Preview">
-    <PreviewComponent>
-      <TypingSimulatorText text="Custom styling" className="text-yellow-500" />
-    </PreviewComponent>
-  </Tab>
-  <Tab value="Code">
-  ```tsx
-    'use client'
+<CodeExample
+  preview={ <TypingSimulatorText text="Custom styling" className="text-yellow-500" /> }
+  code={`
+  'use client'
 
-    import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+  import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
 
-    <TypingSimulatorText text="Custom styling" className="text-yellow-500" />
-  ```
-  </Tab>
-</Tabs>
-This will apply text-yellow-500 class to the component.
+  <TypingSimulatorText text="Custom styling" className="text-yellow-500" />
+  `}
+/>
 
 ## Props
 
