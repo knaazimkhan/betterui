@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { motion, type Transition } from 'framer-motion'
+import { motion, type Transition } from 'motion/react'
 // import { useTheme } from 'next-themes'
 
 import { cn } from '@/lib/utils'
