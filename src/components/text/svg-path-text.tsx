@@ -3,12 +3,46 @@
 import { motion } from 'framer-motion'
 
 export interface SVGPathTextProps {
+  /**
+   * The text to display along the SVG path.
+   */
   text: string
+
+  /**
+   * The `d` attribute of the SVG path, which defines the shape.
+   * You can provide a custom path for the text to follow.
+   * @default "M10 80 Q150 20 300 80"
+   */
   pathD?: string
+
+  /**
+   * Duration of the path animation, controlling how long it takes to animate the path length.
+   * @default 2
+   */
   duration?: number
+
+  /**
+   * Font family of the text displayed.
+   * @default "Arial"
+   */
   fontFamily?: string
+
+  /**
+   * Font weight of the text.
+   * @default "normal"
+   */
   fontWeight?: string
+
+  /**
+   * Font style of the text.
+   * @default "normal"
+   */
   fontStyle?: string
+
+  /**
+   * Text decoration (e.g., underline, strike-through).
+   * @default "none"
+   */
   textDecoration?: string
 }
 
