@@ -4,9 +4,23 @@ import { motion } from 'framer-motion'
 
 export interface SVGPathTextProps {
   text: string
+  pathD?: string
+  duration?: number
+  fontFamily?: string
+  fontWeight?: string
+  fontStyle?: string
+  textDecoration?: string
 }
 
-export function SVGPathText({ text }: SVGPathTextProps) {
+export function SVGPathText({
+  text,
+  pathD = `M10 80 Q150 20 300 80`,
+  duration = 2,
+  fontFamily = 'Arial',
+  fontWeight = 'normal',
+  fontStyle = 'normal',
+  textDecoration = 'none',
+}: SVGPathTextProps) {
   // Dynamically calculate the font size and SVG width based on the length of the text
   const baseFontSize = 24
   const scaledFontSize = Math.max(
@@ -15,23 +29,20 @@ export function SVGPathText({ text }: SVGPathTextProps) {
   ) // Scale font size based on text length
   const svgWidth = Math.max(300, text.length * 15) // Adjust SVG width based on text length
 
-  // Use a longer path to ensure enough space for text
-  const pathLength = 300 // Increased length of the path for more space
-
   const calculatedOffset = Math.max(25, 25 - text.length * 0.5, 0)
 
   return (
     <div className="text-4xl font-bold text-white">
-      <svg width={svgWidth} height="100">
+      <svg width={svgWidth} height="100" viewBox={`0 0 ${svgWidth} 100`}>
         <motion.path
-          d={`M10 80 Q150 20 ${pathLength} 80`} // Longer path
+          d={pathD}
           fill="transparent"
           stroke="white"
           strokeWidth="2"
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
           transition={{
-            duration: 2,
+            duration,
             repeat: Number.POSITIVE_INFINITY,
             repeatType: 'reverse',
           }}
@@ -42,13 +53,17 @@ export function SVGPathText({ text }: SVGPathTextProps) {
           textAnchor="middle"
           fill="white"
           fontSize={scaledFontSize}
+          fontFamily={fontFamily}
+          fontWeight={fontWeight}
+          fontStyle={fontStyle}
+          textDecoration={textDecoration}
         >
           <textPath href="#textPath" startOffset={`${calculatedOffset}%`}>
             {text}
           </textPath>
         </motion.text>
         <defs>
-          <path id="textPath" d={`M10 80 Q150 20 ${pathLength} 80`} />
+          <path id="textPath" d={pathD} />
         </defs>
       </svg>
     </div>
