@@ -95,6 +95,12 @@ export interface GradientWaveTextProps {
    * @default "wave"
    */
   animationType?: 'wave' | 'pulse' | 'shimmer'
+
+  /**
+   * The element type of the component
+   * @default "div"
+   */
+  as?: React.ElementType
 }
 
 const themes = {
@@ -125,7 +131,10 @@ export function GradientWaveText({
   easing = 'linear',
   theme = 'default',
   animationType = 'wave',
+  as: Component = 'div',
 }: GradientWaveTextProps) {
+  const MotionComponent = motion.create(Component)
+
   // const { theme: systemTheme } = useTheme()
 
   const [isHovered, setIsHovered] = useState(false)
@@ -158,7 +167,7 @@ export function GradientWaveText({
   }
 
   return (
-    <motion.div
+    <MotionComponent
       className={cn(
         `cursor-pointer rounded bg-[length:200%_200%] bg-clip-text p-4 text-4xl font-bold
         text-transparent`,
@@ -176,6 +185,6 @@ export function GradientWaveText({
       // data-theme={systemTheme}
     >
       {text}
-    </motion.div>
+    </MotionComponent>
   )
 }

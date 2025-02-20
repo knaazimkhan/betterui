@@ -47,6 +47,12 @@ export interface GlitchEffectTextProps {
    * @default "2px 2px 4px rgba(0,0,0,0.5)"
    */
   textShadow?: string
+
+  /**
+   * The element type of the component
+   * @default "div"
+   */
+  as?: React.ElementType
 }
 
 export function GlitchEffectText({
@@ -56,7 +62,10 @@ export function GlitchEffectText({
   glitchColors = ['text-red-500', 'text-blue-500'],
   textShadow = '2px 2px 4px rgba(0,0,0,0.5)', // Default shadow
   className,
+  as: Component = 'div',
 }: GlitchEffectTextProps) {
+  const MotionComponent = motion.create(Component)
+
   const direction = glitchDirection === 'horizontal' ? [-2, 2, -2] : [2, -2, 2]
   const secondaryDirection =
     glitchDirection === 'horizontal' ? [2, -2, 2] : [-2, 2, -2]
@@ -69,7 +78,7 @@ export function GlitchEffectText({
       )}
     >
       {/* Glitch Layer 1 */}
-      <motion.div
+      <MotionComponent
         className={cn(
           'absolute inset-0 z-10 will-change-transform',
           glitchColors[0]
@@ -86,10 +95,10 @@ export function GlitchEffectText({
         }}
       >
         {text}
-      </motion.div>
+      </MotionComponent>
 
       {/* Glitch Layer 2 */}
-      <motion.div
+      <MotionComponent
         className={cn(
           'absolute inset-0 z-20 will-change-transform',
           glitchColors[1]
@@ -106,7 +115,7 @@ export function GlitchEffectText({
         }}
       >
         {text}
-      </motion.div>
+      </MotionComponent>
 
       {/* Main Text */}
       <div className="relative z-30" style={{ textShadow }}>

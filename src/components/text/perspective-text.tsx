@@ -30,6 +30,12 @@ export interface PerspectiveTextProps {
    * @default false
    */
   reverseRotation?: boolean
+
+  /**
+   * The element type of the component
+   * @default "div"
+   */
+  as?: React.ElementType
 }
 
 export function PerspectiveText({
@@ -37,7 +43,10 @@ export function PerspectiveText({
   className,
   rotationSpeed = 4,
   reverseRotation = true,
+  as: Component = 'div',
 }: PerspectiveTextProps) {
+  const MotionComponent = motion.create(Component)
+
   const controls = useAnimation()
 
   useEffect(() => {
@@ -101,13 +110,13 @@ export function PerspectiveText({
       onMouseLeave={handleMouseLeave}
       aria-label={text}
     >
-      <motion.div
+      <MotionComponent
         animate={controls}
         initial={{ rotateX: 0, rotateY: 0 }}
         whileHover={{ scale: 1.1 }}
       >
         {text}
-      </motion.div>
+      </MotionComponent>
     </div>
   )
 }

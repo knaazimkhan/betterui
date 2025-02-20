@@ -51,6 +51,12 @@ export interface TypingSimulatorTextProps {
    * Additional CSS classes for customizing the component's appearance.
    */
   className?: string
+
+  /**
+   * The element type of the component
+   * @default "span"
+   */
+  as?: React.ElementType
 }
 
 export function TypingSimulatorText({
@@ -61,7 +67,10 @@ export function TypingSimulatorText({
   cursorStyle = '|',
   loop = false,
   className,
+  as: Component = 'span',
 }: TypingSimulatorTextProps) {
+  const MotionComponent = motion.create(Component)
+
   const [displayText, setDisplayText] = useState('')
   const [textIndex, setTextIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
@@ -140,14 +149,14 @@ export function TypingSimulatorText({
       aria-label="Typing simulator"
     >
       <span aria-live="polite">{displayText}</span>
-      <motion.span
+      <MotionComponent
         animate={{ opacity: isBlinking ? [1, 0, 1] : 1 }} // Blinks only if when idle
         transition={{ duration: 0.8, repeat: isBlinking ? Infinity : 0 }} // No blinking when typing
         className="ml-0.5 text-white"
         aria-hidden="true"
       >
         {cursorStyle}
-      </motion.span>
+      </MotionComponent>
     </div>
   )
 }

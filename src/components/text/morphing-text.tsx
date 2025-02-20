@@ -25,9 +25,22 @@ export interface MorphingTextProps {
    * @default 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
    */
   charSet?: string
+
+  /**
+   * The element type of the component
+   * @default "div"
+   */
+  as?: React.ElementType
 }
 
-export function MorphingText({ text, charSet, speed = 30 }: MorphingTextProps) {
+export function MorphingText({
+  text,
+  charSet,
+  speed = 30,
+  as: Component = 'div',
+}: MorphingTextProps) {
+  const MotionComponent = motion.create(Component)
+
   const [currentText, setCurrentText] = useState(text)
   const letters = charSet || 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
@@ -78,13 +91,13 @@ export function MorphingText({ text, charSet, speed = 30 }: MorphingTextProps) {
   }, [text])
 
   return (
-    <motion.div
+    <MotionComponent
       className="text-4xl font-bold text-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
       {currentText}
-    </motion.div>
+    </MotionComponent>
   )
 }

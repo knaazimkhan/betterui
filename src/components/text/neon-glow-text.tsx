@@ -44,6 +44,12 @@ export interface NeonGlowTextProps {
    * Additional Tailwind CSS or custom class names for styling the component.
    */
   className?: string
+
+  /**
+   * The element type of the component
+   * @default "div"
+   */
+  as?: React.ElementType
 }
 
 export function NeonGlowText({
@@ -53,7 +59,10 @@ export function NeonGlowText({
   blurRadius = 5,
   spreadRadius = 2,
   className,
+  as: Component = 'div',
 }: NeonGlowTextProps) {
+  const MotionComponent = motion.create(Component)
+
   const [isHovered, setIsHovered] = useState<boolean>(false)
 
   const textShadow = [
@@ -64,7 +73,7 @@ export function NeonGlowText({
   const hoverTextShadow = `0 0 ${blurRadius * 1.5}px #fff, 0 0 ${blurRadius * 2}px #fff, 0 0 ${blurRadius * 3}px #fff, 0 0 ${blurRadius * 5}px ${glowColor}, 0 0 ${blurRadius * 7}px ${glowColor}`
 
   return (
-    <motion.div
+    <MotionComponent
       className={cn(
         'text-4xl font-bold text-gray-500 will-change-[text-shadow]',
         className
@@ -82,6 +91,6 @@ export function NeonGlowText({
       }}
     >
       {text}
-    </motion.div>
+    </MotionComponent>
   )
 }

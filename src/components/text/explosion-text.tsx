@@ -36,6 +36,12 @@ export interface ExplosionTextProps {
 
   /** Additional custom CSS classes to apply to the container element */
   className?: string
+
+  /**
+   * The element type of the component
+   * @default "span"
+   */
+  as?: React.ElementType
 }
 
 export function ExplosionText({
@@ -45,7 +51,10 @@ export function ExplosionText({
   direction = 'top',
   resetDelay = 1000,
   className,
+  as: Component = 'span',
 }: ExplosionTextProps) {
+  const MotionComponent = motion.create(Component)
+
   const [exploded, setExploded] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -84,7 +93,7 @@ export function ExplosionText({
       onClick={handleClick}
     >
       {text.split('').map((char, index) => (
-        <motion.span
+        <MotionComponent
           key={index}
           animate={
             exploded && index < currentIndex
@@ -113,7 +122,7 @@ export function ExplosionText({
           }}
         >
           {char}
-        </motion.span>
+        </MotionComponent>
       ))}
     </div>
   )

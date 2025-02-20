@@ -16,6 +16,12 @@ export interface LiquidTextProps {
    * of the component. This allows for further customization beyond the base styles.
    */
   className?: string
+
+  /**
+   * The element type of the component
+   * @default "div"
+   */
+  as?: React.ElementType
 }
 
 const animationVariants = {
@@ -35,9 +41,15 @@ const animationVariants = {
   },
 }
 
-export function LiquidText({ text, className }: LiquidTextProps) {
+export function LiquidText({
+  text,
+  className,
+  as: Component = 'div',
+}: LiquidTextProps) {
+  const MotionComponent = motion.create(Component)
+
   return (
-    <motion.div
+    <MotionComponent
       className={cn(
         `w-44 overflow-hidden rounded p-6 text-4xl font-bold text-white shadow-lg
         will-change-transform`,
@@ -48,6 +60,6 @@ export function LiquidText({ text, className }: LiquidTextProps) {
       transition={animationVariants.transition}
     >
       {text}
-    </motion.div>
+    </MotionComponent>
   )
 }

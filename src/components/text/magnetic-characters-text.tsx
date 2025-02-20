@@ -17,12 +17,21 @@ export interface MagneticCharactersTextProps {
    * This will be merged with the default styles.
    */
   className?: string
+
+  /**
+   * The element type of the component
+   * @default "span"
+   */
+  as?: React.ElementType
 }
 
 export function MagneticCharactersText({
   text,
   className,
+  as: Component = 'span',
 }: MagneticCharactersTextProps) {
+  const MotionComponent = motion.create(Component)
+
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
@@ -38,7 +47,7 @@ export function MagneticCharactersText({
         }
 
         return (
-          <motion.span
+          <MotionComponent
             className="relative inline-block origin-center"
             key={index}
             onMouseEnter={() => setHoveredIndex(index)}
@@ -56,7 +65,7 @@ export function MagneticCharactersText({
             }}
           >
             {char}
-          </motion.span>
+          </MotionComponent>
         )
       })}
     </div>
