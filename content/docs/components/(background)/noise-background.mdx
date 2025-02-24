@@ -9,9 +9,11 @@ import { NoiseBackground } from '@/components/background/noise-background'
 
 ## Preview
 
-<PreviewComponent>
-  <NoiseBackground />
-</PreviewComponent>
+<ComponentBackground>
+  <div className="relative h-[496px] w-full overflow-hidden rounded-lg border bg-background">
+    <NoiseBackground />
+  </div>
+</ComponentBackground>
 
 ## Usage
 
@@ -20,7 +22,9 @@ import { NoiseBackground } from '@/components/background/noise-background'
 
 import { NoiseBackground } from '@/components/background/noise-background'
 
-<NoiseBackground />
+<div className="relative h-[496px] w-full overflow-hidden rounded-lg border bg-background">
+  <NoiseBackground />
+</div>
 ```
 
 ## Code

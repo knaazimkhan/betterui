@@ -9,9 +9,11 @@ import { MatrixRainBackground } from '@/components/background/matrix-rain-backgr
 
 ## Preview
 
-<PreviewComponent>
-  <MatrixRainBackground />
-</PreviewComponent>
+<ComponentBackground>
+  <div className="relative h-[496px] w-full overflow-hidden rounded-lg border bg-background">
+    <MatrixRainBackground />
+  </div>
+</ComponentBackground>
 
 ## Usage
 
@@ -20,7 +22,9 @@ import { MatrixRainBackground } from '@/components/background/matrix-rain-backgr
 
 import { MatrixRainBackground } from '@/components/background/matrix-rain-background'
 
-<MatrixRainBackground />
+<div className="relative h-[496px] w-full overflow-hidden rounded-lg border bg-background">
+  <MatrixRainBackground />
+</div>
 ```
 
 ## Code

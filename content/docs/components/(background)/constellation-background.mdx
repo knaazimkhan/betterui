@@ -9,9 +9,11 @@ import { ConstellationBackground } from '@/components/background/constellation-b
 
 ## Preview
 
-<PreviewComponent>
-  <ConstellationBackground />
-</PreviewComponent>
+<ComponentBackground>
+  <div className="relative h-[496px] w-full overflow-hidden rounded-lg border bg-background">
+    <ConstellationBackground />
+  </div>
+</ComponentBackground>
 
 ## Usage
 
@@ -20,7 +22,9 @@ import { ConstellationBackground } from '@/components/background/constellation-b
 
 import { ConstellationBackground } from '@/components/background/constellation-background'
 
-<ConstellationBackground />
+<div className="relative h-[496px] w-full overflow-hidden rounded-lg border bg-background">
+  <ConstellationBackground />
+</div>
 ```
 
 ## Code

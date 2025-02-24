@@ -9,9 +9,11 @@ import { AuroraBackground } from '@/components/background/aurora-background'
 
 ## Preview
 
-<PreviewComponent>
-  <AuroraBackground />
-</PreviewComponent>
+<ComponentBackground>
+  <div className="relative h-[496px] w-full overflow-hidden rounded-lg border bg-background">
+    <AuroraBackground />
+  </div>
+</ComponentBackground>
 
 ## Usage
 
@@ -20,7 +22,9 @@ import { AuroraBackground } from '@/components/background/aurora-background'
 
 import { AuroraBackground } from '@/components/background/aurora-background'
 
-<AuroraBackground />
+<div className="relative h-[496px] w-full overflow-hidden rounded-lg border bg-background">
+  <AuroraBackground />
+</div>
 ```
 
 ## Code

@@ -9,9 +9,11 @@ import { WavePatternBackground } from '@/components/background/wave-pattern-back
 
 ## Preview
 
-<PreviewComponent>
-  <WavePatternBackground />
-</PreviewComponent>
+<ComponentBackground>
+  <div className="relative h-[496px] w-full overflow-hidden rounded-lg border bg-background">
+    <WavePatternBackground />
+  </div>
+</ComponentBackground>
 
 ## Usage
 
@@ -20,7 +22,9 @@ import { WavePatternBackground } from '@/components/background/wave-pattern-back
 
 import { WavePatternBackground } from '@/components/background/wave-pattern-background'
 
-<WavePatternBackground />
+<div className="relative h-[496px] w-full overflow-hidden rounded-lg border bg-background">
+  <WavePatternBackground />
+</div>
 ```
 
 ## Code

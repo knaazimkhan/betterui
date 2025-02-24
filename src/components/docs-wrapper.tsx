@@ -11,6 +11,7 @@ import { DocsBody, DocsDescription, DocsTitle } from 'fumadocs-ui/page'
 
 import { CodeExample } from './code-example'
 import { CodeSnippet } from './code-snippet'
+import { ComponentBackground } from './component-background'
 import { PreviewComponent } from './preview-component'
 
 interface DocsWrapperProps extends MarkdownProps {
@@ -36,6 +37,7 @@ export function DocsWrapper(props: DocsWrapperProps) {
             NextLink,
             CodeExample,
             CodeSnippet,
+            ComponentBackground,
             PreviewComponent,
           }}
         />
