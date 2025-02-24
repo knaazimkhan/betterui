@@ -2,5 +2,5 @@
   "title": "Components",
   "description": "The docs components",
   "root": true,
-  "pages": ["(text)", "(button)"]
+  "pages": ["(text)", "(button)", "(background)"]
 }
