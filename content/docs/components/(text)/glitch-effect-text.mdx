@@ -39,6 +39,58 @@ import { GlitchEffectText } from '@/components/text/glitch-effect-text'
 
 <CodeSnippet componentPath="./src/components/text/glitch-effect-text.tsx" />
 
+## Example
+
+### glitchSpeed
+
+<CodeExample
+  preview={
+    <GlitchEffectText
+      text="Glitch"
+      glitchDirection="horizontal"
+      glitchSpeed={0.5}
+      className="hover:blur-[1px]"
+    />
+  }
+  code={`
+  'use client'
+  
+  import { GlitchEffectText } from '@/components/text/glitch-effect-text'
+
+  <GlitchEffectText
+    text="Glitch"
+    glitchDirection="horizontal"
+    glitchSpeed={0.5}
+    className="hover:blur-[1px]"
+  />
+  `}
+/>
+
+### textShadow
+
+<CodeExample
+  preview={
+    <GlitchEffectText
+      text="Glitch"
+      glitchDirection="vertical"
+      glitchSpeed={1}
+      textShadow="0 0 10px rgba(255, 0, 0, 1), 0 0 20px rgba(255, 0, 0, 0.8)"
+    />
+  }
+  code={`
+  'use client'
+  
+  import { GlitchEffectText } from '@/components/text/glitch-effect-text'
+
+  <GlitchEffectText
+    text="Glitch"
+    glitchDirection="vertical"
+    glitchSpeed={1}
+    textShadow="0 0 10px rgba(255, 0, 0, 1), 0 0 20px rgba(255, 0, 0, 0.8)"
+  />
+  `}
+/>
+
 ## Props
 
 <AutoTypeTable
