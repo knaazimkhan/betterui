@@ -19,11 +19,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  ...siteConfig,
   title: {
     default: siteConfig.title,
     template: `%s | ${siteConfig.name}`,
   },
-  description: siteConfig.description,
 }
 interface RootLayoutProps {
   children: React.ReactNode
