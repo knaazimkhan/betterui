@@ -31,7 +31,7 @@ export const MatrixRainBackground = ({
       {columns.map((column) => (
         <motion.div
           key={column.id}
-          className="absolute whitespace-pre text-green-500 text-opacity-50"
+          className="absolute whitespace-pre p-2 text-green-500 text-opacity-50"
           style={{ left: `${(column.id / columns.length) * 100}%` }}
           animate={{
             y: ['0%', '100%'],
