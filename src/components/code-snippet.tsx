@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs from 'fs/promises'
 import path from 'path'
 
 import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock'
@@ -6,9 +6,10 @@ import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock'
 interface CodeSnippetProps {
   componentPath: string
 }
-export function CodeSnippet({ componentPath }: CodeSnippetProps) {
-  const filePath = path.resolve(process.cwd(), componentPath)
-  let code = fs.readFileSync(filePath, 'utf-8')
+
+export async function CodeSnippet({ componentPath }: CodeSnippetProps) {
+  const filePath = path.join(process.cwd(), componentPath)
+  let code = await fs.readFile(filePath, 'utf-8')
 
   // Match any TypeScript interface definition
   const interfacePattern = /(\bexport?\s*interface\s+\w+\s*\{[\s\S]*?\})/g
