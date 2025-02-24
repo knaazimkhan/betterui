@@ -1,0 +1,123 @@
+---
+title: 'Explosion Text'
+description: 'The Explosion Text component creates an animated explosion effect when clicked, where characters scatter and reassemble. Customize the animation speed, color, direction, and more for a unique experience.'
+slug: 'components/explosion-text'
+category: 'Text'
+tags: ['animation', 'text effect', 'explosion']
+component: 'ExplosionText'
+---
+
+## Overview
+
+The `ExplosionText` component creates a fun and engaging animation where each character of the text explodes into particles when clicked. This component is perfect for adding interactive text effects to your project.
+
+You can customize the explosion's duration, color, and direction, creating a dynamic user experience.
+
+---
+
+import { ExplosionText } from '@/components/text/explosion-text'
+
+## Preview
+
+<PreviewComponent>
+  <ExplosionText text="Explosion Text" />
+</PreviewComponent>
+
+## Usage
+
+```tsx
+'use client'
+
+import { ExplosionText } from '@/components/text/explosion-text'
+
+<ExplosionText text="Explosion Text" />
+```
+
+## Code
+
+<CodeSnippet componentPath="./src/components/text/explosion-text.tsx" />
+
+## Examples
+
+### duration
+
+The `duration` is used to explosion animation duration to 1 second for each character.
+
+<CodeExample
+  preview={ <ExplosionText text="Explosion Duration" duration={1.0} /> }
+  code={`
+  'use client'
+  
+  import { ExplosionText } from '@/components/text/explosion-text'
+
+  <ExplosionText text="Explosion Duration" duration={1.0} />
+  `}
+/>
+
+### explosionColor
+
+The `explosionColor` is used to custom explosion color.
+
+<CodeExample
+  preview={ <ExplosionText text="Explosion Color" explosionColor="#ff6347" /> }
+  code={`
+  'use client'
+  
+  import { ExplosionText } from '@/components/text/explosion-text'
+
+  <ExplosionText text="Explosion Color" explosionColor="#ff6347" />
+  `}
+/>
+
+### direction
+
+The `direction` is used to explodes in the bottom direction.
+
+<CodeExample
+  preview={ <ExplosionText text="Explosion Bottom" direction="bottom" /> }
+  code={`
+  'use client'
+  
+  import { ExplosionText } from '@/components/text/explosion-text'
+
+  <ExplosionText text="Explosion Bottom" direction="bottom" />
+  `}
+/>
+
+### resetDelay
+
+The `resetDelay` is used to reset delay after explosion effect.
+
+<CodeExample
+  preview={ <ExplosionText text="Explosion Reset Delay" resetDelay={1500} /> }
+  code={`
+  'use client'
+  
+  import { ExplosionText } from '@/components/text/explosion-text'
+
+  <ExplosionText text="Explosion Reset Delay" resetDelay={1500} />
+  `}
+/>
+
+### className
+
+The `className` is used to allowing you to add custom styling to the component.
+
+<CodeExample
+  preview={ <ExplosionText text="Explosion Text Color" className="text-gray-600" /> }
+  code={`
+  'use client'
+  
+  import { ExplosionText } from '@/components/text/explosion-text'
+
+  <ExplosionText text="Explosion Color" className="text-gray-600" />
+  `}
+/>
+
+
+## Props
+
+<AutoTypeTable
+  path="./src/components/text/explosion-text.tsx"
+  name="ExplosionTextProps"
+/>

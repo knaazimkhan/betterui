@@ -1,0 +1,45 @@
+---
+title: 'Magnetic Characters Text'
+description: 'A text component where individual characters dynamically respond to hover, creating an engaging magnetic-like effect.'
+slug: 'components/magnetic-characters-text'
+category: 'Text'
+tags: ['interactive', 'hover effect', 'animation', 'framer-motion']
+component: 'MagneticCharactersText'
+---
+
+## Overview
+
+`MagneticCharactersText` is an interactive text component where each character reacts individually to hover, simulating a magnetic pull effect. This creates a dynamic and engaging user experience, making text elements feel more alive. The component is built using `framer-motion` for smooth animations.
+
+You can easily customize its appearance using the `className` prop, allowing you to adjust font size, colors, spacing, and other styles to match your design needs.
+
+---
+
+import { MagneticCharactersText } from '@/components/text/magnetic-characters-text'
+
+## Preview
+
+<PreviewComponent>
+  <MagneticCharactersText text="Magnetic Characters" />
+</PreviewComponent>
+
+## Usage
+
+```tsx
+'use client'
+
+import { MagneticCharactersText } from '@/components/text/magnetic-characters-text'
+
+<MagneticCharactersText text="Magnetic Characters" />
+```
+
+## Code
+
+<CodeSnippet componentPath="./src/components/text/magnetic-characters-text.tsx" />
+
+## Props
+
+<AutoTypeTable
+  path="./src/components/text/magnetic-characters-text.tsx"
+  name="MagneticCharactersTextProps"
+/>

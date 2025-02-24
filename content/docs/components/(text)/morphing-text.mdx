@@ -1,0 +1,96 @@
+---
+title: "Morphing Text"
+description: "Create dynamic, animated text with a morphing effect, where random letters transform into the final text, creating an engaging user experience."
+slug: "components/morphing-text"
+category: 'Text'
+tags:
+  - 'Animation'
+  - 'Text Effect'
+  - 'UI Component'
+component: 'MorphingText'
+---
+
+## Overview
+
+The `MorphingText` component creates an engaging animated effect where random letters transition into the final text, providing a dynamic and visually interesting user experience. It can be customized with different speeds and character sets to fit your design needs.
+
+It allows you to control the speed of the morphing animation, and customize the set of characters used in the animation.
+
+---
+
+import { MorphingText } from '@/components/text/morphing-text'
+
+## Preview
+
+<PreviewComponent>
+  <MorphingText text="Morphing" />
+</PreviewComponent>
+
+## Usage
+
+```tsx
+'use client'
+
+import { MorphingText } from '@/components/text/morphing-text'
+
+<MorphingText text="Morphing" />
+```
+
+## Code
+
+<CodeSnippet componentPath="./src/components/text/morphing-text.tsx" />
+
+## Examples
+
+### Speed
+
+Use the `speed` props that allows control the duration of each letter change.
+
+<CodeExample
+  preview={
+    <MorphingText
+      text="Slow Morph"
+      speed={100}
+    />
+  }
+  code={`
+  'use client'
+  
+  import { MorphingText } from '@/components/text/morphing-text'
+  
+  <MorphingText
+    text="Slow Morph"
+    speed={100}
+  />
+  `}
+/>
+
+### CharSet
+
+Use the `CharSet` to customize the characters used for morphing and apply smoother transitions.
+
+<CodeExample
+  preview={
+    <MorphingText
+      text="CharSet Morph"
+      charSet="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*"
+    />
+  }
+  code={`
+  'use client'
+  
+  import { MorphingText } from '@/components/text/morphing-text'
+  
+  <MorphingText
+    text="CharSet Morph"
+    charSet="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*"
+  />
+  `}
+/>
+
+## Props
+
+<AutoTypeTable
+  path="./src/components/text/morphing-text.tsx"
+  name="MorphingTextProps"
+/>

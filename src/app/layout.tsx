@@ -1,38 +1,41 @@
-import { Inter } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
-import { metadata } from './metadata'
-import "@/styles/globals.css"
-import Footer from "@/components/layout/footer"
-import Header from "@/components/layout/header"
+import { Geist, Geist_Mono } from 'next/font/google'
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
+import type { Metadata } from 'next'
+
+import '@/styles/globals.css'
+
+import { Provider } from './provider'
+import { siteConfig } from './site.config'
+
+const geistSans = Geist({
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 })
 
-export { metadata }
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+})
 
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  ...siteConfig,
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
+  },
+}
 interface RootLayoutProps {
   children: React.ReactNode
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <main className="flex min-h-screen flex-col">
-            <Header />
-            {children}
-            <Footer />
-          </main>
-        </ThemeProvider>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <Provider>{children}</Provider>
       </body>
     </html>
   )

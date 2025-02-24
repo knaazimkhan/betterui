@@ -1,16 +1,11 @@
+import { createMDX } from 'fumadocs-mdx/next'
+
 import type { NextConfig } from 'next'
 
-const config: NextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https' as const,
-        hostname: '**',
-        port: '',
-        pathname: '**',
-      },
-    ],
-  },
+const withMDX = createMDX()
+
+const nextConfig: NextConfig = {
+  reactStrictMode: true,
 }
 
-export default config
+export default withMDX(nextConfig)

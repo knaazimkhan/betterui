@@ -1,0 +1,45 @@
+---
+title: 'SVG Path Text'
+description: 'Create animated text that follows a customizable SVG path. Perfect for creating dynamic and engaging text animations with ease.'
+slug: 'components/svg-path-text'
+category: 'Text'
+tags: ['animation', 'SVG', 'text', 'motion']
+component: 'SVGPathText'
+---
+
+## Overview
+
+The `SVGPathText` component allows you to animate text along a customizable SVG path. It creates a smooth, dynamic animation where the text follows a curved path, making it ideal for adding interactive or eye-catching typography to your web projects.
+
+You can adjust the path, duration, and text styling to suit your needs.
+
+---
+
+import { SVGPathText } from '@/components/text/svg-path-text'
+
+## Preview
+
+<PreviewComponent>
+  <SVGPathText text="SVG Path" />
+</PreviewComponent>
+
+## Usage
+
+```tsx
+'use client'
+
+import { SVGPathText } from '@/components/text/svg-path-text'
+
+<SVGPathText text="SVG Path" />
+```
+
+## Code
+
+<CodeSnippet componentPath="./src/components/text/svg-path-text.tsx" />
+
+## Props
+
+<AutoTypeTable
+  path="./src/components/text/svg-path-text.tsx"
+  name="SVGPathTextProps"
+/>

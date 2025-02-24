@@ -1,19 +1,15 @@
-import React from 'react';
-import { SidebarNav } from '@/components/docs/sidebar-nav'
+import { DocsLayout } from 'fumadocs-ui/layouts/docs'
 
-export default function DocsLayout({
-  children,
-}: {
+import { baseOptions } from '@/app/layout.config'
+import { source } from '@/lib/source'
+interface LayoutProps {
   children: React.ReactNode
-}) {
+}
+
+export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="flex min-h-screen">
-      <aside className="fixed inset-y-0 left-0 w-64 border-r border-gray-200 dark:border-gray-800">
-        <SidebarNav />
-      </aside>
-      <main className="flex-1 pl-64">
-        {children}
-      </main>
-    </div>
+    <DocsLayout tree={source.pageTree} {...baseOptions}>
+      {children}
+    </DocsLayout>
   )
-} 
+}

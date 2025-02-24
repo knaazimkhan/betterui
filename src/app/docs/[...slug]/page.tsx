@@ -1,75 +1,51 @@
-import { notFound } from "next/navigation";
-import { MDXLayout } from "@/components/docs/mdx-layout";
-import fs from "fs/promises";
-import path from "path";
-import { bundleMDX } from "mdx-bundler";
-import { MDXContent } from "@/components/mdx/mdx-content";
-import rehypeSlug from "rehype-slug";
-import rehypePrettyCode, { type Options } from "rehype-pretty-code";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import codeImport from "remark-code-import";
-import remarkGfm from "remark-gfm";
-import { rehypeComponent } from "@/lib/rehype-component";
+import { notFound } from 'next/navigation'
 
-interface DocPageProps {
-	params: Promise<{
-		slug: string[];
-	}>;
+import { DocsPage } from 'fumadocs-ui/page'
+
+import { DocsWrapper } from '@/components/docs-wrapper'
+import { metadataImage } from '@/lib/metadata-image'
+import { source } from '@/lib/source'
+
+interface PageProps {
+  params: Promise<{ slug?: string[] }>
 }
 
-const prettyCodeOptions: Options = {
-  theme: 'one-dark-pro',
-  onVisitLine(node) {
-    if (node.children.length === 0) {
-      node.children = [{ type: 'text', value: ' ' }]
-    }
-  },
+export const dynamicParams = false // it disable rendering for unspecified paths
+export const revalidate = false // it should be cached forever
+
+export default async function Page(props: PageProps) {
+  const params = await props.params
+  const page = source.getPage(params.slug)
+
+  if (!page) notFound()
+
+  return (
+    <DocsPage
+      toc={page.data.toc}
+      full={page.data.full}
+      breadcrumb={{ full: true }}
+      tableOfContent={{ style: 'clerk', single: false }}
+    >
+      <DocsWrapper {...page.data} />
+    </DocsPage>
+  )
 }
 
-async function getDocContent(slug: string[]) {
-	try {
-		const filePath = path.join(process.cwd(), "content/docs", `${slug.join('/')}.mdx`);
-		const content = await fs.readFile(filePath, 'utf8');
-		const mdxSource = await bundleMDX({
-      source: content.trim(),
-      mdxOptions: (options) => {
-        options.remarkPlugins = [...(options.remarkPlugins ?? []), codeImport, remarkGfm]
-        options.rehypePlugins = [
-          ...(options.rehypePlugins ?? []),
-          rehypeSlug,
-          rehypeComponent,
-          [rehypePrettyCode, prettyCodeOptions],          
-          [rehypeAutolinkHeadings, {
-            properties: {
-              className: ['anchor'],
-              ariaLabel: 'Link to heading',
-            },
-          }],
-        ]
-        return options
-      }
-    });
-		return mdxSource;
-	} catch {
-		return null;
-	}
-}
+export async function generateMetadata(props: PageProps) {
+  const params = await props.params
+  const page = source.getPage(params.slug)
 
-export default async function DocPage({ params }: DocPageProps) {
-	const { slug } = await params;
-	const data = await getDocContent(slug);
+  if (!page) notFound()
 
-	if (!data?.code) {
-		notFound();
-	}
-
-	return (
-		<MDXLayout>
-			<MDXContent code={data.code} />
-		</MDXLayout>
-	);
+  return metadataImage.withImage(page.slugs, {
+    title: page.data.title,
+    description: page.data.description,
+    openGraph: {
+      url: `/docs/${page.slugs.join('/')}`,
+    },
+  })
 }
 
 export async function generateStaticParams() {
-	return [{ slug: ["guides", "getting-started"] }];
+  return source.generateParams()
 }

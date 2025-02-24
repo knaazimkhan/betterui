@@ -1,0 +1,155 @@
+---
+title: "Next.js"
+description: "Learn how to install and integrate Better UI Library in a Next.js project."
+slug: "/docs/installation/nextjs"
+---
+
+# Install and configure Next.js
+
+---
+
+### Create a new Next.js project
+
+```bash title="Terminal"
+pnpm create next-app@latest my-next-app
+# Or
+npx create-next-app@latest my-next-app
+# Or
+bun create next-app@latest my-next-app
+# Or
+yarn create next-app@latest my-next-app
+```
+
+On installation, select the following options:
+
+```bash title="Terminal"
+? What is your project named? … my-app
+? Would you like to use TypeScript? … No / Yes
+? Would you like to use ESLint? … No / Yes
+? Would you like to use Tailwind CSS? … No / Yes
+? Would you like to use `src/` directory? … No / Yes
+? Would you like to use App Router? … No / Yes
+? Would you like to use Turbopack for `next dev`? … No / Yes
+? Would you like to customize the default import alias (`@/*` by default)? … No / Yes
+```
+
+After the prompts, **create-next-app** will create a folder with your project name and install the required dependencies.
+
+### Start the development server
+
+```bash title="Terminal"
+cd my-next-app
+
+pnpm dev
+# Or
+npm run dev
+# Or
+bun dev
+# Or
+yarn dev
+```
+
+<Callout>
+  **If your project doesn’t have Tailwind CSS, install it, otherwise skip this step.**
+</Callout>
+
+## Configure Tailwind CSS
+
+### Install Tailwind CSS
+
+```bash title="Terminal"
+pnpm install -D tailwindcss postcss autoprefixer
+# Or
+npm install -D tailwindcss postcss autoprefixer
+# Or
+bun add -D tailwindcss postcss autoprefixer
+# Or
+yarn add -D tailwindcss postcss autoprefixer
+```
+
+### Initialize Tailwind CSS
+
+```bash title="Terminal"
+pnpm dlx tailwindcss init -p
+# Or
+npx tailwindcss init -p
+# Or
+yarn tailwindcss init -p
+# Or
+bunx --bun tailwindcss init -p
+```
+
+### Configure Tailwind CSS `tailwind.config.ts`
+
+```ts title="tailwind.config.ts"
+import type { Config } from "tailwindcss";
+
+export default {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+
+    // Or if using `src` directory:
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+} satisfies Config;
+```
+
+### Add the Tailwind directives to your CSS `app/globals.css`
+
+```css title="globals.css"
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+### Start the development server
+
+```bash title="Terminal"
+pnpm dev
+# Or
+npm run dev
+# Or
+bun dev
+# Or
+yarn dev
+```
+
+### Start using Tailwind CSS `page.tsx`
+
+```tsx title="page.tsx"
+export default function Home() {
+  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+}
+```
+
+<Callout>
+  **If your project doesn’t have Framer motion, install it, otherwise skip this step.**
+</Callout>
+
+## Install Framer motion
+
+```bash title="Terminal"
+pnpm add motion
+# Or
+npm install motion
+# Or
+bun add motion
+# Or
+yarn add motion
+```
+
+### Features can now be used in your project via the `motion/react`.
+
+```tsx title="page.tsx"
+import { motion } from "motion/react";
+
+export default function Home() {
+  return <motion.div>Hello world!</motion.div>;
+}
+```

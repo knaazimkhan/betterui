@@ -1,0 +1,122 @@
+---
+title: 'Neon Glow Text'
+description: 'Create stunning neon glow effects with pulsating text shadows, customizable colors, and animation speed in your React components.'
+slug: 'components/neon-glow-text'
+category: 'Text'
+tags: ['UI', 'Animations', 'Effects', 'Text']
+component: 'NeonGlowText'
+---
+
+## Overview
+
+The `NeonGlowText` component simulates a neon sign effect with vibrant, pulsating text shadows. This component brings an eye-catching glow effect to your text, ideal for headers, buttons, or any attention-grabbing UI element.
+
+It allows for easy customization of text color, glow color, animation duration, blur radius, and spread radius.
+
+---
+
+import { NeonGlowText } from '@/components/text/neon-glow-text'
+
+## Preview
+
+<PreviewComponent>
+  <NeonGlowText text="Neon Glow" />
+</PreviewComponent>
+
+## Usage
+
+```tsx
+'use client'
+
+import { NeonGlowText } from '@/components/text/neon-glow-text'
+
+<NeonGlowText text="Neon Glow" />
+```
+
+## Code
+
+<CodeSnippet componentPath="./src/components/text/neon-glow-text.tsx" />
+
+## Examples
+
+### glowColor
+
+The `glowColor` is used to glow effect of the text.
+
+<CodeExample
+  preview={ <NeonGlowText text="Glow Color" glowColor="orange" /> }
+  code={`
+  'use client'
+
+  import { NeonGlowText } from '@/components/text/neon-glow-text'
+  
+  <NeonGlowText text="Glow Color" glowColor="orange" />
+  `}
+/>
+
+### duration
+
+The `duration` is used to the duration of the animation.
+
+<CodeExample
+  preview={ <NeonGlowText text="Glowing Fast" duration={0.5} /> }
+  code={`
+  'use client'
+
+  import { NeonGlowText } from '@/components/text/neon-glow-text'
+  
+  <NeonGlowText text="Glowing Fast" duration={0.5} />
+  `}
+/>
+
+### blurRadius
+
+The `blurRadius` is used to the blur radius of the text shadow.
+
+<CodeExample
+  preview={ <NeonGlowText text="Soft Glow" blurRadius={10} /> }
+  code={`
+  'use client'
+
+  import { NeonGlowText } from '@/components/text/neon-glow-text'
+  
+  <NeonGlowText text="Soft Glow" blurRadius={10} />
+  `}
+/>
+
+### spreadRadius
+
+The `spreadRadius` is used the spread radius of the text shadow.
+
+<CodeExample
+  preview={ <NeonGlowText text="Wide Glow" spreadRadius={10} /> }
+  code={`
+  'use client'
+
+  import { NeonGlowText } from '@/components/text/neon-glow-text'
+  
+  <NeonGlowText text="Wide Glow" spreadRadius={10} />
+  `}
+/>
+
+### className
+
+The `className` is use to apply additional Tailwind CSS classes, such as setting colors, padding, etc.
+
+<CodeExample
+  preview={ <NeonGlowText text="Custom Glow Color" className="text-green-500" glowColor="yellow" /> }
+  code={`
+  'use client'
+
+  import { NeonGlowText } from '@/components/text/neon-glow-text'
+  
+  <NeonGlowText text="Custom Glow Color" className="text-green-500" glowColor="yellow" />
+  `}
+/>
+
+## Props
+
+<AutoTypeTable
+  path="./src/components/text/neon-glow-text.tsx"
+  name="NeonGlowTextProps"
+/>

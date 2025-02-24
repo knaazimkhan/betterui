@@ -1,0 +1,11 @@
+{
+    "pages": [
+      "---Getting Started---",
+      "introduction",
+      "installation/index",
+      "---Installation---",
+      "...installation",
+      "---Components---",
+      "...components"
+    ]
+}

@@ -1,0 +1,156 @@
+---
+title: 'Typing Simulator Text'
+description: 'A dynamic component that mimics real-time text typing and deletion effects.'
+slug: 'components/typing-simulator-text'
+category: 'Text'
+tags: ['animation', 'text', 'typing', 'UI']
+component: 'TypingSimulatorText'
+---
+
+## Overview
+
+The `TypingSimulatorText` component is designed to simulate typing effects for a text or a sequence of texts. It provides an animated text display where the characters are typed and then deleted in a looping or one-time animation cycle.
+
+The component also offers flexibility in customizing the typing and deleting speeds, as well as the appearance of the cursor. You can use it for creating dynamic and engaging user interfaces where text is dynamically typed out.
+
+---
+
+import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+
+## Preview
+
+<PreviewComponent>
+  <TypingSimulatorText text="Typing Simulator" />
+</PreviewComponent>
+
+## Usage
+
+```tsx
+'use client'
+
+import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+
+<TypingSimulatorText text="Typing Simulator" />
+```
+
+## Code
+
+<CodeSnippet componentPath="./src/components/text/typing-simulator-text.tsx" />
+
+## Examples
+
+### text
+
+This `text` props defines the text that will be typed. It can either be a string or an array of strings.
+
+<CodeExample
+  preview={ <TypingSimulatorText text={["Hello", "World!"]} /> }
+  code={`
+  'use client'
+
+  import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+
+  <TypingSimulatorText text="Hello World!" />
+  
+  Or use an array of strings to type multiple messages:
+
+  <TypingSimulatorText text={["Hello", "World!"]} />
+  `}
+/>
+
+### typingSpeed
+
+The `typingSpeed` prop controls how fast the text is typed out.
+
+<CodeExample
+  preview={ <TypingSimulatorText text="Fast typing speed" typingSpeed={50} /> }
+  code={`
+  'use client'
+
+  import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+
+  <TypingSimulatorText text="Fast typing speed" typingSpeed={50} />
+  `}
+/>
+
+### deletingSpeed
+
+The `deletingSpeed` prop controls how fast the text is deleted.
+
+<CodeExample
+  preview={ <TypingSimulatorText text="Slow deleting speed" deletingSpeed={200} loop={true} /> }
+  code={`
+  'use client'
+
+  import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+
+  <TypingSimulatorText text="Slow deleting speed" deletingSpeed={200} loop={true} />
+  `}
+/>
+
+### pauseTime
+
+The `pauseTime` prop controls how long the text will pause before deleting.
+
+<CodeExample
+  preview={ <TypingSimulatorText text="Pause before deleting" pauseTime={3000} loop={true} /> }
+  code={`
+  'use client'
+
+  import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+
+  <TypingSimulatorText text="Pause before deleting" pauseTime={3000} loop={true} />
+  `}
+/>
+
+### cursorStyle
+
+The `cursorStyle` prop defines the character or style of the cursor.
+
+<CodeExample
+  preview={ <TypingSimulatorText text="Different cursor" cursorStyle="_" /> }
+  code={`
+  'use client'
+
+  import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+
+  <TypingSimulatorText text="Different cursor" cursorStyle="_" />
+  `}
+/>
+
+### loop
+
+The `loop` prop, when set to true, will restart the typing animation after it completes.
+
+<CodeExample
+  preview={ <TypingSimulatorText text="Looping text" loop={true} /> }
+  code={`
+  'use client'
+
+  import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+
+  <TypingSimulatorText text="Looping text" loop={true} />
+  `}
+/>
+
+### className
+
+The `className` prop allows you to add custom styling to the component.
+
+<CodeExample
+  preview={ <TypingSimulatorText text="Custom styling" className="text-yellow-500" /> }
+  code={`
+  'use client'
+
+  import { TypingSimulatorText } from '@/components/text/typing-simulator-text'
+
+  <TypingSimulatorText text="Custom styling" className="text-yellow-500" />
+  `}
+/>
+
+## Props
+
+<AutoTypeTable
+  path="./src/components/text/typing-simulator-text.tsx"
+  name="TypingSimulatorTextProps"
+/>
