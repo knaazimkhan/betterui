@@ -145,6 +145,77 @@ import { GradientWaveText } from '@/components/text/gradient-wave-text'
   `}
 />
 
+### Radial Gradient
+
+<CodeExample
+  preview={
+    <GradientWaveText
+      text="Radial Gradient"
+      gradientType="radial"
+      theme="ocean"
+    />
+  }
+  code={`
+  'use client'
+
+  import { GradientWaveText } from '@/components/text/gradient-wave-text'
+
+  <GradientWaveText
+    text="Radial Gradient"
+    gradientType="radial"
+    theme="ocean"
+  />
+  `}
+/>
+
+### Custom Easing
+
+<CodeExample
+  preview={
+    <GradientWaveText
+      text="Ease In Out"
+      easing="easeInOut"
+      theme="forest"
+      duration={3}
+    />
+  }
+  code={`
+  'use client'
+
+  import { GradientWaveText } from '@/components/text/gradient-wave-text'
+
+  <GradientWaveText
+    text="Ease In Out"
+    easing="easeInOut"
+    theme="forest"
+    duration={3}
+  />
+  `}
+/>
+
+### Preset Theme
+
+<CodeExample
+  preview={
+    <GradientWaveText
+      text="Ocean Theme"
+      theme="ocean"
+      hoverEffect={true}
+    />
+  }
+  code={`
+  'use client'
+
+  import { GradientWaveText } from '@/components/text/gradient-wave-text'
+
+  <GradientWaveText
+    text="Ocean Theme"
+    theme="ocean"
+    hoverEffect={true}
+  />
+  `}
+/>
+
 ## Props
 
 <AutoTypeTable
