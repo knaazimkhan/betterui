@@ -9,7 +9,10 @@ import { cn } from '@/lib/utils'
 export interface ConstellationBackgroundProps {
   pointCount?: number
   pointColor?: string
+  pointSize?: number
   lineColor?: string
+  lineSize?: number
+  duration?: number
   className?: string
 }
 
@@ -27,8 +30,11 @@ interface Line {
 
 export const ConstellationBackground = ({
   pointCount = 20,
-  lineColor = 'bg-blue-500/80',
-  pointColor = 'bg-red-500',
+  pointColor = 'bg-blue-500',
+  pointSize = 8,
+  lineColor = 'bg-blue-500/20',
+  lineSize = 1,
+  duration = 2,
   className,
 }: ConstellationBackgroundProps) => {
   const [points, setPoints] = useState<Point[]>([])
@@ -77,21 +83,26 @@ export const ConstellationBackground = ({
             left: `${line.start.x}%`,
             top: `${line.start.y}%`,
             width: `${Math.hypot(line.start.x - line.end.x, line.start.y - line.end.y)}%`,
-            height: '1px',
+            height: `${lineSize}px`,
             transformOrigin: '0 0',
             transform: `rotate(${Math.atan2(line.end.y - line.start.y, line.end.x - line.start.x)}rad)`,
           }}
           animate={{ opacity: [0.2, 0.5, 0.2] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          transition={{ duration, repeat: Infinity }}
         />
       ))}
       {points.map((point) => (
         <motion.div
           key={point.id}
-          className={cn('absolute h-2 w-2 rounded-full', pointColor)}
-          style={{ left: `${point.x}%`, top: `${point.y}%` }}
+          className={cn('absolute rounded-full', pointColor)}
+          style={{
+            left: `${point.x}%`,
+            top: `${point.y}%`,
+            height: `${pointSize}px`,
+            width: `${pointSize}px`,
+          }}
           animate={{ scale: [1, 1.5, 1] }}
-          transition={{ duration: 1, repeat: Infinity }}
+          transition={{ duration, repeat: Infinity }}
         />
       ))}
     </div>
