@@ -6,11 +6,17 @@ import { cn } from '@/lib/utils'
 
 export interface AuroraBackgroundProps {
   numWaves?: number
+  colors?: string[]
   className?: string
 }
 
 export const AuroraBackground = ({
   numWaves = 5,
+  colors = [
+    'rgba(94, 214, 134, 0.4)',
+    'rgba(73, 133, 224, 0.4)',
+    'rgba(179, 90, 207, 0.4)',
+  ],
   className,
 }: AuroraBackgroundProps) => {
   return (
@@ -22,11 +28,7 @@ export const AuroraBackground = ({
           key={i}
           className="absolute h-96 w-full opacity-30 blur-3xl will-change-transform"
           style={{
-            background: `linear-gradient(${i * 45}deg, 
-              rgba(94, 214, 134, 0.4), 
-              rgba(73, 133, 224, 0.4), 
-              rgba(179, 90, 207, 0.4)
-            )`,
+            background: `linear-gradient(${i * 45}deg, ${colors.join(', ')})`,
             top: `${i * (100 / numWaves)}%`,
           }}
           animate={{
