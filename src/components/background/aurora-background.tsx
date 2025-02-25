@@ -5,15 +5,19 @@ import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 export interface AuroraBackgroundProps {
+  numWaves?: number
   className?: string
 }
 
-export const AuroraBackground = ({ className }: AuroraBackgroundProps) => {
+export const AuroraBackground = ({
+  numWaves = 5,
+  className,
+}: AuroraBackgroundProps) => {
   return (
     <div
       className={cn('absolute inset-0 overflow-hidden bg-slate-900', className)}
     >
-      {Array.from({ length: 5 }).map((_, i) => (
+      {Array.from({ length: numWaves }).map((_, i) => (
         <motion.div
           key={i}
           className="absolute h-96 w-full opacity-30 blur-3xl will-change-transform"
@@ -23,7 +27,7 @@ export const AuroraBackground = ({ className }: AuroraBackgroundProps) => {
               rgba(73, 133, 224, 0.4), 
               rgba(179, 90, 207, 0.4)
             )`,
-            top: `${i * 15}%`,
+            top: `${i * (100 / numWaves)}%`,
           }}
           animate={{
             x: ['-100%', '100%'],
