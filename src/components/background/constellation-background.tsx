@@ -7,6 +7,9 @@ import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 export interface ConstellationBackgroundProps {
+  pointCount?: number
+  pointColor?: string
+  lineColor?: string
   className?: string
 }
 
@@ -23,13 +26,16 @@ interface Line {
 }
 
 export const ConstellationBackground = ({
+  pointCount = 20,
+  lineColor = 'bg-blue-500/80',
+  pointColor = 'bg-red-500',
   className,
 }: ConstellationBackgroundProps) => {
   const [points, setPoints] = useState<Point[]>([])
   const [lines, setLines] = useState<Line[]>([])
 
   useEffect(() => {
-    const newPoints = Array.from({ length: 20 }).map(() => ({
+    const newPoints = Array.from({ length: pointCount }).map(() => ({
       id: Math.random(),
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -55,14 +61,18 @@ export const ConstellationBackground = ({
 
     setPoints(newPoints)
     setLines(newLines)
-  }, [])
+  }, [pointCount])
 
   return (
-    <div className={cn('absolute inset-0 bg-slate-900', className)}>
+    <div
+      className={cn('absolute inset-0 bg-slate-900', className)}
+      role="img"
+      aria-label="Constellation Background"
+    >
       {lines.map((line) => (
         <motion.div
           key={line.id}
-          className="absolute bg-blue-500/20"
+          className={cn('absolute', lineColor)}
           style={{
             left: `${line.start.x}%`,
             top: `${line.start.y}%`,
@@ -78,10 +88,10 @@ export const ConstellationBackground = ({
       {points.map((point) => (
         <motion.div
           key={point.id}
-          className="absolute h-2 w-2 rounded-full bg-blue-500"
+          className={cn('absolute h-2 w-2 rounded-full', pointColor)}
           style={{ left: `${point.x}%`, top: `${point.y}%` }}
           animate={{ scale: [1, 1.5, 1] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          transition={{ duration: 1, repeat: Infinity }}
         />
       ))}
     </div>
