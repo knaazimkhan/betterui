@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 export interface AuroraBackgroundProps {
   numWaves?: number
   colors?: string[]
+  speedMultiplier?: number
   className?: string
 }
 
@@ -17,6 +18,7 @@ export const AuroraBackground = ({
     'rgba(73, 133, 224, 0.4)',
     'rgba(179, 90, 207, 0.4)',
   ],
+  speedMultiplier = 1,
   className,
 }: AuroraBackgroundProps) => {
   return (
@@ -37,12 +39,12 @@ export const AuroraBackground = ({
           }}
           transition={{
             x: {
-              duration: 20 + i * 2,
+              duration: (20 + i * 2) / speedMultiplier,
               repeat: Infinity,
               ease: 'linear',
             },
             y: {
-              duration: 5 + i,
+              duration: (5 + i) / speedMultiplier,
               repeat: Infinity,
               repeatType: 'reverse',
               ease: 'easeInOut',
