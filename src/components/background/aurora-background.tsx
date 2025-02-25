@@ -16,7 +16,7 @@ export const AuroraBackground = ({ className }: AuroraBackgroundProps) => {
       {Array.from({ length: 5 }).map((_, i) => (
         <motion.div
           key={i}
-          className="absolute h-96 w-full opacity-30 blur-3xl"
+          className="absolute h-96 w-full opacity-30 blur-3xl will-change-transform"
           style={{
             background: `linear-gradient(${i * 45}deg, 
               rgba(94, 214, 134, 0.4), 
