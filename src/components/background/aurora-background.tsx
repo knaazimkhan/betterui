@@ -5,9 +5,29 @@ import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 export interface AuroraBackgroundProps {
+  /**
+   * The number of aurora wave elements to render.
+   * @default 5
+   */
   numWaves?: number
+
+  /**
+   * An array of colors used for the aurora waves.
+   * Each wave will cycle through the provided colors.
+   * @default ["rgba(94, 214, 134, 0.4)", "rgba(73, 133, 224, 0.4)", "rgba(179, 90, 207, 0.4)"]
+   */
   colors?: string[]
+
+  /**
+   * A multiplier for animation speed.
+   * Higher values make the waves move faster.
+   * @default 1
+   */
   speedMultiplier?: number
+
+  /**
+   * Additional CSS classes to customize the container styling.
+   */
   className?: string
 }
 
