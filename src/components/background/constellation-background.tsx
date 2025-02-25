@@ -7,12 +7,39 @@ import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 export interface ConstellationBackgroundProps {
+  /**
+   * Number of points to generate in the constellation.
+   * @default 20
+   */
   pointCount?: number
+  /**
+   * Tailwindcss class for the color of the points.
+   * @default "bg-blue-500"
+   */
   pointColor?: string
+  /**
+   * Size of the points in pixels.
+   * @default 8
+   */
   pointSize?: number
+  /**
+   * Tailwindcss class for the color of the lines.
+   * @default "bg-blue-500/20"
+   */
   lineColor?: string
+  /**
+   * Size of the lines in pixels.
+   * @default 1
+   */
   lineSize?: number
+  /**
+   * Duration of the animation in seconds.
+   * @default 2
+   */
   duration?: number
+  /**
+   * Additional CSS classes to apply to the container.
+   */
   className?: string
 }
 
