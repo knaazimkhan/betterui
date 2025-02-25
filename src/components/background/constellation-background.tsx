@@ -7,6 +7,39 @@ import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 export interface ConstellationBackgroundProps {
+  /**
+   * Number of points to generate in the constellation.
+   * @default 20
+   */
+  pointCount?: number
+  /**
+   * Tailwindcss class for the color of the points.
+   * @default "bg-blue-500"
+   */
+  pointColor?: string
+  /**
+   * Size of the points in pixels.
+   * @default 8
+   */
+  pointSize?: number
+  /**
+   * Tailwindcss class for the color of the lines.
+   * @default "bg-blue-500/20"
+   */
+  lineColor?: string
+  /**
+   * Size of the lines in pixels.
+   * @default 1
+   */
+  lineSize?: number
+  /**
+   * Duration of the animation in seconds.
+   * @default 2
+   */
+  duration?: number
+  /**
+   * Additional CSS classes to apply to the container.
+   */
   className?: string
 }
 
@@ -23,13 +56,19 @@ interface Line {
 }
 
 export const ConstellationBackground = ({
+  pointCount = 20,
+  pointColor = 'bg-blue-500',
+  pointSize = 8,
+  lineColor = 'bg-blue-500/20',
+  lineSize = 1,
+  duration = 2,
   className,
 }: ConstellationBackgroundProps) => {
   const [points, setPoints] = useState<Point[]>([])
   const [lines, setLines] = useState<Line[]>([])
 
   useEffect(() => {
-    const newPoints = Array.from({ length: 20 }).map(() => ({
+    const newPoints = Array.from({ length: pointCount }).map(() => ({
       id: Math.random(),
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -55,33 +94,42 @@ export const ConstellationBackground = ({
 
     setPoints(newPoints)
     setLines(newLines)
-  }, [])
+  }, [pointCount])
 
   return (
-    <div className={cn('absolute inset-0 bg-slate-900', className)}>
+    <div
+      className={cn('absolute inset-0 bg-slate-900', className)}
+      role="img"
+      aria-label="Constellation Background"
+    >
       {lines.map((line) => (
         <motion.div
           key={line.id}
-          className="absolute bg-blue-500/20"
+          className={cn('absolute', lineColor)}
           style={{
             left: `${line.start.x}%`,
             top: `${line.start.y}%`,
             width: `${Math.hypot(line.start.x - line.end.x, line.start.y - line.end.y)}%`,
-            height: '1px',
+            height: `${lineSize}px`,
             transformOrigin: '0 0',
             transform: `rotate(${Math.atan2(line.end.y - line.start.y, line.end.x - line.start.x)}rad)`,
           }}
           animate={{ opacity: [0.2, 0.5, 0.2] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          transition={{ duration, repeat: Infinity }}
         />
       ))}
       {points.map((point) => (
         <motion.div
           key={point.id}
-          className="absolute h-2 w-2 rounded-full bg-blue-500"
-          style={{ left: `${point.x}%`, top: `${point.y}%` }}
+          className={cn('absolute rounded-full', pointColor)}
+          style={{
+            left: `${point.x}%`,
+            top: `${point.y}%`,
+            height: `${pointSize}px`,
+            width: `${pointSize}px`,
+          }}
           animate={{ scale: [1, 1.5, 1] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          transition={{ duration, repeat: Infinity }}
         />
       ))}
     </div>
