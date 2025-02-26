@@ -5,10 +5,27 @@ import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 export interface GridLinesBackgroundProps {
+  /** Size of each grid cell in pixels
+   *  @default 40
+   */
   gridSize?: number
+
+  /** Color of the grid lines
+   *  @default 'rgba(255,255,255,0.1)'
+   */
   lineColor?: string
+
+  /** Thickness of the grid lines in pixels
+   *  @default 1
+   */
   lineSize?: number
+
+  /** Duration of the animation cycle in seconds
+   *  @default 4
+   */
   duration?: number
+
+  /** Additional classes for styling */
   className?: string
 }
 
