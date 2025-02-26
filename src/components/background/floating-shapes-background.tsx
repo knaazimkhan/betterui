@@ -9,8 +9,8 @@ export interface FloatingShapesBackgroundProps {
 }
 
 interface Shape {
-  id: number
-  type: string
+  id: string
+  type: 'circle' | 'square' | 'triangle'
   size: number
   x: number
   y: number
@@ -20,9 +20,15 @@ interface Shape {
 export const FloatingShapesBackground = ({
   className,
 }: FloatingShapesBackgroundProps) => {
-  const shapes = Array.from({ length: 20 }).map((_, i) => ({
-    id: i,
-    type: ['circle', 'square', 'triangle'][Math.floor(Math.random() * 3)],
+  const getRandomShape = () => {
+    return ['circle', 'square', 'triangle'][
+      Math.floor(Math.random() * 3)
+    ] as Shape['type']
+  }
+
+  const shapes = Array.from({ length: 20 }).map(() => ({
+    id: crypto.randomUUID(),
+    type: getRandomShape(),
     size: Math.random() * 60 + 20,
     x: Math.random() * 100,
     y: Math.random() * 100,
@@ -32,15 +38,33 @@ export const FloatingShapesBackground = ({
   const getShapeStyle = (shape: Shape) => {
     switch (shape.type) {
       case 'circle':
-        return 'rounded-full'
+        return 'rounded-full bg-white/10'
       case 'square':
-        return 'rotate-45'
+        return 'rotate-45 bg-white/10'
       case 'triangle':
-        return 'triangle'
+        return 'h-0 w-0 border-solid border-transparent border-b-white opacity-10'
       default:
         return ''
     }
   }
+
+  const getShapeSize = (shape: Shape) => {
+    const baseStyle = { left: `${shape.x}%`, top: `${shape.y}%` }
+
+    if (shape.type === 'triangle') {
+      return {
+        ...baseStyle,
+        borderWidth: `${shape.size / 2}px`,
+        borderBottomWidth: `${shape.size}px`,
+      }
+    }
+    return {
+      ...baseStyle,
+      width: shape.size,
+      height: shape.size,
+    }
+  }
+
   return (
     <div
       className={cn(
@@ -51,13 +75,8 @@ export const FloatingShapesBackground = ({
       {shapes.map((shape) => (
         <motion.div
           key={shape.id}
-          className={`absolute bg-white/10 ${getShapeStyle(shape)}`}
-          style={{
-            width: shape.size,
-            height: shape.size,
-            left: `${shape.x}%`,
-            top: `${shape.y}%`,
-          }}
+          className={cn('absolute will-change-transform', getShapeStyle(shape))}
+          style={getShapeSize(shape)}
           animate={{
             rotate: [shape.rotation, shape.rotation + 360],
             y: [`${shape.y}%`, `${shape.y - 20}%`, `${shape.y}%`],
@@ -65,7 +84,7 @@ export const FloatingShapesBackground = ({
           transition={{
             duration: 10 + Math.random() * 5,
             repeat: Infinity,
-            ease: 'linear',
+            ease: 'easeInOut',
           }}
         />
       ))}
