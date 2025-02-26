@@ -5,10 +5,35 @@ import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 export interface GridLinesBackgroundProps {
+  /** Size of each grid cell in pixels
+   *  @default 40
+   */
+  gridSize?: number
+
+  /** Color of the grid lines
+   *  @default 'rgba(255,255,255,0.1)'
+   */
+  lineColor?: string
+
+  /** Thickness of the grid lines in pixels
+   *  @default 1
+   */
+  lineSize?: number
+
+  /** Duration of the animation cycle in seconds
+   *  @default 4
+   */
+  duration?: number
+
+  /** Additional classes for styling */
   className?: string
 }
 
 export const GridLinesBackground = ({
+  gridSize = 40,
+  lineColor = 'rgba(255,255,255,0.1)',
+  lineSize = 1,
+  duration = 4,
   className,
 }: GridLinesBackgroundProps) => {
   return (
@@ -17,16 +42,17 @@ export const GridLinesBackground = ({
         className="absolute inset-0"
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)
+            linear-gradient(to right, ${lineColor} ${lineSize}px, transparent ${lineSize}px),
+            linear-gradient(to bottom, ${lineColor} ${lineSize}px, transparent ${lineSize}px)
           `,
-          backgroundSize: '40px 40px',
+          backgroundSize: `${gridSize}px ${gridSize}px`,
+          willChange: 'background-position',
         }}
         animate={{
-          backgroundPosition: ['0px 0px', '40px 40px'],
+          backgroundPosition: [`0px 0px`, `${gridSize}px ${gridSize}px`],
         }}
         transition={{
-          duration: 4,
+          duration: duration,
           repeat: Infinity,
           ease: 'linear',
         }}
