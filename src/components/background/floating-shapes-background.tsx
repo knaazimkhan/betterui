@@ -44,6 +44,12 @@ interface Shape {
   rotation: number
 }
 
+const shapeStyles: Record<Shape['type'], string> = {
+  circle: 'rounded-full bg-white/10',
+  square: 'rotate-45 bg-white/10',
+  triangle: 'h-0 w-0 border-solid border-transparent border-b-white opacity-10',
+}
+
 export const FloatingShapesBackground = ({
   numShapes = 20,
   duration = 10,
@@ -64,19 +70,6 @@ export const FloatingShapesBackground = ({
     y: Math.random() * 100,
     rotation: Math.random() * 360,
   }))
-
-  const getShapeStyle = (shape: Shape) => {
-    switch (shape.type) {
-      case 'circle':
-        return 'rounded-full bg-white/10'
-      case 'square':
-        return 'rotate-45 bg-white/10'
-      case 'triangle':
-        return 'h-0 w-0 border-solid border-transparent border-b-white opacity-10'
-      default:
-        return ''
-    }
-  }
 
   const getShapeSize = (shape: Shape) => {
     const baseStyle = { left: `${shape.x}%`, top: `${shape.y}%` }
@@ -105,7 +98,10 @@ export const FloatingShapesBackground = ({
       {shapes.map((shape) => (
         <motion.div
           key={shape.id}
-          className={cn('absolute will-change-transform', getShapeStyle(shape))}
+          className={cn(
+            'absolute will-change-transform',
+            shapeStyles[shape.type]
+          )}
           style={getShapeSize(shape)}
           animate={{
             rotate: [shape.rotation, shape.rotation + 360],
