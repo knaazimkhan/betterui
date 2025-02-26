@@ -5,7 +5,10 @@ import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 export interface FloatingShapesBackgroundProps {
+  numShapes?: number
+  duration?: number
   className?: string
+  easing?: 'linear' | 'easeIn' | 'easeOut' | 'easeInOut'
 }
 
 interface Shape {
@@ -18,6 +21,9 @@ interface Shape {
 }
 
 export const FloatingShapesBackground = ({
+  numShapes = 20,
+  duration = 10,
+  easing = 'easeInOut',
   className,
 }: FloatingShapesBackgroundProps) => {
   const getRandomShape = () => {
@@ -26,7 +32,7 @@ export const FloatingShapesBackground = ({
     ] as Shape['type']
   }
 
-  const shapes = Array.from({ length: 20 }).map(() => ({
+  const shapes = Array.from({ length: numShapes }).map(() => ({
     id: crypto.randomUUID(),
     type: getRandomShape(),
     size: Math.random() * 60 + 20,
@@ -82,9 +88,9 @@ export const FloatingShapesBackground = ({
             y: [`${shape.y}%`, `${shape.y - 20}%`, `${shape.y}%`],
           }}
           transition={{
-            duration: 10 + Math.random() * 5,
+            duration: duration + Math.random() * 5,
             repeat: Infinity,
-            ease: 'easeInOut',
+            ease: easing,
           }}
         />
       ))}
