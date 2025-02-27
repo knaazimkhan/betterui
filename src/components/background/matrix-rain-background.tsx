@@ -5,10 +5,33 @@ import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 export interface MatrixRainBackgroundProps {
+  /**
+   * The number of columns for the rain effect.
+   * @default 30
+   */
   numColumns?: number
+
+  /**
+   * The number of characters that appear in each column.
+   * @default 20
+   */
   numCharacters?: number
+
+  /**
+   * The minimum speed of the falling characters.
+   * @default 0.5
+   */
   minSpeed?: number
+
+  /**
+   * The maximum speed of the falling characters.
+   * @default 2.0
+   */
   maxSpeed?: number
+
+  /**
+   * Additional class names to apply to the background container.
+   */
   className?: string
 }
 
