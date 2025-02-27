@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useMemo } from 'react'
 
 import { motion } from 'motion/react'
 
@@ -13,29 +13,20 @@ export interface MovingDotsBackgroundProps {
   className?: string
 }
 
-interface Dot {
-  id: string
-  x: number
-  y: number
-  size: number
-}
-
 export const MovingDotsBackground = ({
   numDots = 50,
   minSize = 2,
   maxSize = 6,
   className,
 }: MovingDotsBackgroundProps) => {
-  const [dots, setDots] = useState<Dot[]>([])
-
-  useEffect(() => {
-    const newDots = Array.from({ length: numDots }).map(() => ({
+  const dots = useMemo(() => {
+    return Array.from({ length: numDots }).map(() => ({
       id: crypto.randomUUID(),
       x: Math.random() * 100,
       y: Math.random() * 100,
       size: Math.random() * (maxSize - minSize) + minSize,
+      duration: 5 + Math.random() * 3,
     }))
-    setDots(newDots)
   }, [numDots, minSize, maxSize])
 
   return (
@@ -57,7 +48,7 @@ export const MovingDotsBackground = ({
             y: [-20, 20, -20],
           }}
           transition={{
-            duration: 5 + Math.random() * 3,
+            duration: dot.duration,
             repeat: Infinity,
             repeatType: 'reverse',
             ease: 'linear',
