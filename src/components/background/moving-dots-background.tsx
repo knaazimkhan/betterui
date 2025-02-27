@@ -7,30 +7,32 @@ import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 export interface MovingDotsBackgroundProps {
+  numDots?: number
   className?: string
 }
 
 interface Dot {
-  id: number
+  id: string
   x: number
   y: number
   size: number
 }
 
 export const MovingDotsBackground = ({
+  numDots = 50,
   className,
 }: MovingDotsBackgroundProps) => {
   const [dots, setDots] = useState<Dot[]>([])
 
   useEffect(() => {
-    const newDots = Array.from({ length: 50 }).map((_, i) => ({
-      id: i,
+    const newDots = Array.from({ length: numDots }).map(() => ({
+      id: crypto.randomUUID(),
       x: Math.random() * 100,
       y: Math.random() * 100,
       size: Math.random() * 4 + 2,
     }))
     setDots(newDots)
-  }, [])
+  }, [numDots])
 
   return (
     <div
