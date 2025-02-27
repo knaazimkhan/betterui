@@ -7,7 +7,16 @@ import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 export interface NoiseBackgroundProps {
+  /**
+   * Specifies the background color of each cell.
+   * @default 'bg-white'
+   */
   cellColor?: string
+
+  /**
+   * Allows additional CSS classes to be applied to the outer container.
+   * @default undefined
+   */
   className?: string
 }
 
