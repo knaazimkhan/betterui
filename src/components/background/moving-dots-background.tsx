@@ -8,6 +8,8 @@ import { cn } from '@/lib/utils'
 
 export interface MovingDotsBackgroundProps {
   numDots?: number
+  minSize?: number
+  maxSize?: number
   className?: string
 }
 
@@ -20,6 +22,8 @@ interface Dot {
 
 export const MovingDotsBackground = ({
   numDots = 50,
+  minSize = 2,
+  maxSize = 6,
   className,
 }: MovingDotsBackgroundProps) => {
   const [dots, setDots] = useState<Dot[]>([])
@@ -29,10 +33,10 @@ export const MovingDotsBackground = ({
       id: crypto.randomUUID(),
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 4 + 2,
+      size: Math.random() * (maxSize - minSize) + minSize,
     }))
     setDots(newDots)
-  }, [numDots])
+  }, [numDots, minSize, maxSize])
 
   return (
     <div
