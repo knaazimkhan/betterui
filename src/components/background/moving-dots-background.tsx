@@ -10,17 +10,17 @@ export interface MovingDotsBackgroundProps {
   className?: string
 }
 
+interface Dot {
+  id: number
+  x: number
+  y: number
+  size: number
+}
+
 export const MovingDotsBackground = ({
   className,
 }: MovingDotsBackgroundProps) => {
-  const [dots, setDots] = useState<
-    Array<{
-      id: number
-      x: number
-      y: number
-      size: number
-    }>
-  >([])
+  const [dots, setDots] = useState<Dot[]>([])
 
   useEffect(() => {
     const newDots = Array.from({ length: 50 }).map((_, i) => ({
