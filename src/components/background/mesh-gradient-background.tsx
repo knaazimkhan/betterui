@@ -5,9 +5,27 @@ import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 export interface MeshGradientBackgroundProps {
+  /**
+   * Duration of the animation in seconds.
+   * @default 10
+   */
   duration?: number
+
+  /**
+   * Enable or disable the animation.
+   * @default true
+   */
   animation?: boolean
+
+  /**
+   * An array of colors to use in the gradient.
+   * @default ['#3b82f6', '#8b5cf6', '#ec4899', '#14b8a6']
+   */
   gradientColors?: string[]
+
+  /**
+   * Additional class names to apply to the background container.
+   */
   className?: string
 }
 
