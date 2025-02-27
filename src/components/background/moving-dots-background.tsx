@@ -32,6 +32,7 @@ export const MovingDotsBackground = ({
   return (
     <div
       className={cn('absolute inset-0 overflow-hidden bg-slate-900', className)}
+      aria-hidden="true"
     >
       {dots.map((dot) => (
         <motion.div
