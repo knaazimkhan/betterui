@@ -1,40 +1,56 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useMemo } from 'react'
 
 import { motion } from 'motion/react'
 
 import { cn } from '@/lib/utils'
 
 export interface MovingDotsBackgroundProps {
+  /**
+   * Number of dots to display in the background.
+   * @default 50
+   */
+  numDots?: number
+
+  /**
+   * Minimum size of the dots in pixels.
+   * @default 2
+   */
+  minSize?: number
+
+  /**
+   * Maximum size of the dots in pixels.
+   * @default 6
+   */
+  maxSize?: number
+
+  /**
+   * Additional class names to apply styles to the component.
+   */
   className?: string
 }
 
 export const MovingDotsBackground = ({
+  numDots = 50,
+  minSize = 2,
+  maxSize = 6,
   className,
 }: MovingDotsBackgroundProps) => {
-  const [dots, setDots] = useState<
-    Array<{
-      id: number
-      x: number
-      y: number
-      size: number
-    }>
-  >([])
-
-  useEffect(() => {
-    const newDots = Array.from({ length: 50 }).map((_, i) => ({
-      id: i,
+  const dots = useMemo(() => {
+    return Array.from({ length: numDots }).map(() => ({
+      id: crypto.randomUUID(),
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 4 + 2,
+      size: Math.random() * (maxSize - minSize) + minSize,
+      duration: 5 + Math.random() * 3,
     }))
-    setDots(newDots)
-  }, [])
+  }, [numDots, minSize, maxSize])
 
   return (
     <div
       className={cn('absolute inset-0 overflow-hidden bg-slate-900', className)}
+      aria-hidden="true"
     >
       {dots.map((dot) => (
         <motion.div
@@ -51,7 +67,7 @@ export const MovingDotsBackground = ({
             y: [-20, 20, -20],
           }}
           transition={{
-            duration: 5 + Math.random() * 3,
+            duration: dot.duration,
             repeat: Infinity,
             repeatType: 'reverse',
             ease: 'linear',

@@ -5,20 +5,61 @@ import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 export interface MatrixRainBackgroundProps {
+  /**
+   * The number of columns for the rain effect.
+   * @default 30
+   */
+  numColumns?: number
+
+  /**
+   * The number of characters that appear in each column.
+   * @default 20
+   */
+  numCharacters?: number
+
+  /**
+   * The minimum speed of the falling characters.
+   * @default 0.5
+   */
+  minSpeed?: number
+
+  /**
+   * The maximum speed of the falling characters.
+   * @default 2.0
+   */
+  maxSpeed?: number
+
+  /**
+   * Additional class names to apply to the background container.
+   */
   className?: string
 }
 
+const characterSets = [
+  '日ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ',
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+  'abcde12345!@#$%',
+]
+
 export const MatrixRainBackground = ({
+  numColumns = 30,
+  numCharacters = 20,
+  minSpeed = 0.5,
+  maxSpeed = 2.0,
   className,
 }: MatrixRainBackgroundProps) => {
-  const characters = '日ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ'
+  function getRandomCharacters(length = numCharacters) {
+    const selectedSet =
+      characterSets[Math.floor(Math.random() * characterSets.length)]
+    return Array.from({ length }).map(
+      () => selectedSet[Math.floor(Math.random() * selectedSet.length)]
+    )
+  }
 
-  const columns = Array.from({ length: 30 }).map((_, i) => ({
+  const columns = Array.from({ length: numColumns }).map((_, i) => ({
     id: i,
-    chars: Array.from({ length: 20 }).map(
-      () => characters[Math.floor(Math.random() * characters.length)]
-    ),
-    speed: 0.5 + Math.random() * 1.5,
+    chars: getRandomCharacters(),
+    speed: minSpeed + Math.random() * (maxSpeed - minSpeed),
   }))
 
   return (
@@ -35,6 +76,7 @@ export const MatrixRainBackground = ({
           style={{ left: `${(column.id / columns.length) * 100}%` }}
           animate={{
             y: ['0%', '100%'],
+            opacity: [0, 1, 0],
           }}
           transition={{
             duration: column.speed * 10,

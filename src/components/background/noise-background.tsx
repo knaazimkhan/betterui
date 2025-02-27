@@ -1,28 +1,39 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useMemo } from 'react'
 
 import { motion } from 'motion/react'
 
 import { cn } from '@/lib/utils'
 
 export interface NoiseBackgroundProps {
+  /**
+   * Specifies the background color of each cell.
+   * @default 'bg-white'
+   */
+  cellColor?: string
+
+  /**
+   * Allows additional CSS classes to be applied to the outer container.
+   * @default undefined
+   */
   className?: string
 }
 
-export const NoiseBackground = ({ className }: NoiseBackgroundProps) => {
-  const [cells, setCells] = useState<
-    Array<{ id: number; opacity: number; duration: number }>
-  >([])
-
-  useEffect(() => {
-    const newCells = Array.from({ length: 100 }).map((_, i) => ({
-      id: i,
-      opacity: Math.random(),
-      duration: 0.5 + Math.random() * 2,
-    }))
-    setCells(newCells)
-  }, [])
+export const NoiseBackground = ({
+  cellColor = 'bg-white',
+  className,
+}: NoiseBackgroundProps) => {
+  const cells = useMemo(
+    () =>
+      Array.from({ length: 100 }).map(() => ({
+        id: crypto.randomUUID(),
+        opacity: Math.random(),
+        duration: 0.5 + Math.random() * 2,
+        delay: Math.random() * 2,
+      })),
+    []
+  )
 
   return (
     <div
@@ -34,7 +45,7 @@ export const NoiseBackground = ({ className }: NoiseBackgroundProps) => {
       {cells.map((cell) => (
         <motion.div
           key={cell.id}
-          className="aspect-square bg-white"
+          className={cn('aspect-square', cellColor)}
           animate={{
             opacity: [cell.opacity, 1 - cell.opacity, cell.opacity],
           }}
@@ -42,6 +53,7 @@ export const NoiseBackground = ({ className }: NoiseBackgroundProps) => {
             duration: cell.duration,
             repeat: Infinity,
             ease: 'linear',
+            delay: cell.delay,
           }}
         />
       ))}
