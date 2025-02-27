@@ -7,9 +7,27 @@ import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 export interface MovingDotsBackgroundProps {
+  /**
+   * Number of dots to display in the background.
+   * @default 50
+   */
   numDots?: number
+
+  /**
+   * Minimum size of the dots in pixels.
+   * @default 2
+   */
   minSize?: number
+
+  /**
+   * Maximum size of the dots in pixels.
+   * @default 6
+   */
   maxSize?: number
+
+  /**
+   * Additional class names to apply styles to the component.
+   */
   className?: string
 }
 
