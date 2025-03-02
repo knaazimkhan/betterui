@@ -38,4 +38,60 @@ export const siteConfig = {
   },
   favicon: '/favicon.ico',
   canonical: 'https://betterui.design',
+  icons: {
+    icon: [
+      {
+        url: '/icons/favicon.ico',
+        sizes: 'any',
+        rel: 'icon',
+      },
+      {
+        url: '/icons/favicon-16x16.png',
+        type: 'image/png',
+        sizes: '16x16',
+        rel: 'icon',
+      },
+      {
+        url: '/icons/favicon-32x32.png',
+        type: 'image/png',
+        sizes: '32x32',
+        rel: 'icon',
+      },
+      {
+        url: '/icons/favicon-256x256.png',
+        type: 'image/png',
+        sizes: '256x256',
+        rel: 'icon',
+      },
+    ],
+    shortcut: ['/icons/favicon-16x16.png'],
+    apple: [
+      {
+        url: '/icons/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+        rel: 'apple-touch-icon',
+      },
+    ],
+    other: [
+      {
+        url: '/icons/andriod-chrome-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+        rel: 'icon',
+      },
+      {
+        url: '/icons/andriod-chrome-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        rel: 'icon',
+      },
+      {
+        url: '/icons/safari-pinned-tab.svg',
+        type: 'image/svg+xml',
+        rel: 'mask-icon',
+        color: '#000000',
+      },
+    ],
+  },
 }
