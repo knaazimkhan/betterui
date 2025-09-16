@@ -27,4 +27,5 @@ export const baseOptions: BaseLayoutProps = {
       icon: <LayoutPanelTop />,
     },
   ],
+  githubUrl: 'https://github.com/knaazimkhan/betterui',
 }

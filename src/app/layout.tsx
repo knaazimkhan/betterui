@@ -1,5 +1,8 @@
 import { Geist, Geist_Mono } from 'next/font/google'
 
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+
 import type { Metadata } from 'next'
 
 import '@/styles/globals.css'
@@ -36,6 +39,8 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Provider>{children}</Provider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
